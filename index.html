@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bridging the Silence — Strategy, Collaboration & Marketing Communication</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink:       #12181f;
+    --paper:     #fafaf7;
+    --cream:     #f4f1eb;
+    --teal:      #1e7f7f;
+    --teal-lt:   #e6f4f4;
+    --amber:     #c97c1a;
+    --amber-lt:  #fdf4e6;
+    --sage:      #3d6b52;
+    --sage-lt:   #eaf2ec;
+    --rose:      #c04a4a;
+    --rose-lt:   #fdeaea;
+    --muted:     #6b7585;
+    --border:    #e2ddd4;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Outfit', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; font-size: 14px; }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--ink);
+    padding: 64px 56px 52px;
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(30,127,127,.18) 0%, transparent 65%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute; bottom: -80px; left: 20%;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,124,26,.12) 0%, transparent 65%);
+  }
+  .cover-tag { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 18px; position: relative; z-index: 1; }
+  .cover h1 { font-family: 'Libre Baskerville', serif; font-size: 48px; color: #fff; line-height: 1.1; margin-bottom: 14px; position: relative; z-index: 1; }
+  .cover h1 em { font-style: italic; color: #8ecfcf; }
+  .cover-desc { color: #8fa0ae; font-size: 14.5px; font-weight: 300; max-width: 580px; line-height: 1.75; position: relative; z-index: 1; margin-bottom: 36px; }
+  .cover-pills { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .cover-pill { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 20px; padding: 6px 16px; font-size: 11.5px; color: #ccd5dc; }
+  .cover-pill span { color: var(--teal); font-weight: 600; }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 940px; margin: 0 auto; padding: 52px 48px; }
+  hr.div { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+  .sec-tag { font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  h2 { font-family: 'Libre Baskerville', serif; font-size: 30px; font-weight: 700; margin-bottom: 18px; line-height: 1.2; }
+  h3 { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  p.lead { font-size: 14.5px; color: #444; line-height: 1.75; margin-bottom: 24px; max-width: 680px; }
+
+  /* ── COLLABORATION SECTION ── */
+  .collab-intro {
+    background: var(--ink); color: #dde4ea; border-radius: 14px;
+    padding: 32px 36px; margin-bottom: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+  @media(max-width:600px){ .collab-intro { grid-template-columns: 1fr; } }
+  .collab-intro .ci-block .ci-tag { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+  .collab-intro .ci-block h3 { font-size: 16px; color: #fff; margin-bottom: 8px; }
+  .collab-intro .ci-block p { font-size: 13px; line-height: 1.7; color: #8fa0ae; }
+
+  .stakeholder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+  @media(max-width:600px){ .stakeholder-grid { grid-template-columns: 1fr; } }
+
+  .stakeholder-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  .stakeholder-card .sk-head { padding: 18px 22px 14px; }
+  .stakeholder-card .sk-head .sk-tag { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+  .stakeholder-card .sk-head h3 { font-size: 16px; margin-bottom: 0; }
+  .stakeholder-card .sk-body { padding: 0 22px 18px; }
+
+  .internal .sk-head { background: var(--teal-lt); }
+  .internal .sk-tag { color: var(--teal); }
+  .external .sk-head { background: var(--amber-lt); }
+  .external .sk-tag { color: var(--amber); }
+
+  .sk-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12.5px; }
+  .sk-table th { text-align: left; font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  .sk-table td { padding: 9px 8px; vertical-align: top; border-bottom: 1px solid #f0ece5; line-height: 1.55; }
+  .sk-table tr:last-child td { border-bottom: none; }
+  .sk-table .role-col { font-weight: 600; color: var(--ink); width: 30%; }
+  .sk-table .method-pill { display: inline-block; background: var(--cream); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; font-size: 11px; color: #444; }
+
+  .collab-principle {
+    background: var(--cream); border-left: 4px solid var(--teal);
+    border-radius: 0 10px 10px 0; padding: 18px 24px; margin-bottom: 12px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .collab-principle .cp-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .collab-principle .cp-title { font-weight: 600; font-size: 14px; margin-bottom: 3px; }
+  .collab-principle .cp-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+  /* ── COMMUNICATION STRATEGY ── */
+  .comms-split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 32px; }
+  @media(max-width:600px){ .comms-split { grid-template-columns: 1fr; } }
+
+  .comms-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+  .comms-card .cc-head { padding: 22px 24px 18px; }
+  .comms-card .cc-badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+  .cc-badge-amber { background: var(--amber); color: white; }
+  .cc-badge-sage { background: var(--sage); color: white; }
+  .comms-card .cc-head h3 { font-size: 18px; margin-bottom: 4px; }
+  .comms-card .cc-head p { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .comms-card .cc-body { padding: 0 24px 22px; }
+  .parents-comms .cc-head { background: var(--amber-lt); }
+  .students-comms .cc-head { background: var(--sage-lt); }
+
+  .channel-row {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px solid #f0ece5;
+  }
+  .channel-row:last-child { border-bottom: none; }
+  .ch-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .ch-name { font-weight: 600; font-size: 13px; }
+  .ch-desc { font-size: 12px; color: #555; line-height: 1.5; }
+
+  .msg-box { background: var(--cream); border-radius: 8px; padding: 14px 16px; margin-top: 14px; }
+  .msg-box .mb-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .msg-box p { font-size: 12.5px; color: #333; font-style: italic; line-height: 1.6; }
+
+  /* ── KPI TABLE ── */
+  .kpi-wrap { overflow-x: auto; margin-bottom: 32px; }
+  .kpi-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 700px; }
+  .kpi-table thead tr { background: var(--ink); color: white; }
+  .kpi-table th { padding: 13px 14px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.5px; }
+  .kpi-table th:first-child { border-radius: 0; }
+  .kpi-table td { padding: 12px 14px; vertical-align: top; border-bottom: 1px solid var(--border); line-height: 1.6; }
+  .kpi-table tr:last-child td { border-bottom: none; }
+  .kpi-table .grp-row td { background: var(--cream); font-weight: 600; font-size: 12px; letter-spacing: 0.5px; padding: 10px 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; font-size: 10px; }
+  .kpi-table .parents-row { background: #fffbf5; }
+  .kpi-table .students-row { background: #f7fbf8; }
+  .kpi-table .collab-row { background: #f5fafa; }
+
+  .kpi-num { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: var(--ink); display: block; line-height: 1.1; }
+  .kpi-sub { font-size: 11px; color: var(--muted); }
+
+  .status-badge { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 10.5px; font-weight: 600; }
+  .s-output { background: #e8f4f4; color: var(--teal); }
+  .s-outcome { background: var(--amber-lt); color: var(--amber); }
+  .s-impact { background: var(--sage-lt); color: var(--sage); }
+
+  /* ── MEASUREMENT FRAMEWORK ── */
+  .measure-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
+  @media(max-width:600px){ .measure-grid { grid-template-columns: 1fr 1fr; } }
+  .m-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 18px 16px; }
+  .m-card .mc-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .m-card .mc-title { font-weight: 600; font-size: 13.5px; margin-bottom: 6px; }
+  .m-card .mc-desc { font-size: 12px; color: #555; line-height: 1.55; }
+  .m-card.t1 { border-top: 3px solid var(--teal); }
+  .m-card.t2 { border-top: 3px solid var(--amber); }
+  .m-card.t3 { border-top: 3px solid var(--sage); }
+  .m-card.t4 { border-top: 3px solid var(--rose); }
+  .m-card.t5 { border-top: 3px solid #7c6fa0; }
+  .m-card.t6 { border-top: 3px solid #4a9eca; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); color: #5a6a78; padding: 24px 48px; font-size: 11px; letter-spacing: 0.8px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  footer strong { color: var(--teal); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">Strategy & Marketing Communication · Bridging the Silence · 2026</div>
+  <h1>Collaboration,<br/><em>Communication</em><br/>& Measurement</h1>
+  <p class="cover-desc">A single-page strategic framework covering how internal and external stakeholders collaborate, how the two-approach marketing communication strategy works, and how every activity is measured against defined KPIs.</p>
+  <div class="cover-pills">
+    <div class="cover-pill"><span>01 /</span> Stakeholder Collaboration</div>
+    <div class="cover-pill"><span>02 /</span> Communication Strategy</div>
+    <div class="cover-pill"><span>03 /</span> KPIs & Measurement</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1: COLLABORATION
+  ══════════════════════════════════════════ -->
+  <div class="sec-tag">Section 01</div>
+  <h2>Stakeholder Collaboration</h2>
+  <p class="lead">Structured collaboration — with clear methods, defined roles, and explicit accountability — is what separates a project that funders trust from one that sounds well-intentioned but undeliverable. Every stakeholder relationship must answer: <em>what do they contribute, how do we engage them, and what does success look like?</em></p>
+
+  <div class="collab-intro">
+    <div class="ci-block">
+      <div class="ci-tag">Why Structure Matters</div>
+      <h3>Credibility is built through clarity</h3>
+      <p>Funders, schools, and parents all ask the same silent question: <em>"Can this team actually deliver?"</em> A clear stakeholder map with defined engagement methods answers that question before it's asked. It signals that the team has thought beyond the idea to the reality of execution.</p>
+    </div>
+    <div class="ci-block">
+      <div class="ci-tag">Why Responsibility Matters</div>
+      <h3>Accountability drives follow-through</h3>
+      <p>When each stakeholder relationship has a named owner and an explicit engagement method, responsibility doesn't diffuse across the team. It sticks. This prevents the most common failure mode of youth-led projects: good intentions without consistent follow-up.</p>
+    </div>
+  </div>
+
+  <div class="stakeholder-grid">
+    <!-- INTERNAL -->
+    <div class="stakeholder-card internal">
+      <div class="sk-head">
+        <div class="sk-tag">Internal Stakeholders</div>
+        <h3>The 6-Member Volunteer Team</h3>
+      </div>
+      <div class="sk-body">
+        <table class="sk-table">
+          <thead>
+            <tr>
+              <th>Who</th>
+              <th>Role</th>
+              <th>Engagement Method</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="role-col">Tiên (Lead)</td>
+              <td>Overall coordination, pitch, mentor liaison</td>
+              <td><span class="method-pill">Weekly check-in</span> <span class="method-pill">Task tracker</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Linh</td>
+              <td>School outreach, Project Overview</td>
+              <td><span class="method-pill">Meeting agenda</span> <span class="method-pill">Progress report</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">C. Thy</td>
+              <td>Theory of Change, workshop design</td>
+              <td><span class="method-pill">Co-creation sessions</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Phượng</td>
+              <td>Strategy, KPIs, measurement</td>
+              <td><span class="method-pill">Data dashboard</span> <span class="method-pill">Debrief</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Trí</td>
+              <td>Theory of Change, student sessions</td>
+              <td><span class="method-pill">Session debrief</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Hà</td>
+              <td>Risk management, content creation</td>
+              <td><span class="method-pill">Risk log</span> <span class="method-pill">Content calendar</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- EXTERNAL -->
+    <div class="stakeholder-card external">
+      <div class="sk-head">
+        <div class="sk-tag">External Stakeholders</div>
+        <h3>Partners, Audiences & Supporters</h3>
+      </div>
+      <div class="sk-body">
+        <table class="sk-table">
+          <thead>
+            <tr>
+              <th>Who</th>
+              <th>Their Role</th>
+              <th>Engagement Method</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="role-col">Schools (3+)</td>
+              <td>Access to parents & students; venue for sessions</td>
+              <td><span class="method-pill">MOU / formal letter</span> <span class="method-pill">School contact person</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Mentor (×2)</td>
+              <td>External guidance, quality assurance, credibility</td>
+              <td><span class="method-pill">Structured sessions</span> <span class="method-pill">Written feedback</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Parents</td>
+              <td>Primary target; workshop attendees; kit recipients</td>
+              <td><span class="method-pill">School channels</span> <span class="method-pill">Survey</span> <span class="method-pill">Workshops</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Students</td>
+              <td>Secondary target; direct beneficiaries</td>
+              <td><span class="method-pill">In-school session</span> <span class="method-pill">Social media</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Psychologists (5–10)</td>
+              <td>Expert credibility; Q&A support for parents</td>
+              <td><span class="method-pill">Pro-bono agreement</span> <span class="method-pill">Post-workshop access</span></td>
+            </tr>
+            <tr>
+              <td class="role-col">Funders / Pitch Panel</td>
+              <td>Financial support; validation; platform</td>
+              <td><span class="method-pill">Pitch deck</span> <span class="method-pill">Impact report</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLES -->
+  <div class="collab-principle">
+    <div class="cp-icon">🎯</div>
+    <div>
+      <div class="cp-title">One owner per relationship</div>
+      <div class="cp-desc">Every external stakeholder relationship has a single named team member responsible for maintaining contact. Split ownership leads to no ownership — and missed follow-ups are the #1 reason school partnerships fall through.</div>
+    </div>
+  </div>
+  <div class="collab-principle">
+    <div class="cp-icon">📋</div>
+    <div>
+      <div class="cp-title">Structured method, not just goodwill</div>
+      <div class="cp-desc">Every collaboration uses a defined method: formal letters for schools (not just verbal agreements), written mentor feedback (not just verbal discussion), MOUs for psychologist partnerships. Structure creates the paper trail funders need to see.</div>
+    </div>
+  </div>
+  <div class="collab-principle">
+    <div class="cp-icon">🔁</div>
+    <div>
+      <div class="cp-title">Feedback flows in both directions</div>
+      <div class="cp-desc">Internal: every team meeting closes with a structured reflection. External: every workshop ends with a short feedback form. This data feeds directly into KPI measurement and pitch evidence — nothing is anecdotal.</div>
+    </div>
+  </div>
+
+  <hr class="div"/>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2: COMMUNICATION STRATEGY
+  ══════════════════════════════════════════ -->
+  <div class="sec-tag">Section 02</div>
+  <h2>Marketing Communication Strategy</h2>
+  <p class="lead">The two approaches require distinct communication strategies — because the audiences, channels, tone, and goals are fundamentally different. A message that resonates with a worried parent will not land with a 16-year-old on TikTok, and vice versa.</p>
+
+  <div class="comms-split">
+    <!-- PARENTS -->
+    <div class="comms-card parents-comms">
+      <div class="cc-head">
+        <span class="cc-badge cc-badge-amber">Approach 1 · Parents</span>
+        <h3>Authority, Warmth & Practical Tools</h3>
+        <p>Parents need to feel that this is credible, trustworthy, and actionable — not alarmist or clinical. The tone is warm authority. The goal is to reduce their anxiety <em>about</em> the topic by giving them concrete tools.</p>
+      </div>
+      <div class="cc-body">
+        <div class="channel-row">
+          <div class="ch-icon">🏫</div>
+          <div>
+            <div class="ch-name">School Channels (Primary)</div>
+            <div class="ch-desc">Official letters via school, parent WhatsApp groups, parent-teacher meeting announcements. Leverages institutional trust — parents engage because the school sent it.</div>
+          </div>
+        </div>
+        <div class="channel-row">
+          <div class="ch-icon">📦</div>
+          <div>
+            <div class="ch-name">Connection Kit (Core Asset)</div>
+            <div class="ch-desc">Physical/digital kit with conversation starter cards, warning signs reference, and helpline QR code. Warm, non-clinical design. Distributed at school or workshop — tangible proof of the project.</div>
+          </div>
+        </div>
+        <div class="channel-row">
+          <div class="ch-icon">💻</div>
+          <div>
+            <div class="ch-name">Online Workshops ×3</div>
+            <div class="ch-desc">Monthly sessions covering: understanding teen mental health → having the conversation → when and how to seek professional help. Progressive structure builds parent confidence over time.</div>
+          </div>
+        </div>
+        <div class="channel-row">
+          <div class="ch-icon">📲</div>
+          <div>
+            <div class="ch-name">Social Media (Facebook / Zalo)</div>
+            <div class="ch-desc">Workshop announcements, myth-busting posts, parent testimonials (anonymised). Platform choice matches where Vietnamese parents are — not TikTok.</div>
+          </div>
+        </div>
+        <div class="msg-box">
+          <div class="mb-tag">Core Message to Parents</div>
+          <p>"You don't need to be a psychologist to help your child. You just need to know how to start the conversation — and we'll show you how."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STUDENTS -->
+    <div class="comms-card students-comms">
+      <div class="cc-head">
+        <span class="cc-badge cc-badge-sage">Approach 2 · Students</span>
+        <h3>Peer Voice, Normalisation & Zero Pressure</h3>
+        <p>Students are allergic to being talked <em>at</em>. The communication must feel peer-originated — relatable, low-pressure, and non-clinical. The goal is not to diagnose or intervene, but to normalise and signpost.</p>
+      </div>
+      <div class="cc-body">
+        <div class="channel-row">
+          <div class="ch-icon">🎬</div>
+          <div>
+            <div class="ch-name">Short-Form Video (TikTok / Reels)</div>
+            <div class="ch-desc">2–3 videos per week. Relatable scenarios, myth-busting, peer stories. No clinical language. Format-first thinking: content must feel native to the platform, not like a PSA.</div>
+          </div>
+        </div>
+        <div class="channel-row">
+          <div class="ch-icon">🖼️</div>
+          <div>
+            <div class="ch-name">School Posters & Environment</div>
+            <div class="ch-desc">Placed in classrooms, hallways, and bathrooms. Youth-friendly visuals. QR code to resources. The poster is a passive, low-stigma touchpoint — students see it without being singled out.</div>
+          </div>
+        </div>
+        <div class="channel-row">
+          <div class="ch-icon">🎤</div>
+          <div>
+            <div class="ch-name">In-School Session (45 min × 3 schools)</div>
+            <div class="ch-desc">Facilitated discussion — not a lecture. Anonymous Q&A, peer scenarios, storytelling. One psychologist present for credibility. Goal: reduce stigma and introduce available resources.</div>
+          </div>
+        </div>
+        <div class="channel-row">
+          <div class="ch-icon">🃏</div>
+          <div>
+            <div class="ch-name">Peer Connection Card</div>
+            <div class="ch-desc">Pocket-sized card with: a validating message, 2–3 local helplines, a prompt to talk to someone. Distributed at session. Mirrors the parent kit but in youth language.</div>
+          </div>
+        </div>
+        <div class="msg-box">
+          <div class="mb-tag">Core Message to Students</div>
+          <p>"Feeling overwhelmed doesn't make you weak. It makes you human. And there are people — closer than you think — who want to help."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div"/>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3: KPIs & MEASUREMENT
+  ══════════════════════════════════════════ -->
+  <div class="sec-tag">Section 03</div>
+  <h2>KPIs & Measurement of Success</h2>
+  <p class="lead">Every KPI is tied to a specific strategy, has a defined measurement method, and is labelled by type: <strong>Output</strong> (what we produced), <strong>Outcome</strong> (what changed), or <strong>Impact</strong> (systemic shift). Funders care most about outcomes — not just activity counts.</p>
+
+  <div class="kpi-wrap">
+    <table class="kpi-table">
+      <thead>
+        <tr>
+          <th style="width:18%;">KPI</th>
+          <th style="width:12%;">Target</th>
+          <th style="width:22%;">Linked Strategy</th>
+          <th style="width:26%;">How We Measure It</th>
+          <th style="width:10%;">Type</th>
+          <th style="width:12%;">Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- COLLABORATION -->
+        <tr class="grp-row"><td colspan="6">Collaboration KPIs</td></tr>
+        <tr class="collab-row">
+          <td><strong>School partnerships secured</strong></td>
+          <td><span class="kpi-num">3+</span><span class="kpi-sub">schools</span></td>
+          <td>Formal outreach via Linh; MOU / official letter per school</td>
+          <td>Signed MOU or written confirmation from school principal / admin</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>By 31 Mar</td>
+        </tr>
+        <tr class="collab-row">
+          <td><strong>Psychologist partners engaged</strong></td>
+          <td><span class="kpi-num">5–10</span><span class="kpi-sub">professionals</span></td>
+          <td>Pro-bono agreement; post-workshop Q&A support</td>
+          <td>Signed pro-bono agreement or confirmed participation email</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>By 7 Apr</td>
+        </tr>
+        <tr class="collab-row">
+          <td><strong>Internal team check-in rate</strong></td>
+          <td><span class="kpi-num">100%</span><span class="kpi-sub">attendance</span></td>
+          <td>Weekly team meetings with structured agenda and reflection</td>
+          <td>Meeting attendance log; reflection notes captured each session</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>Weekly</td>
+        </tr>
+
+        <!-- PARENTS -->
+        <tr class="grp-row"><td colspan="6">Parents Approach KPIs</td></tr>
+        <tr class="parents-row">
+          <td><strong>Parents reached via school channels</strong></td>
+          <td><span class="kpi-num">300+</span><span class="kpi-sub">parents</span></td>
+          <td>Official letter / WhatsApp broadcast via 3+ school partners</td>
+          <td>School-confirmed distribution count or message delivery receipts</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>By mid-Apr</td>
+        </tr>
+        <tr class="parents-row">
+          <td><strong>Parents attending ≥1 workshop</strong></td>
+          <td><span class="kpi-num">200+</span><span class="kpi-sub">parents</span></td>
+          <td>3 online workshops; promoted via school & social media</td>
+          <td>Workshop registration + attendance log (Zoom / Google Meet)</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>Apr–May</td>
+        </tr>
+        <tr class="parents-row">
+          <td><strong>Connection Kits distributed</strong></td>
+          <td><span class="kpi-num">200</span><span class="kpi-sub">kits</span></td>
+          <td>Kit handed out at workshops and via schools</td>
+          <td>Kit distribution log; workshop registration cross-reference</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>By 25 Apr</td>
+        </tr>
+        <tr class="parents-row">
+          <td><strong>Post-workshop confidence score</strong></td>
+          <td><span class="kpi-num">↑30%</span><span class="kpi-sub">vs baseline</span></td>
+          <td>Workshops + Connection Kit; pre/post survey question on confidence to talk to child about mental health</td>
+          <td>5-point Likert scale survey sent before Workshop 1 and after Workshop 3</td>
+          <td><span class="status-badge s-outcome">Outcome</span></td>
+          <td>After W3</td>
+        </tr>
+        <tr class="parents-row">
+          <td><strong>Parents who initiated a conversation at home</strong></td>
+          <td><span class="kpi-num">50+</span><span class="kpi-sub">self-reported</span></td>
+          <td>Connection Kit conversation starter cards; workshop skills practice</td>
+          <td>Follow-up survey 2 weeks after Workshop 3: "Have you used the kit or had a mental health conversation with your child?"</td>
+          <td><span class="status-badge s-outcome">Outcome</span></td>
+          <td>May follow-up</td>
+        </tr>
+
+        <!-- STUDENTS -->
+        <tr class="grp-row"><td colspan="6">Students Approach KPIs</td></tr>
+        <tr class="students-row">
+          <td><strong>Students reached (in-school)</strong></td>
+          <td><span class="kpi-num">500+</span><span class="kpi-sub">students</span></td>
+          <td>45-min facilitated session at each of 3+ partner schools</td>
+          <td>School attendance records for session; sign-in sheet</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>Mid-Apr</td>
+        </tr>
+        <tr class="students-row">
+          <td><strong>In-school sessions delivered</strong></td>
+          <td><span class="kpi-num">3</span><span class="kpi-sub">sessions</span></td>
+          <td>One session per partner school; facilitated by Trí + C.Thy</td>
+          <td>Session completion log with date, school name, facilitator, and attendance count</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>Apr</td>
+        </tr>
+        <tr class="students-row">
+          <td><strong>Social media reach</strong></td>
+          <td><span class="kpi-num">10k+</span><span class="kpi-sub">impressions</span></td>
+          <td>TikTok/Reels content series (2+ posts/week); stigma-breaking format</td>
+          <td>Platform analytics (impressions, reach, shares) — screenshot and log weekly</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>Weekly</td>
+        </tr>
+        <tr class="students-row">
+          <td><strong>Social media engagement rate</strong></td>
+          <td><span class="kpi-num">≥8%</span><span class="kpi-sub">engagement</span></td>
+          <td>Peer-voice content; relatable scenarios; myth-busting format</td>
+          <td>(Likes + comments + shares) ÷ impressions × 100; tracked per post</td>
+          <td><span class="status-badge s-outcome">Outcome</span></td>
+          <td>Weekly</td>
+        </tr>
+        <tr class="students-row">
+          <td><strong>Student awareness score improvement</strong></td>
+          <td><span class="kpi-num">↑20%</span><span class="kpi-sub">vs baseline</span></td>
+          <td>In-school session + posters + Connection Card; pre/post anonymous survey</td>
+          <td>Anonymous 5-question awareness survey before and after the in-school session per school</td>
+          <td><span class="status-badge s-outcome">Outcome</span></td>
+          <td>At each session</td>
+        </tr>
+        <tr class="students-row">
+          <td><strong>Students who know where to seek help</strong></td>
+          <td><span class="kpi-num">80%</span><span class="kpi-sub">of attendees</span></td>
+          <td>Connection Card; in-school session resource signposting</td>
+          <td>Post-session survey: "Do you now know of at least one place or person you could go to for mental health support?"</td>
+          <td><span class="status-badge s-impact">Impact</span></td>
+          <td>At each session</td>
+        </tr>
+
+        <!-- OVERALL -->
+        <tr class="grp-row"><td colspan="6">Overall Project KPIs</td></tr>
+        <tr>
+          <td><strong>Pitch funding secured</strong></td>
+          <td><span class="kpi-num">✓</span><span class="kpi-sub">funding won</span></td>
+          <td>All strategies combined; evidence presented in pitch deck on 27 Apr</td>
+          <td>Funder decision on pitch day</td>
+          <td><span class="status-badge s-impact">Impact</span></td>
+          <td>27 Apr</td>
+        </tr>
+        <tr>
+          <td><strong>Before/after data collected</strong></td>
+          <td><span class="kpi-num">100%</span><span class="kpi-sub">of activities</span></td>
+          <td>Surveys embedded into every activity (workshops, sessions, social)</td>
+          <td>Survey completion rates tracked by Phượng; reported in KPI dashboard</td>
+          <td><span class="status-badge s-output">Output</span></td>
+          <td>Ongoing</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MEASUREMENT FRAMEWORK -->
+  <div class="sec-tag">How We Measure</div>
+  <h2>Measurement Framework</h2>
+  <p class="lead" style="margin-bottom:22px;">Six measurement tools ensure that every KPI has a collection method — not just a target. Data collection is built into delivery, not added afterwards.</p>
+
+  <div class="measure-grid">
+    <div class="m-card t1">
+      <div class="mc-tag">Tool 01</div>
+      <div class="mc-title">Pre/Post Survey (Parents)</div>
+      <div class="mc-desc">Sent before Workshop 1 and after Workshop 3. Measures confidence change, awareness shift, and self-reported behaviour change. Owner: Phượng.</div>
+    </div>
+    <div class="m-card t2">
+      <div class="mc-tag">Tool 02</div>
+      <div class="mc-title">Pre/Post Survey (Students)</div>
+      <div class="mc-desc">Anonymous 5-question survey administered at each in-school session — before and after. Measures stigma reduction and awareness improvement. Owner: Trí.</div>
+    </div>
+    <div class="m-card t3">
+      <div class="mc-tag">Tool 03</div>
+      <div class="mc-title">Social Media Analytics</div>
+      <div class="mc-desc">Weekly screenshot log of impressions, reach, and engagement rate per post. Compiled into a running tracker. Owner: Hà.</div>
+    </div>
+    <div class="m-card t4">
+      <div class="mc-tag">Tool 04</div>
+      <div class="mc-title">Workshop Attendance Log</div>
+      <div class="mc-desc">Registration form (Google Form) for all 3 workshops. Cross-referenced with kit distribution. Owner: Linh.</div>
+    </div>
+    <div class="m-card t5">
+      <div class="mc-tag">Tool 05</div>
+      <div class="mc-title">Partnership Confirmation Record</div>
+      <div class="mc-desc">Folder of signed MOUs, confirmation emails, and pro-bono agreements. Presented as an appendix in the pitch deck. Owner: Tiên.</div>
+    </div>
+    <div class="m-card t6">
+      <div class="mc-tag">Tool 06</div>
+      <div class="mc-title">KPI Dashboard (Running)</div>
+      <div class="mc-desc">A single shared tracking sheet updated weekly. Red/amber/green status for each KPI. Reviewed at every team check-in. Owner: Phượng.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span><strong>Bridging the Silence</strong> — Strategy, Collaboration & Marketing Communication</span>
+  <span>March 2026 · For Funding Pitch Use · Team Lead: Tien Bui</span>
+</footer>
+
+</body>
+</html>
