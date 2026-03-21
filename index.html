@@ -3,1386 +3,623 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bridging the Silence — Complete Strategy Document</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<title>Bridging the Silence — Project Overview 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --ink: #1a1a2e;
-    --warm: #f5f0e8;
-    --cream: #faf7f2;
-    --teal: #2a7f7f;
-    --teal-light: #e8f4f4;
-    --amber: #c9801f;
-    --amber-light: #fdf3e3;
-    --sage: #4a7c59;
-    --sage-light: #eaf2ec;
-    --muted: #6b7280;
-    --border: #e2ddd6;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --night:    #0d1117;
+  --paper:    #f8f6f1;
+  --cream:    #f0ece3;
+  --teal:     #1a7a6e;
+  --teal-lt:  #e4f3f1;
+  --amber:    #c8761a;
+  --amber-lt: #fdf3e3;
+  --sage:     #3d6b52;
+  --sage-lt:  #e8f2ec;
+  --rose:     #b84040;
+  --blue:     #2d5fa6;
+  --blue-lt:  #e8eef8;
+  --violet:   #6b4fa0;
+  --violet-lt:#f0edf8;
+  --muted:    #6b7585;
+  --border:   #e0dbd0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--night);line-height:1.7;font-size:14px;}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    line-height: 1.7;
-    font-size: 15px;
-  }
+/* ── HERO ── */
+.hero{
+  background:var(--night);
+  padding:72px 64px 60px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-150px;right:-100px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,122,110,.22) 0%,transparent 65%);
+}
+.hero::after{
+  content:'';position:absolute;bottom:-100px;left:10%;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,118,26,.14) 0%,transparent 65%);
+}
+.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+.hero-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--teal);margin-bottom:20px;opacity:.9;}
+.hero h1{
+  font-family:'Fraunces',serif;font-size:60px;font-weight:700;
+  color:#fff;line-height:1.05;margin-bottom:16px;
+}
+.hero h1 em{font-style:italic;color:#7eccc4;font-weight:300;}
+.hero-sub{font-size:16px;font-weight:300;color:#8fa5ae;max-width:580px;line-height:1.75;margin-bottom:44px;}
+.meta-strip{display:flex;gap:36px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:28px;}
+.meta-item label{display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:5px;}
+.meta-item span{font-size:13.5px;color:#ccd8dc;font-weight:500;}
 
-  /* COVER */
-  .cover {
-    background: var(--ink);
-    color: var(--warm);
-    padding: 80px 60px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(42,127,127,0.25) 0%, transparent 70%);
-  }
-  .cover::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: 30%;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,128,31,0.15) 0%, transparent 70%);
-  }
-  .cover-tag {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 20px;
-  }
-  .cover h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 52px;
-    line-height: 1.1;
-    margin-bottom: 12px;
-  }
-  .cover h1 em {
-    font-style: italic;
-    color: #a8d5d5;
-  }
-  .cover-sub {
-    font-size: 16px;
-    font-weight: 300;
-    color: #c4bfb5;
-    max-width: 520px;
-    margin-bottom: 40px;
-  }
-  .cover-meta {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-  .cover-meta-item label {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 4px;
-  }
-  .cover-meta-item span {
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  /* LAYOUT */
-  .page { max-width: 900px; margin: 0 auto; padding: 56px 40px; }
-
-  /* SECTION HEADERS */
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-  h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: var(--ink);
-  }
-  h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  /* DIVIDER */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 48px 0;
-  }
-
-  /* PROBLEM BLOCK */
-  .problem-block {
-    background: var(--ink);
-    color: var(--warm);
-    border-radius: 12px;
-    padding: 36px 40px;
-    margin-bottom: 32px;
-    position: relative;
-    overflow: hidden;
-  }
-  .problem-block::before {
-    content: '"';
-    font-family: 'Playfair Display', serif;
-    font-size: 180px;
-    position: absolute;
-    top: -30px; left: 20px;
-    color: rgba(42,127,127,0.2);
-    line-height: 1;
-  }
-  .problem-block p {
-    font-size: 16px;
-    line-height: 1.8;
-    position: relative;
-    z-index: 1;
-  }
-  .stat-row {
-    display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; position: relative; z-index: 1;
-  }
-  .stat-chip {
-    background: rgba(42,127,127,0.25);
-    border: 1px solid rgba(42,127,127,0.4);
-    border-radius: 8px;
-    padding: 12px 20px;
-    text-align: center;
-  }
-  .stat-chip .num {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #a8d5d5;
-    display: block;
-  }
-  .stat-chip .lbl { font-size: 12px; color: #c4bfb5; }
-
-  /* GOAL BOX */
-  .goal-box {
-    border-left: 4px solid var(--teal);
-    background: var(--teal-light);
-    border-radius: 0 10px 10px 0;
-    padding: 24px 28px;
-    margin-bottom: 32px;
-  }
-  .goal-box h3 { color: var(--teal); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-family: 'DM Sans', sans-serif; font-weight: 500; margin-bottom: 10px; }
-  .goal-box p { font-size: 16px; line-height: 1.7; }
-
-  /* APPROACH COLUMNS */
-  .approach-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 40px;
-  }
-  @media (max-width: 640px) { .approach-grid { grid-template-columns: 1fr; } }
-
-  .approach-card {
-    border-radius: 12px;
-    padding: 32px 28px;
-  }
-  .approach-card.parents {
-    background: var(--amber-light);
-    border: 1px solid #f0d9b5;
-  }
-  .approach-card.children {
-    background: var(--sage-light);
-    border: 1px solid #c3dac9;
-  }
-  .approach-card .icon {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
-  .approach-card h3 { font-size: 18px; margin-bottom: 6px; }
-  .approach-card .role-tag {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
-  .parents .role-tag { color: var(--amber); }
-  .children .role-tag { color: var(--sage); }
-  .approach-card p { font-size: 14px; color: #444; line-height: 1.7; }
-
-  /* STRATEGY BLOCKS */
-  .strategy-section {
-    border-radius: 12px;
-    padding: 36px 32px;
-    margin-bottom: 28px;
-  }
-  .strategy-section.parents-bg { background: var(--amber-light); border: 1px solid #f0d9b5; }
-  .strategy-section.children-bg { background: var(--sage-light); border: 1px solid #c3dac9; }
-
-  .strategy-section .s-header {
-    display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
-  }
-  .strategy-section .s-badge {
-    padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
-  }
-  .parents-bg .s-badge { background: var(--amber); color: white; }
-  .children-bg .s-badge { background: var(--sage); color: white; }
-  .strategy-section .s-header h2 { margin-bottom: 0; font-size: 24px; }
-
-  .steps {
-    display: flex; flex-direction: column; gap: 16px;
-  }
-  .step {
-    display: flex; gap: 16px; align-items: flex-start;
-  }
-  .step-num {
-    width: 32px; height: 32px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 13px; flex-shrink: 0; margin-top: 2px;
-  }
-  .parents-bg .step-num { background: var(--amber); color: white; }
-  .children-bg .step-num { background: var(--sage); color: white; }
-  .step-body strong { font-size: 15px; font-weight: 600; display: block; margin-bottom: 3px; }
-  .step-body p { font-size: 14px; color: #444; line-height: 1.6; }
-
-  /* KPI TABLE */
-  .kpi-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px;
-  }
-  @media (max-width: 640px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
-  .kpi-card {
-    background: white; border-radius: 10px; padding: 18px 16px; text-align: center;
-    border: 1px solid var(--border);
-  }
-  .kpi-card .kpi-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; display: block; }
-  .kpi-card .kpi-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
-  .kpi-card.t { border-top: 3px solid var(--teal); }
-  .kpi-card.a { border-top: 3px solid var(--amber); }
-  .kpi-card.s { border-top: 3px solid var(--sage); }
-
-  /* THEORY OF CHANGE */
-  .toc-flow {
-    display: flex; align-items: stretch; gap: 0; margin: 28px 0; overflow-x: auto;
-  }
-  .toc-node {
-    flex: 1; min-width: 130px; background: white; border: 1px solid var(--border);
-    padding: 20px 16px; position: relative; text-align: center;
-  }
-  .toc-node:not(:last-child)::after {
-    content: '→';
-    position: absolute;
-    right: -14px; top: 50%; transform: translateY(-50%);
-    font-size: 18px; color: var(--teal);
-    z-index: 2; background: var(--cream); padding: 2px;
-  }
-  .toc-node:first-child { border-radius: 10px 0 0 10px; }
-  .toc-node:last-child { border-radius: 0 10px 10px 0; }
-  .toc-node .toc-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-  .toc-node ul { list-style: none; font-size: 12px; line-height: 1.5; color: #333; text-align: left; }
-  .toc-node ul li::before { content: '· '; color: var(--teal); }
-
-  /* RISK */
-  .risk-row {
-    display: grid; grid-template-columns: 1fr 2fr; gap: 16px; align-items: start;
-    background: white; border: 1px solid var(--border); border-radius: 10px;
-    padding: 20px 24px; margin-bottom: 12px;
-  }
-  .risk-label { font-weight: 600; font-size: 14px; color: #b45309; }
-  .mitigation { font-size: 14px; color: #444; }
-
-  /* TIMELINE */
-  .timeline { position: relative; padding-left: 28px; }
-  .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
-  .tl-item { position: relative; margin-bottom: 20px; }
-  .tl-item::before {
-    content: ''; position: absolute; left: -24px; top: 6px;
-    width: 10px; height: 10px; border-radius: 50%; background: var(--teal); border: 2px solid var(--cream);
-    box-shadow: 0 0 0 2px var(--teal);
-  }
-  .tl-item .tl-date { font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
-  .tl-item .tl-title { font-weight: 600; font-size: 14px; }
-  .tl-item .tl-note { font-size: 13px; color: #555; }
-
-  /* FOOTER */
-  footer {
-    background: var(--ink); color: #8a8a9a; text-align: center;
-    padding: 28px; font-size: 12px; letter-spacing: 1px;
-  }
-  footer strong { color: var(--teal); }
 /* ── LAYOUT ── */
-  .wrap { max-width: 940px; margin: 0 auto; padding: 52px 48px; }
-  hr.div { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
-  .sec-tag { font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  h2 { font-family: 'Libre Baskerville', serif; font-size: 30px; font-weight: 700; margin-bottom: 18px; line-height: 1.2; }
-  h3 { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-  p.lead { font-size: 14.5px; color: #444; line-height: 1.75; margin-bottom: 24px; max-width: 680px; }
+.wrap{max-width:1080px;margin:0 auto;padding:56px 64px;}
+@media(max-width:768px){.wrap{padding:40px 24px;}}
+hr.div{border:none;border-top:1px solid var(--border);margin:52px 0;}
 
-  /* ── COLLABORATION SECTION ── */
-  .collab-intro {
-    background: var(--ink); color: #dde4ea; border-radius: 14px;
-    padding: 32px 36px; margin-bottom: 32px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-  }
-  @media(max-width:600px){ .collab-intro { grid-template-columns: 1fr; } }
-  .collab-intro .ci-block .ci-tag { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
-  .collab-intro .ci-block h3 { font-size: 16px; color: #fff; margin-bottom: 8px; }
-  .collab-intro .ci-block p { font-size: 13px; line-height: 1.7; color: #8fa0ae; }
+/* ── TYPOGRAPHY ── */
+.eyebrow{font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+h2{font-family:'Fraunces',serif;font-size:32px;font-weight:600;margin-bottom:20px;line-height:1.2;}
+h3{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:8px;}
+p.lead{font-size:15px;color:#444;line-height:1.8;max-width:720px;}
 
-  .stakeholder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
-  @media(max-width:600px){ .stakeholder-grid { grid-template-columns: 1fr; } }
+/* ── STAT ROW ── */
+.stat-band{
+  background:var(--night);border-radius:16px;padding:36px 40px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:40px;
+  position:relative;overflow:hidden;
+}
+.stat-band::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,122,110,.18) 0%,transparent 65%);
+}
+.stat-item{position:relative;z-index:1;}
+.stat-item .sv{
+  font-family:'Fraunces',serif;font-size:38px;font-weight:700;
+  color:#7eccc4;display:block;line-height:1;margin-bottom:6px;
+}
+.stat-item .sl{font-size:12px;color:#8fa5ae;line-height:1.4;}
+@media(max-width:640px){.stat-band{grid-template-columns:1fr 1fr;}}
 
-  .stakeholder-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-  .stakeholder-card .sk-head { padding: 18px 22px 14px; }
-  .stakeholder-card .sk-head .sk-tag { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
-  .stakeholder-card .sk-head h3 { font-size: 16px; margin-bottom: 0; }
-  .stakeholder-card .sk-
+/* ── PROBLEM ── */
+.problem-block{
+  background:linear-gradient(135deg,#0f1e1c 0%,#0d1117 100%);
+  border-radius:16px;padding:40px 44px;margin-bottom:36px;
+  border-left:4px solid var(--teal);
+}
+.problem-block p{font-size:14px;color:#c4d4d8;line-height:1.85;}
+.problem-block p+p{margin-top:14px;}
+.problem-block strong{color:#7eccc4;}
 
-  .internal .sk-head { background: var(--teal-lt); }
-  .internal .sk-tag { color: var(--teal); }
-  .external .sk-head { background: var(--amber-lt); }
-  .external .sk-tag { color: var(--amber); }
+/* ── TARGET ── */
+.target-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;}
+@media(max-width:600px){.target-grid{grid-template-columns:1fr;}}
+.target-card{border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.target-card .tc-head{padding:18px 22px 14px;}
+.target-card .tc-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:8px;display:block;}
+.target-card .tc-head h3{font-size:16px;margin-bottom:0;}
+.target-card .tc-body{padding:14px 22px 20px;background:white;font-size:13px;color:#444;line-height:1.65;}
+.tc-primary .tc-head{background:var(--amber-lt);}
+.tc-primary .tc-badge{color:var(--amber);}
+.tc-secondary .tc-head{background:var(--sage-lt);}
+.tc-secondary .tc-badge{color:var(--sage);}
 
-  .sk-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12.5px; }
-  .sk-table th { text-align: left; font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--border); }
-  .sk-table td { padding: 9px 8px; vertical-align: top; border-bottom: 1px solid #f0ece5; line-height: 1.55; }
-  .sk-table tr:last-child td { border-bottom: none; }
-  .sk-table .role-col { font-weight: 600; color: var(--ink); width: 30%; }
-  .sk-table .method-pill { display: inline-block; background: var(--cream); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; font-size: 11px; color: #444; }
+/* ── SOLUTION TABLE ── */
+.sol-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:32px;}
+.sol-table thead tr{background:var(--night);color:white;}
+.sol-table th{padding:12px 16px;text-align:left;font-weight:500;font-size:10.5px;letter-spacing:.5px;}
+.sol-table td{padding:11px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.sol-table tr:last-child td{border-bottom:none;}
+.sol-table tr:nth-child(even){background:var(--cream);}
+.sol-table tr:nth-child(odd){background:white;}
+.sol-table td:first-child{font-weight:600;color:var(--teal);width:28%;}
 
-  .collab-principle {
-    background: var(--cream); border-left: 4px solid var(--teal);
-    border-radius: 0 10px 10px 0; padding: 18px 24px; margin-bottom: 12px;
-    display: flex; gap: 16px; align-items: flex-start;
-  }
-  .collab-principle .cp-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-  .collab-principle .cp-title { font-weight: 600; font-size: 14px; margin-bottom: 3px; }
-  .collab-principle .cp-desc { font-size: 13px; color: #555; line-height: 1.6; }
+/* ══════════════════════════════════════
+   TIMELINE — the hero of the page
+══════════════════════════════════════ */
+.timeline-section{background:var(--night);padding:64px 0;margin:0 -64px;padding-left:64px;padding-right:64px;}
+@media(max-width:768px){.timeline-section{margin:0 -24px;padding:48px 24px;}}
 
-  /* ── COMMUNICATION STRATEGY ── */
-  .comms-split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 32px; }
-  @media(max-width:600px){ .comms-split { grid-template-columns: 1fr; } }
+.timeline-header{margin-bottom:48px;}
+.timeline-header .eyebrow{color:var(--teal);}
+.timeline-header h2{color:#fff;margin-bottom:8px;}
+.timeline-header p{color:#8fa5ae;font-size:14px;max-width:600px;}
 
-  .comms-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
-  .comms-card .cc-head { padding: 22px 24px 18px; }
-  .comms-card .cc-badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
-  .cc-badge-amber { background: var(--amber); color: white; }
-  .cc-badge-sage { background: var(--sage); color: white; }
-  .comms-card .cc-head h3 { font-size: 18px; margin-bottom: 4px; }
-  .comms-card .cc-head p { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
-  .comms-card .cc-
-  .parents-comms .cc-head { background: var(--amber-lt); }
-  .students-comms .cc-head { background: var(--sage-lt); }
+/* Horizontal scroll track */
+.tl-track{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:0;
+  position:relative;
+  overflow-x:auto;
+  padding-bottom:8px;
+}
+/* Connector line behind months */
+.tl-track::before{
+  content:'';position:absolute;
+  top:52px;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--teal) 0%,#2d5fa6 50%,#6b4fa0 100%);
+  z-index:0;
+}
 
-  .channel-row {
-    display: flex; gap: 10px; align-items: flex-start;
-    padding: 10px 0; border-bottom: 1px solid #f0ece5;
-  }
-  .channel-row:last-child { border-bottom: none; }
-  .ch-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .ch-name { font-weight: 600; font-size: 13px; }
-  .ch-desc { font-size: 12px; color: #555; line-height: 1.5; }
+.tl-month{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;
+  min-width:150px;padding:0 8px;
+}
 
-  .msg-box { background: var(--cream); border-radius: 8px; padding: 14px 16px; margin-top: 14px; }
-  .msg-box .mb-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  .msg-box p { font-size: 12.5px; color: #333; font-style: italic; line-height: 1.6; }
+/* Month dot */
+.tl-dot{
+  width:20px;height:20px;border-radius:50%;
+  border:3px solid var(--night);
+  flex-shrink:0;margin-bottom:16px;
+  position:relative;z-index:2;
+  box-shadow:0 0 0 3px rgba(255,255,255,.1);
+}
+.dot-teal{background:var(--teal);}
+.dot-amber{background:var(--amber);}
+.dot-sage{background:var(--sage);}
+.dot-blue{background:var(--blue);}
+.dot-violet{background:var(--violet);}
+.dot-rose{background:var(--rose);}
 
-  /* ── KPI TABLE ── */
-  .kpi-wrap { overflow-x: auto; margin-bottom: 32px; }
-  .kpi-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 700px; }
-  .kpi-table thead tr { background: var(--ink); color: white; }
-  .kpi-table th { padding: 13px 14px; text-align: left; font-weight: 500; font-size: 11px; letter-spacing: 0.5px; }
-  .kpi-table th:first-child { border-radius: 0; }
-  .kpi-table td { padding: 12px 14px; vertical-align: top; border-bottom: 1px solid var(--border); line-height: 1.6; }
-  .kpi-table tr:last-child td { border-bottom: none; }
-  .kpi-table .grp-row td { background: var(--cream); font-weight: 600; font-size: 12px; letter-spacing: 0.5px; padding: 10px 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; font-size: 10px; }
-  .kpi-table .parents-row { background: #fffbf5; }
-  .kpi-table .students-row { background: #f7fbf8; }
-  .kpi-table .collab-row { background: #f5fafa; }
+/* Month label */
+.tl-label{
+  font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;
+}
+.tl-month-name{
+  font-family:'Fraunces',serif;font-size:16px;font-weight:600;
+  color:white;margin-bottom:12px;text-align:center;
+}
 
-  .kpi-num { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: var(--ink); display: block; line-height: 1.1; }
-  .kpi-sub { font-size: 11px; color: var(--muted); }
+/* Cards in each month */
+.tl-cards{display:flex;flex-direction:column;gap:8px;width:100%;}
+.tl-card{
+  border-radius:8px;padding:10px 12px;
+  font-size:11.5px;line-height:1.5;
+  border:1px solid rgba(255,255,255,.06);
+}
+.tl-card .tc-title{font-weight:600;font-size:12px;margin-bottom:3px;}
+.tl-card .tc-result{font-size:11px;opacity:.75;}
 
-  .status-badge { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 10.5px; font-weight: 600; }
-  .s-output { background: #e8f4f4; color: var(--teal); }
-  .s-outcome { background: var(--amber-lt); color: var(--amber); }
-  .s-impact { background: var(--sage-lt); color: var(--sage); }
+.card-teal{background:rgba(26,122,110,.18);border-color:rgba(26,122,110,.35);}
+.card-teal .tc-title{color:#7eccc4;}
+.card-amber{background:rgba(200,118,26,.18);border-color:rgba(200,118,26,.35);}
+.card-amber .tc-title{color:#f5b060;}
+.card-sage{background:rgba(61,107,82,.2);border-color:rgba(61,107,82,.4);}
+.card-sage .tc-title{color:#90c4a6;}
+.card-blue{background:rgba(45,95,166,.2);border-color:rgba(45,95,166,.4);}
+.card-blue .tc-title{color:#8ab0e0;}
+.card-violet{background:rgba(107,79,160,.2);border-color:rgba(107,79,160,.4);}
+.card-violet .tc-title{color:#c0a8e8;}
+.card-rose{background:rgba(184,64,64,.2);border-color:rgba(184,64,64,.4);}
+.card-rose .tc-title{color:#e8a0a0;}
 
-  /* ── MEASUREMENT FRAMEWORK ── */
-  .measure-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
-  @media(max-width:600px){ .measure-grid { grid-template-columns: 1fr 1fr; } }
-  .m-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 18px 16px; }
-  .m-card .mc-tag { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  .m-card .mc-title { font-weight: 600; font-size: 13.5px; margin-bottom: 6px; }
-  .m-card .mc-desc { font-size: 12px; color: #555; line-height: 1.55; }
-  .m-card.t1 { border-top: 3px solid var(--teal); }
-  .m-card.t2 { border-top: 3px solid var(--amber); }
-  .m-card.t3 { border-top: 3px solid var(--sage); }
-  .m-card.t4 { border-top: 3px solid var(--rose); }
-  .m-card.t5 { border-top: 3px solid #7c6fa0; }
-  .m-card.t6 { border-top: 3px solid #4a9eca; }
+/* Resources strip under month */
+.tl-resource{
+  margin-top:10px;font-size:10px;color:var(--muted);
+  border-top:1px solid rgba(255,255,255,.06);padding-top:8px;
+  text-align:center;line-height:1.4;
+}
+
+/* ── TEAM SECTION ── */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;}
+@media(max-width:640px){.team-grid{grid-template-columns:1fr 1fr;}}
+.team-card{
+  background:white;border-radius:10px;border:1px solid var(--border);
+  padding:18px 16px;
+}
+.team-card .ta{
+  display:inline-block;padding:3px 10px;border-radius:10px;
+  font-size:9.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px;
+}
+.ta-both{background:var(--teal-lt);color:var(--teal);}
+.ta-parents{background:var(--amber-lt);color:var(--amber);}
+.ta-students{background:var(--sage-lt);color:var(--sage);}
+.team-card .tn{font-weight:700;font-size:14px;margin-bottom:3px;}
+.team-card .tr{font-size:12px;color:var(--muted);}
+
+/* ── RISKS ── */
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+@media(max-width:600px){.risk-grid{grid-template-columns:1fr;}}
+.risk-card{background:white;border-radius:10px;border:1px solid var(--border);padding:16px 18px;}
+.risk-card .ra{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:6px;}
+.risk-card .rr{font-weight:600;font-size:13px;margin-bottom:4px;color:var(--night);}
+.risk-card .rm{font-size:12px;color:#555;line-height:1.55;}
+.ra-parents{color:var(--amber);}
+.ra-students{color:var(--sage);}
+
+/* ── RESOURCES ── */
+.res-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;
+}
+@media(max-width:600px){.res-row{grid-template-columns:1fr 1fr;}}
+.res-card{background:white;border-radius:10px;border:1px solid var(--border);padding:16px 15px;text-align:center;}
+.res-card .ri{font-size:24px;margin-bottom:8px;}
+.res-card .rt{font-weight:600;font-size:13px;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--night);color:#5a6a78;
+  padding:24px 64px;font-size:11px;letter-spacing:.8px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+footer strong{color:var(--teal);}
 </style>
 </head>
 <body>
 
-<!-- COVER -->
-<div class="cover">
-  <div class="page" style="padding-top:0;padding-bottom:0;">
-    <div class="cover-tag">Project Strategy Document · 2026</div>
-    <h1>Bridging<br/><em>the Silence</em></h1>
-    <p class="cover-sub">A dual-approach mental health initiative connecting Vietnamese high school students with support — through the people closest to them.</p>
-    <div class="cover-meta">
-      <div class="cover-meta-item"><label>Team Lead</label><span>Tien Bui</span></div>
-      <div class="cover-meta-item"><label>Duration</label><span>Mar 14 – Apr 25, 2026</span></div>
-      <div class="cover-meta-item"><label>Stage</label><span>Planning → Pitch</span></div>
-      <div class="cover-meta-item"><label>Entry Point</label><span>Schools → Parents → Students</span></div>
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Project Overview · Bridging the Silence · 2026</div>
+    <h1>Breaking<br/><em>the silence</em><br/>at home.</h1>
+    <p class="hero-sub">A 6-month dual-approach programme empowering parents to recognise and respond to teen mental health distress — through the people closest to students.</p>
+    <div class="meta-strip">
+      <div class="meta-item"><label>Team Lead</label><span>Tien Bui</span></div>
+      <div class="meta-item"><label>Start Date</label><span>1 May 2026</span></div>
+      <div class="meta-item"><label>End Date</label><span>30 November 2026</span></div>
+      <div class="meta-item"><label>Stage</label><span>Planning → Pitch</span></div>
+      <div class="meta-item"><label>Entry Point</label><span>Schools → Parents → Students</span></div>
     </div>
   </div>
 </div>
 
-<!-- PROBLEM -->
-<div class="page">
-  <div class="section-label">The Problem</div>
-  <h2>A Silent Crisis in Vietnamese Schools</h2>
-  <div class="problem-block">
-    <p>Surveys conducted between 2020 and 2023 show that approximately <strong>11–17% of Vietnamese high school students</strong> report suicidal ideation within the past year. Yet only <strong>~8% of adolescents</strong> with mental health problems receive any professional support — leaving the vast majority without help.</p>
-    <div class="stat-row">
-      <div class="stat-chip"><span class="num">11–17%</span><span class="lbl">Students with suicidal ideation</span></div>
-      <div class="stat-chip"><span class="num">~8%</span><span class="lbl">Actually receiving support</span></div>
-      <div class="stat-chip"><span class="num">&gt;90%</span><span class="lbl">Gap left unaddressed</span></div>
-    </div>
-  </div>
-
-  <div class="goal-box">
-    <h3>🎯 Definite Project Goal</h3>
-    <p>Within the project period (March–April 2026), <strong>equip at least 200 parents</strong> of high school students with practical communication tools to identify and respond to early signs of mental health distress in their children, and <strong>raise awareness among at least 500 students</strong> across a minimum of 3 partner schools — reducing the perception gap between needing and seeking support.</p>
-  </div>
-
-  <p style="color:var(--muted); font-size:13px; font-style:italic;">Note: The original plan references aspirational targets (10,000 parents, 1M impressions) which are long-term impact benchmarks. The above goal is scoped to what is deliverable within the 6-week project window and credible for a funding pitch.</p>
-
-  <hr class="divider"/>
-
-  <!-- WHY TWO APPROACHES -->
-  <div class="section-label">Strategic Rationale</div>
-  <h2>Why Two Approaches?</h2>
-  <div class="approach-grid">
-    <div class="approach-card parents">
-      <div class="icon">👨‍👩‍👧</div>
-      <h3>Parents</h3>
-      <div class="role-tag">Primary Target</div>
-      <p>Parents are the most accessible and influential first responders in a student's life. Schools can reach them through existing communication channels. A parent who can recognise distress and open dialogue removes the biggest barrier: shame and silence at home.</p>
-    </div>
-    <div class="approach-card children">
-      <div class="icon">🎒</div>
-      <h3>Students</h3>
-      <div class="role-tag">Secondary Target</div>
-      <p>Students are the direct beneficiaries. While harder to engage on mental health topics directly, school-based touchpoints (posters, peer content, brief workshops) normalise help-seeking and signpost support — reducing stigma from the inside.</p>
-    </div>
-  </div>
-  <p>The sequencing matters: <strong>schools → parents → students</strong>. Approaching through institutional trust (schools) gives the project credibility and reach, before cascading resources into the home environment and then directly to students.</p>
-
-  <hr class="divider"/>
-
-</div>
-
-<!-- PARENTS STRATEGY -->
-<div class="page" style="padding-top:0;">
-  <div class="section-label">Approach 1</div>
-  <div class="strategy-section parents-bg">
-    <div class="s-header">
-      <span class="s-badge">Parents</span>
-      <h2>Empowering the First Responders at Home</h2>
-    </div>
-
-    <p style="margin-bottom:24px; color:#444;">Parents are the gatekeepers of support. The strategy is to shift them from unaware bystanders to <em>informed, confident communicators</em> — without overwhelming them with clinical language.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <strong>Entry via School Partnership</strong>
-          <p>Secure agreements with 3–5 high schools to distribute materials and host sessions through existing parent-school communication channels (parent meetings, school apps, WhatsApp groups). Schools lend legitimacy and reach.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <strong>Needs Survey (Week 1)</strong>
-          <p>A short survey (10 questions) sent to parents via schools to understand: current awareness of teen mental health, comfort level discussing it at home, and what barriers they face. Results customise the programme delivery.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <strong>The "Connection Kit" — Core Deliverable</strong>
-          <p>A practical, non-clinical toolkit distributed to parents containing: a conversation starter card, a warning-signs reference sheet, a poster for the home, and a QR code to access online resources and a helpline. Design should feel warm and approachable, not medical.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <strong>Three Online Workshops (Monthly)</strong>
-          <p><em>Workshop 1:</em> "Understanding Your Teenager's Inner World" — what adolescent mental health actually looks like.<br/>
-          <em>Workshop 2:</em> "Opening the Conversation" — practical scripts and role-play exercises for difficult talks.<br/>
-          <em>Workshop 3:</em> "When to Seek Help & How" — navigating the professional support system in Vietnam, reducing shame around referral.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <strong>Psychologist Support Hotline Access</strong>
-          <p>Connect enrolled parents to a network of 5–10 volunteer psychologists for follow-up Q&A after workshops. This positions the project as a continuing resource, not a one-off event.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="kpi-grid" style="margin-top:28px;">
-      <div class="kpi-card a"><span class="kpi-num">200+</span><span class="kpi-lbl">Parents complete at least 1 workshop</span></div>
-      <div class="kpi-card a"><span class="kpi-num">3+</span><span class="kpi-lbl">Partner schools engaged</span></div>
-      <div class="kpi-card a"><span class="kpi-num">200</span><span class="kpi-lbl">Connection Kits distributed</span></div>
-    </div>
-  </div>
-
-  <!-- CHILDREN STRATEGY -->
-  <div class="section-label" style="margin-top:40px;">Approach 2</div>
-  <div class="strategy-section children-bg">
-    <div class="s-header">
-      <span class="s-badge">Students</span>
-      <h2>Normalising Help-Seeking from the Inside</h2>
-    </div>
-
-    <p style="margin-bottom:24px; color:#444;">For students, the goal is not clinical intervention — it's <em>normalisation and signposting</em>. Breaking the stigma so that when a student struggles, they know it's okay to say so and know where to turn.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <strong>School-Based Awareness Campaign</strong>
-          <p>Posters placed in classrooms, hallways, and toilets that normalise mental health conversations using accessible, youth-friendly language and visuals. The campaign should feel peer-led, not top-down. A simple slogan and QR code to a resource page.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <strong>Student Survey (Week 1, alongside parents)</strong>
-          <p>A parallel anonymous survey for students to map their current mental health awareness, stigma levels, and knowledge of available support. This data shapes delivery and provides before/after measurement evidence for funders.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <strong>In-School Short Session (45 min, per school)</strong>
-          <p>A single facilitated session per school — not a clinical talk, but a structured conversation using storytelling, peer scenarios, and anonymous Q&A. Run by the team with support from a psychologist. Goal: reduce stigma and introduce available resources.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <strong>Digital Content (Social Media)</strong>
-          <p>A small series of social media posts targeted at Vietnamese high school students (TikTok / Instagram) — short, relatable content addressing common myths about mental health. This extends reach beyond the 3 partner schools at low additional cost.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <strong>Peer Connection Card</strong>
-          <p>A pocket-sized card given to all students with: a reminder that feelings are valid, 2–3 local/national support lines, and a prompt to talk to someone they trust. Mirrors the parent kit but adapted for the student context.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="kpi-grid" style="margin-top:28px;">
-      <div class="kpi-card s"><span class="kpi-num">500+</span><span class="kpi-lbl">Students reached across schools</span></div>
-      <div class="kpi-card s"><span class="kpi-num">3</span><span class="kpi-lbl">In-school sessions delivered</span></div>
-      <div class="kpi-card s"><span class="kpi-num">↑20%</span><span class="kpi-lbl">Increase in survey awareness score</span></div>
-    </div>
-  </div>
-
-  <hr class="divider"/>
-
-  <!-- RISKS -->
-  <div class="section-label">Risk Management</div>
-  <h2>Key Risks & Mitigations</h2>
-
-  <div class="risk-row">
-    <div class="risk-label">⚠️ Insufficient Funding</div>
-    <div class="mitigation">Prioritise activities by impact-per-cost: surveys and digital content first (low cost, high reach), then physical kits for parents only. Phase the workshops — run 1 with existing resources before committing to 2 and 3. Budget breakdown should be submitted with the pitch.</div>
-  </div>
-  <div class="risk-row">
-    <div class="risk-label">⚠️ School Access / Buy-In</div>
-    <div class="mitigation">Approach schools with a clear, non-disruptive offer: one poster campaign + one 45-minute session. Frame as supporting the school's duty of care, not adding burden. Identify a champion teacher or counsellor at each school.</div>
-  </div>
-  <div class="risk-row">
-    <div class="risk-label">⚠️ Low Parent Attendance</div>
-    <div class="mitigation">Offer sessions at multiple times (weekday evening + weekend morning). Keep each workshop under 60 minutes. Use school channels for reminders. Incentivise with the Connection Kit (free to attendees).</div>
-  </div>
-  <div class="risk-row">
-    <div class="risk-label">⚠️ Stigma Resistance</div>
-    <div class="mitigation">Avoid clinical language in all materials. Lead with stories, not statistics. Involve a relatable peer voice in student sessions. Frame for parents around "communication skills" rather than "mental illness."</div>
-  </div>
-  <div class="risk-row">
-    <div class="risk-label">⚠️ Targets Too Ambitious</div>
-    <div class="mitigation">Distinguish between pilot-phase KPIs (deliverable now) and long-term impact targets (for year 2+). Present both in the pitch — showing funders a credible short-term plan while articulating the vision to scale.</div>
-  </div>
-
-  <hr class="divider"/>
-
-  <!-- TIMELINE -->
-  <div class="section-label">Delivery Timeline</div>
-  <h2>Project Milestones</h2>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-date">17 March</div>
-      <div class="tl-title">Team Confirmed & Roles Assigned</div>
-      <div class="tl-note">Parents approach: Linh, C.Thy, Phượng · Students approach: Trí, Hà, Tiên</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">19 March</div>
-      <div class="tl-title">Business Plan Submitted</div>
-      <div class="tl-note">All four plan sections completed and reviewed by team leader</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">Week of 17–24 March</div>
-      <div class="tl-title">School Outreach Begins · Surveys Drafted</div>
-      <div class="tl-note">Contact 5 schools, target 3 confirmations; finalise parent and student survey instruments</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">26 March</div>
-      <div class="tl-title">Business Plan 1st Revision</div>
-      <div class="tl-note">Incorporate mentor feedback; refine KPIs and budget breakdown</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">7 April</div>
-      <div class="tl-title">1st Mentor Session · Surveys Live</div>
-      <div class="tl-note">Deploy surveys through partner schools; present progress to mentor</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">Mid-April</div>
-      <div class="tl-title">Connection Kits Finalised · Workshop 1 Delivered</div>
-      <div class="tl-note">First parent workshop; in-school student sessions begin</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">21 April</div>
-      <div class="tl-title">2nd Mentor Session · Survey Data Collected</div>
-      <div class="tl-note">Analyse before/after data; refine pitch narrative with real evidence</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">27 April</div>
-      <div class="tl-title">Final Pitch Deck & Presentation</div>
-      <div class="tl-note">Showcase skills development, rationale, and measurable impact achieved</div>
-    </div>
-  </div>
-
-  <hr class="divider"/>
-
-  <!-- SUMMARY KPIs -->
-  <div class="section-label">Summary</div>
-  <h2>Success Looks Like This</h2>
-  <div class="kpi-grid">
-    <div class="kpi-card t"><span class="kpi-num">3+</span><span class="kpi-lbl">Partner schools secured</span></div>
-    <div class="kpi-card a"><span class="kpi-num">200+</span><span class="kpi-lbl">Parents trained</span></div>
-    <div class="kpi-card s"><span class="kpi-num">500+</span><span class="kpi-lbl">Students reached</span></div>
-    <div class="kpi-card t"><span class="kpi-num">3</span><span class="kpi-lbl">Student sessions delivered</span></div>
-    <div class="kpi-card a"><span class="kpi-num">200</span><span class="kpi-lbl">Connection Kits distributed</span></div>
-    <div class="kpi-card s"><span class="kpi-num">↑20%</span><span class="kpi-lbl">Student awareness improvement</span></div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     COLLABORATION, COMMUNICATION & KPIs SECTION
-════════════════════════════════════════════════ -->
-<div style="background: var(--cream); padding: 4px 0;">
 <div class="wrap">
 
-  <!-- ══════════════════════════════════════════
-       SECTION 1: COLLABORATION
-  ══════════════════════════════════════════ -->
-  <div class="sec-tag">Section 01</div>
-  <h2>Stakeholder Collaboration</h2>
-  <p class="lead">Structured collaboration — with clear methods, defined roles, and explicit accountability — is what separates a project that funders trust from one that sounds well-intentioned but undeliverable. Every stakeholder relationship must answer: <em>what do they contribute, how do we engage them, and what does success look like?</em></p>
-
-  <div class="collab-intro">
-    <div class="ci-block">
-      <div class="ci-tag">Why Structure Matters</div>
-      <h3>Credibility is built through clarity</h3>
-      <p>Funders, schools, and parents all ask the same silent question: <em>"Can this team actually deliver?"</em> A clear stakeholder map with defined engagement methods answers that question before it's asked. It signals that the team has thought beyond the idea to the reality of execution.</p>
-    </div>
-    <div class="ci-block">
-      <div class="ci-tag">Why Responsibility Matters</div>
-      <h3>Accountability drives follow-through</h3>
-      <p>When each stakeholder relationship has a named owner and an explicit engagement method, responsibility doesn't diffuse across the team. It sticks. This prevents the most common failure mode of youth-led projects: good intentions without consistent follow-up.</p>
-    </div>
+  <!-- ── STATS ── -->
+  <div class="stat-band">
+    <div class="stat-item"><span class="sv">6–16%</span><span class="sl">Young adults in ASEAN reporting suicidal ideation</span></div>
+    <div class="stat-item"><span class="sv">&lt;8%</span><span class="sl">Adolescents with mental health issues receiving support</span></div>
+    <div class="stat-item"><span class="sv">13–18</span><span class="sl">Critical risk window (years) when early signals emerge</span></div>
+    <div class="stat-item"><span class="sv">26%</span><span class="sl">Decline in adult rates — but youth rates continue to rise</span></div>
   </div>
 
-  <div class="stakeholder-grid">
-    <!-- INTERNAL -->
-    <div class="stakeholder-card internal">
-      <div class="sk-head">
-        <div class="sk-tag">Internal Stakeholders</div>
-        <h3>The 6-Member Volunteer Team</h3>
+  <!-- ── PROBLEM ── -->
+  <div class="eyebrow">The Problem</div>
+  <h2>A Growing Crisis at the Earliest Intervention Point</h2>
+  <div class="problem-block">
+    <p>Suicide remains a significant public health issue in ASEAN, particularly among youth — accounting for <strong>1.1% of global deaths</strong>, with 73% occurring in low- and middle-income countries. While overall rates in the WHO South-East Asia region declined by 26% (2000–2021), <strong>youth suicide (ages 5–19) continues to rise</strong>, with 6–16% of young adults reporting suicidal ideation.</p>
+    <p>Risk intensifies during adolescence — particularly <strong>ages 13–18</strong> — where academic pressure, identity formation, and emotional instability converge. These risks are driven by overlapping factors: depression, anxiety, bullying, family conflict, and academic pressure — all of which <strong>first manifest in the home environment</strong> yet are frequently missed or misunderstood.</p>
+    <p>This creates a breakdown at the <strong>earliest possible intervention point</strong>. Parents, positioned as the first line of response, often lack the communication skills to recognise warning signs. Without early action, risks escalate quickly and become significantly harder to reverse.</p>
+  </div>
+
+  <hr class="div"/>
+
+  <!-- ── TARGET GROUPS ── -->
+  <div class="eyebrow">Target Groups</div>
+  <h2>Who We're Reaching & Why</h2>
+  <div class="target-grid">
+    <div class="target-card tc-primary">
+      <div class="tc-head">
+        <span class="tc-badge">Primary Target</span>
+        <h3>👨‍👩‍👧 Parents of High School Students</h3>
       </div>
-      <div class="sk-body">
-        <table class="sk-table">
-          <thead>
-            <tr>
-              <th>Who</th>
-              <th>Role</th>
-              <th>Engagement Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="role-col">Tiên (Lead)</td>
-              <td>Overall coordination, pitch, mentor liaison</td>
-              <td><span class="method-pill">Weekly check-in</span> <span class="method-pill">Task tracker</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Linh</td>
-              <td>School outreach, Project Overview</td>
-              <td><span class="method-pill">Meeting agenda</span> <span class="method-pill">Progress report</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">C. Thy</td>
-              <td>Theory of Change, workshop design</td>
-              <td><span class="method-pill">Co-creation sessions</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Phượng</td>
-              <td>Strategy, KPIs, measurement</td>
-              <td><span class="method-pill">Data dashboard</span> <span class="method-pill">Debrief</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Trí</td>
-              <td>Theory of Change, student sessions</td>
-              <td><span class="method-pill">Session debrief</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Hà</td>
-              <td>Risk management, content creation</td>
-              <td><span class="method-pill">Risk log</span> <span class="method-pill">Content calendar</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="tc-body">
+        Chosen as the highest-leverage intervention point during peak risk years (13–18). Most warning signs first appear at home, yet parents often lack the skills to recognise distress or communicate without conflict. Targeting parents directly closes this early-detection gap where intervention is still possible — before behaviours escalate beyond family reach.
       </div>
     </div>
-
-    <!-- EXTERNAL -->
-    <div class="stakeholder-card external">
-      <div class="sk-head">
-        <div class="sk-tag">External Stakeholders</div>
-        <h3>Partners, Audiences & Supporters</h3>
+    <div class="target-card tc-secondary">
+      <div class="tc-head">
+        <span class="tc-badge">Secondary Target</span>
+        <h3>🎒 High School Students (13–18)</h3>
       </div>
-      <div class="sk-body">
-        <table class="sk-table">
-          <thead>
-            <tr>
-              <th>Who</th>
-              <th>Their Role</th>
-              <th>Engagement Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="role-col">Schools (3+)</td>
-              <td>Access to parents & students; venue for sessions</td>
-              <td><span class="method-pill">MOU / formal letter</span> <span class="method-pill">School contact person</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Mentor (×2)</td>
-              <td>External guidance, quality assurance, credibility</td>
-              <td><span class="method-pill">Structured sessions</span> <span class="method-pill">Written feedback</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Parents</td>
-              <td>Primary target; workshop attendees; kit recipients</td>
-              <td><span class="method-pill">School channels</span> <span class="method-pill">Survey</span> <span class="method-pill">Workshops</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Students</td>
-              <td>Secondary target; direct beneficiaries</td>
-              <td><span class="method-pill">In-school session</span> <span class="method-pill">Social media</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Psychologists (5–10)</td>
-              <td>Expert credibility; Q&A support for parents</td>
-              <td><span class="method-pill">Pro-bono agreement</span> <span class="method-pill">Post-workshop access</span></td>
-            </tr>
-            <tr>
-              <td class="role-col">Funders / Pitch Panel</td>
-              <td>Financial support; validation; platform</td>
-              <td><span class="method-pill">Pitch deck</span> <span class="method-pill">Impact report</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="tc-body">
+        Not directly targeted due to access constraints (safeguarding, school permissions) and lower feasibility within the timeline. Influence is instead applied <em>indirectly</em> through parents, who shape daily environment, communication patterns, and early response. Risk escalates earlier than university, with sharp increases already visible at 13–18 — making parent-based intervention the most feasible and effective pathway.
       </div>
     </div>
   </div>
+  <p class="lead" style="font-style:italic;color:var(--muted);font-size:13px;margin-bottom:0;">Strategy: Intervene where risk is high and control is still possible — parents (high influence, accessible) → students (high risk, limited direct access).</p>
 
-  <!-- PRINCIPLES -->
-  <div class="collab-principle">
-    <div class="cp-icon">🎯</div>
-    <div>
-      <div class="cp-title">One owner per relationship</div>
-      <div class="cp-desc">Every external stakeholder relationship has a single named team member responsible for maintaining contact. Split ownership leads to no ownership — and missed follow-ups are the #1 reason school partnerships fall through.</div>
+  <hr class="div"/>
+
+  <!-- ── SOLUTION ── -->
+  <div class="eyebrow">Proposed Solution</div>
+  <h2>A Demand-Driven, Schools-First Programme</h2>
+  <p class="lead" style="margin-bottom:24px;">Eight sequenced activities target behaviour change — not only awareness. Parents initiate conversations earlier, recognise warning signs, and take action. Students benefit indirectly through improved home environments.</p>
+
+  <table class="sol-table">
+    <thead>
+      <tr>
+        <th>Activity</th>
+        <th>Why It's Included</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Partner with schools for outreach</td><td>Schools give direct access to high-school parents and add credibility, increasing participation</td><td></td></tr>
+      <tr><td>Survey parents (topic selection)</td><td>Lets parents choose what they want to learn from professionals, ensuring high relevance and demand-driven content</td><td></td></tr>
+      <tr><td>Identify top 3 selected topics</td><td>Concentrates effort on highest-priority concerns, avoiding generic or low-impact sessions</td><td></td></tr>
+      <tr><td>Design content with professional input</td><td>Ensures depth and accuracy, addressing exactly what parents feel uncertain about</td><td></td></tr>
+      <tr><td>Develop Parent "Connection Kit"</td><td>Translates expert knowledge into practical, usable guidance for daily situations</td><td></td></tr>
+      <tr><td>Deliver 3 online workshops</td><td>Builds immediate capability in understanding and responding to selected risk factors</td><td>Includes live Q&A with mental health professionals</td></tr>
+      <tr><td>Share reinforcement materials</td><td>Supports retention and continued use beyond workshops</td><td>Summaries, key messages, visual reminders</td></tr>
+      <tr><td>Indirect impact on students via parents</td><td>Parents influence home environment and early intervention — the most feasible and effective pathway</td><td></td></tr>
+    </tbody>
+  </table>
+
+</div><!-- /wrap -->
+
+<!-- ══════════════════════════════════════
+     TIMELINE SECTION
+══════════════════════════════════════ -->
+<div class="wrap" style="padding-top:0;padding-bottom:0;">
+<div class="timeline-section">
+
+  <div class="timeline-header">
+    <div class="eyebrow">Project Workflow</div>
+    <h2>6-Month Timeline — May to November 2026</h2>
+    <p>Each month builds on the last. Resources are deployed progressively, with measurement embedded at every stage rather than bolted on at the end.</p>
+  </div>
+
+  <div class="tl-track">
+
+    <!-- MONTH 1 -->
+    <div class="tl-month">
+      <div class="tl-dot dot-teal"></div>
+      <div class="tl-label">Month 1</div>
+      <div class="tl-month-name">May<br/>2026</div>
+      <div class="tl-cards">
+        <div class="tl-card card-teal">
+          <div class="tc-title">Planning & Survey</div>
+          <div class="tc-result">70–150 parent responses per school; top 3 topics identified per school's demand</div>
+        </div>
+        <div class="tl-card card-teal">
+          <div class="tc-title">School Partnerships</div>
+          <div class="tc-result">MOUs signed with 3+ schools; named school contact confirmed</div>
+        </div>
+      </div>
+      <div class="tl-resource">📋 Mental health advisors<br/>Survey platform</div>
+    </div>
+
+    <!-- MONTH 2 -->
+    <div class="tl-month">
+      <div class="tl-dot dot-amber"></div>
+      <div class="tl-label">Month 2</div>
+      <div class="tl-month-name">Jun<br/>2026</div>
+      <div class="tl-cards">
+        <div class="tl-card card-amber">
+          <div class="tc-title">Connection Kit</div>
+          <div class="tc-result">Practical guide created; 200+ kits distributed to parents via schools</div>
+        </div>
+        <div class="tl-card card-amber">
+          <div class="tc-title">Content Design</div>
+          <div class="tc-result">Workshop content designed with professional input, aligned to top 3 topics</div>
+        </div>
+      </div>
+      <div class="tl-resource">🎨 Design tools (Canva)<br/>School contacts</div>
+    </div>
+
+    <!-- MONTH 3 -->
+    <div class="tl-month">
+      <div class="tl-dot dot-sage"></div>
+      <div class="tl-label">Month 3</div>
+      <div class="tl-month-name">Jul<br/>2026</div>
+      <div class="tl-cards">
+        <div class="tl-card card-sage">
+          <div class="tc-title">Workshop 1</div>
+          <div class="tc-result">70–80 parents attend per school (≥70% rate); improved understanding of Topic 1</div>
+        </div>
+        <div class="tl-card card-sage">
+          <div class="tc-title">Pre-Workshop Survey</div>
+          <div class="tc-result">Baseline confidence scores captured for post-programme comparison</div>
+        </div>
+      </div>
+      <div class="tl-resource">💻 Online meeting platform<br/>Psychologist Q&A</div>
+    </div>
+
+    <!-- MONTH 4 -->
+    <div class="tl-month">
+      <div class="tl-dot dot-blue"></div>
+      <div class="tl-label">Month 4</div>
+      <div class="tl-month-name">Aug<br/>2026</div>
+      <div class="tl-cards">
+        <div class="tl-card card-blue">
+          <div class="tc-title">Workshop 2</div>
+          <div class="tc-result">70–80 parents attend per school; improved understanding of Topic 2</div>
+        </div>
+        <div class="tl-card card-blue">
+          <div class="tc-title">Retention Check</div>
+          <div class="tc-result">Attendance vs Workshop 1 tracked; drop-off addressed with reminder outreach</div>
+        </div>
+      </div>
+      <div class="tl-resource">📲 School comms groups<br/>Social media channels</div>
+    </div>
+
+    <!-- MONTH 5 -->
+    <div class="tl-month">
+      <div class="tl-dot dot-violet"></div>
+      <div class="tl-label">Month 5</div>
+      <div class="tl-month-name">Sep<br/>2026</div>
+      <div class="tl-cards">
+        <div class="tl-card card-violet">
+          <div class="tc-title">Workshop 3</div>
+          <div class="tc-result">70–80 parents attend per school; confidence to apply skills at home demonstrated</div>
+        </div>
+        <div class="tl-card card-violet">
+          <div class="tc-title">Post-Workshop Survey</div>
+          <div class="tc-result">↑30% vs baseline confidence score; behaviour change indicators captured</div>
+        </div>
+      </div>
+      <div class="tl-resource">🧠 Expert guest speakers<br/>Feedback forms</div>
+    </div>
+
+    <!-- MONTH 6 -->
+    <div class="tl-month">
+      <div class="tl-dot dot-rose"></div>
+      <div class="tl-label">Month 6</div>
+      <div class="tl-month-name">Oct–Nov<br/>2026</div>
+      <div class="tl-cards">
+        <div class="tl-card card-rose">
+          <div class="tc-title">Follow-up & Evaluation</div>
+          <div class="tc-result">≥60% complete feedback; 30%+ report applying skills; certificates issued</div>
+        </div>
+        <div class="tl-card card-rose">
+          <div class="tc-title">Impact Report</div>
+          <div class="tc-result">Full KPI dashboard compiled; data packaged for funders and future cycles</div>
+        </div>
+      </div>
+      <div class="tl-resource">📊 Feedback & evaluation tools<br/>KPI dashboard</div>
+    </div>
+
+  </div><!-- /tl-track -->
+
+  <!-- KEY MILESTONES ROW -->
+  <div style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px 22px;">
+      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;">Pre-campaign</div>
+      <div style="font-weight:600;font-size:14px;color:white;margin-bottom:6px;">Pitch Day — 27 April 2026</div>
+      <div style="font-size:12px;color:#8fa5ae;line-height:1.55;">Final pitch deck & speech. Funder decision triggers May campaign start.</div>
+    </div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px 22px;">
+      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:8px;">Mid-campaign</div>
+      <div style="font-weight:600;font-size:14px;color:white;margin-bottom:6px;">Mentor Check-ins — Apr 7 & 21</div>
+      <div style="font-size:12px;color:#8fa5ae;line-height:1.55;">External guidance, quality assurance, strategy refinement before campaign launch.</div>
+    </div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px 22px;">
+      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--violet);margin-bottom:8px;">Campaign close</div>
+      <div style="font-weight:600;font-size:14px;color:white;margin-bottom:6px;">Evaluation — November 2026</div>
+      <div style="font-size:12px;color:#8fa5ae;line-height:1.55;">Full impact report delivered. Data packaged for programme iteration and scale.</div>
     </div>
   </div>
-  <div class="collab-principle">
-    <div class="cp-icon">📋</div>
-    <div>
-      <div class="cp-title">Structured method, not just goodwill</div>
-      <div class="cp-desc">Every collaboration uses a defined method: formal letters for schools (not just verbal agreements), written mentor feedback (not just verbal discussion), MOUs for psychologist partnerships. Structure creates the paper trail funders need to see.</div>
+
+</div><!-- /timeline-section -->
+</div>
+
+<div class="wrap">
+
+  <hr class="div"/>
+
+  <!-- ── TEAM ── -->
+  <div class="eyebrow">The Team</div>
+  <h2>8-Member Volunteer Team</h2>
+  <p class="lead" style="margin-bottom:28px;">Split across two approaches, each member owns a defined workstream aligned to the project's four development skills: communication, teamwork, self-appraisal, and sales & pitching.</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <span class="ta ta-both">Both</span>
+      <div class="tn">Tiên (Lead)</div>
+      <div class="tr">Coordination · Pitch Lead · Mentor Liaison</div>
     </div>
-  </div>
-  <div class="collab-principle">
-    <div class="cp-icon">🔁</div>
-    <div>
-      <div class="cp-title">Feedback flows in both directions</div>
-      <div class="cp-desc">Internal: every team meeting closes with a structured reflection. External: every workshop ends with a short feedback form. This data feeds directly into KPI measurement and pitch evidence — nothing is anecdotal.</div>
+    <div class="team-card">
+      <span class="ta ta-parents">Parents</span>
+      <div class="tn">Linh</div>
+      <div class="tr">School Outreach · Project Overview</div>
+    </div>
+    <div class="team-card">
+      <span class="ta ta-parents">Parents</span>
+      <div class="tn">C. Thy</div>
+      <div class="tr">Theory of Change · Workshop Design</div>
+    </div>
+    <div class="team-card">
+      <span class="ta ta-parents">Parents</span>
+      <div class="tn">Phượng</div>
+      <div class="tr">Strategy · KPI Lead · Measurement</div>
+    </div>
+    <div class="team-card">
+      <span class="ta ta-parents">Parents</span>
+      <div class="tn">Vika</div>
+      <div class="tr">Strategy & Measurement Support</div>
+    </div>
+    <div class="team-card">
+      <span class="ta ta-students">Students</span>
+      <div class="tn">Trí</div>
+      <div class="tr">Theory of Change · Student Facilitator</div>
+    </div>
+    <div class="team-card">
+      <span class="ta ta-students">Students</span>
+      <div class="tn">Hà</div>
+      <div class="tr">Risk Management · Social Content</div>
+    </div>
+    <div class="team-card">
+      <span class="ta ta-students">Students</span>
+      <div class="tn">Angelina</div>
+      <div class="tr">Risk & Delivery Support</div>
     </div>
   </div>
 
   <hr class="div"/>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 2: COMMUNICATION STRATEGY
-  ══════════════════════════════════════════ -->
-  <div class="sec-tag">Section 02</div>
-  <h2>Marketing Communication Strategy</h2>
-  <p class="lead">The two approaches require distinct communication strategies — because the audiences, channels, tone, and goals are fundamentally different. A message that resonates with a worried parent will not land with a 16-year-old on TikTok, and vice versa.</p>
-
-  <div class="comms-split">
-    <!-- PARENTS -->
-    <div class="comms-card parents-comms">
-      <div class="cc-head">
-        <span class="cc-badge cc-badge-amber">Approach 1 · Parents</span>
-        <h3>Authority, Warmth & Practical Tools</h3>
-        <p>Parents need to feel that this is credible, trustworthy, and actionable — not alarmist or clinical. The tone is warm authority. The goal is to reduce their anxiety <em>about</em> the topic by giving them concrete tools.</p>
-      </div>
-      <div class="cc-body">
-        <div class="channel-row">
-          <div class="ch-icon">🏫</div>
-          <div>
-            <div class="ch-name">School Channels (Primary)</div>
-            <div class="ch-desc">Official letters via school, parent WhatsApp groups, parent-teacher meeting announcements. Leverages institutional trust — parents engage because the school sent it.</div>
-          </div>
-        </div>
-        <div class="channel-row">
-          <div class="ch-icon">📦</div>
-          <div>
-            <div class="ch-name">Connection Kit (Core Asset)</div>
-            <div class="ch-desc">Physical/digital kit with conversation starter cards, warning signs reference, and helpline QR code. Warm, non-clinical design. Distributed at school or workshop — tangible proof of the project.</div>
-          </div>
-        </div>
-        <div class="channel-row">
-          <div class="ch-icon">💻</div>
-          <div>
-            <div class="ch-name">Online Workshops ×3</div>
-            <div class="ch-desc">Monthly sessions covering: understanding teen mental health → having the conversation → when and how to seek professional help. Progressive structure builds parent confidence over time.</div>
-          </div>
-        </div>
-        <div class="channel-row">
-          <div class="ch-icon">📲</div>
-          <div>
-            <div class="ch-name">Social Media (Facebook / Zalo)</div>
-            <div class="ch-desc">Workshop announcements, myth-busting posts, parent testimonials (anonymised). Platform choice matches where Vietnamese parents are — not TikTok.</div>
-          </div>
-        </div>
-        <div class="msg-box">
-          <div class="mb-tag">Core Message to Parents</div>
-          <p>"You don't need to be a psychologist to help your child. You just need to know how to start the conversation — and we'll show you how."</p>
-        </div>
-      </div>
+  <!-- ── RISKS ── -->
+  <div class="eyebrow">Risk Management</div>
+  <h2>Key Risks & Mitigations</h2>
+  <div class="risk-grid">
+    <div class="risk-card">
+      <div class="ra ra-parents">Parents</div>
+      <div class="rr">Low survey response / low engagement</div>
+      <div class="rm">Use school channels + trusted messaging; keep survey short and accessible; frame around children's wellbeing.</div>
     </div>
-
-    <!-- STUDENTS -->
-    <div class="comms-card students-comms">
-      <div class="cc-head">
-        <span class="cc-badge cc-badge-sage">Approach 2 · Students</span>
-        <h3>Peer Voice, Normalisation & Zero Pressure</h3>
-        <p>Students are allergic to being talked <em>at</em>. The communication must feel peer-originated — relatable, low-pressure, and non-clinical. The goal is not to diagnose or intervene, but to normalise and signpost.</p>
-      </div>
-      <div class="cc-body">
-        <div class="channel-row">
-          <div class="ch-icon">🎬</div>
-          <div>
-            <div class="ch-name">Short-Form Video (TikTok / Reels)</div>
-            <div class="ch-desc">2–3 videos per week. Relatable scenarios, myth-busting, peer stories. No clinical language. Format-first thinking: content must feel native to the platform, not like a PSA.</div>
-          </div>
-        </div>
-        <div class="channel-row">
-          <div class="ch-icon">🖼️</div>
-          <div>
-            <div class="ch-name">School Posters & Environment</div>
-            <div class="ch-desc">Placed in classrooms, hallways, and bathrooms. Youth-friendly visuals. QR code to resources. The poster is a passive, low-stigma touchpoint — students see it without being singled out.</div>
-          </div>
-        </div>
-        <div class="channel-row">
-          <div class="ch-icon">🎤</div>
-          <div>
-            <div class="ch-name">In-School Session (45 min × 3 schools)</div>
-            <div class="ch-desc">Facilitated discussion — not a lecture. Anonymous Q&A, peer scenarios, storytelling. One psychologist present for credibility. Goal: reduce stigma and introduce available resources.</div>
-          </div>
-        </div>
-        <div class="channel-row">
-          <div class="ch-icon">🃏</div>
-          <div>
-            <div class="ch-name">Peer Connection Card</div>
-            <div class="ch-desc">Pocket-sized card with: a validating message, 2–3 local helplines, a prompt to talk to someone. Distributed at session. Mirrors the parent kit but in youth language.</div>
-          </div>
-        </div>
-        <div class="msg-box">
-          <div class="mb-tag">Core Message to Students</div>
-          <p>"Feeling overwhelmed doesn't make you weak. It makes you human. And there are people — closer than you think — who want to help."</p>
-        </div>
-      </div>
+    <div class="risk-card">
+      <div class="ra ra-parents">Parents</div>
+      <div class="rr">Low workshop attendance</div>
+      <div class="rm">Schedule at evenings/weekends; send school reminders; incentivise with free Connection Kit for attendees.</div>
+    </div>
+    <div class="risk-card">
+      <div class="ra ra-parents">Parents</div>
+      <div class="rr">Stigma around mental health</div>
+      <div class="rm">Use non-clinical, neutral language; frame as practical parenting support — "communication skills," not "mental illness."</div>
+    </div>
+    <div class="risk-card">
+      <div class="ra ra-parents">Parents</div>
+      <div class="rr">Lack of trust in student-led project</div>
+      <div class="rm">Include expert validation and psychologist guest speakers; present credentials prominently.</div>
+    </div>
+    <div class="risk-card">
+      <div class="ra ra-students">Students</div>
+      <div class="rr">Low engagement & resistance</div>
+      <div class="rm">Gamification + ice-breaking activities; peer-to-peer facilitators; collaborate with school clubs for peer encouragement.</div>
+    </div>
+    <div class="risk-card">
+      <div class="ra ra-students">Students</div>
+      <div class="rr">Psychological triggers during sessions</div>
+      <div class="rm">Ensure a professional counsellor is on-site; provide a designated quiet/safe space; have crisis protocol ready.</div>
+    </div>
+    <div class="risk-card">
+      <div class="ra ra-students">Students</div>
+      <div class="rr">Intergenerational conflict</div>
+      <div class="rm">Use breakout rooms — separate sessions for parents and students — allowing both to be heard under psychologist guidance.</div>
+    </div>
+    <div class="risk-card">
+      <div class="ra ra-students">Students</div>
+      <div class="rr">Lack of long-term follow-up</div>
+      <div class="rm">Create a resource toolkit with psychologist contacts; build a clear referral pathway for ongoing support after the programme.</div>
     </div>
   </div>
 
   <hr class="div"/>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 3: KPIs & MEASUREMENT
-  ══════════════════════════════════════════ -->
-  <div class="sec-tag">Section 03</div>
-  <h2>KPIs & Measurement of Success</h2>
-  <p class="lead">Every KPI is tied to a specific strategy, has a defined measurement method, and is labelled by type: <strong>Output</strong> (what we produced), <strong>Outcome</strong> (what changed), or <strong>Impact</strong> (systemic shift). Funders care most about outcomes — not just activity counts.</p>
-
-  <div class="kpi-wrap">
-    <table class="kpi-table">
-      <thead>
-        <tr>
-          <th style="width:18%;">KPI</th>
-          <th style="width:12%;">Target</th>
-          <th style="width:22%;">Linked Strategy</th>
-          <th style="width:26%;">How We Measure It</th>
-          <th style="width:10%;">Type</th>
-          <th style="width:12%;">Timeline</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <!-- COLLABORATION -->
-        <tr class="grp-row"><td colspan="6">Collaboration KPIs</td></tr>
-        <tr class="collab-row">
-          <td><strong>School partnerships secured</strong></td>
-          <td><span class="kpi-num">3+</span><span class="kpi-sub">schools</span></td>
-          <td>Formal outreach via Linh; MOU / official letter per school</td>
-          <td>Signed MOU or written confirmation from school principal / admin</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>By 31 Mar</td>
-        </tr>
-        <tr class="collab-row">
-          <td><strong>Psychologist partners engaged</strong></td>
-          <td><span class="kpi-num">5–10</span><span class="kpi-sub">professionals</span></td>
-          <td>Pro-bono agreement; post-workshop Q&A support</td>
-          <td>Signed pro-bono agreement or confirmed participation email</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>By 7 Apr</td>
-        </tr>
-        <tr class="collab-row">
-          <td><strong>Internal team check-in rate</strong></td>
-          <td><span class="kpi-num">100%</span><span class="kpi-sub">attendance</span></td>
-          <td>Weekly team meetings with structured agenda and reflection</td>
-          <td>Meeting attendance log; reflection notes captured each session</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>Weekly</td>
-        </tr>
-
-        <!-- PARENTS -->
-        <tr class="grp-row"><td colspan="6">Parents Approach KPIs</td></tr>
-        <tr class="parents-row">
-          <td><strong>Parents reached via school channels</strong></td>
-          <td><span class="kpi-num">300+</span><span class="kpi-sub">parents</span></td>
-          <td>Official letter / WhatsApp broadcast via 3+ school partners</td>
-          <td>School-confirmed distribution count or message delivery receipts</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>By mid-Apr</td>
-        </tr>
-        <tr class="parents-row">
-          <td><strong>Parents attending ≥1 workshop</strong></td>
-          <td><span class="kpi-num">200+</span><span class="kpi-sub">parents</span></td>
-          <td>3 online workshops; promoted via school & social media</td>
-          <td>Workshop registration + attendance log (Zoom / Google Meet)</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>Apr–May</td>
-        </tr>
-        <tr class="parents-row">
-          <td><strong>Connection Kits distributed</strong></td>
-          <td><span class="kpi-num">200</span><span class="kpi-sub">kits</span></td>
-          <td>Kit handed out at workshops and via schools</td>
-          <td>Kit distribution log; workshop registration cross-reference</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>By 25 Apr</td>
-        </tr>
-        <tr class="parents-row">
-          <td><strong>Post-workshop confidence score</strong></td>
-          <td><span class="kpi-num">↑30%</span><span class="kpi-sub">vs baseline</span></td>
-          <td>Workshops + Connection Kit; pre/post survey question on confidence to talk to child about mental health</td>
-          <td>5-point Likert scale survey sent before Workshop 1 and after Workshop 3</td>
-          <td><span class="status-badge s-outcome">Outcome</span></td>
-          <td>After W3</td>
-        </tr>
-        <tr class="parents-row">
-          <td><strong>Parents who initiated a conversation at home</strong></td>
-          <td><span class="kpi-num">50+</span><span class="kpi-sub">self-reported</span></td>
-          <td>Connection Kit conversation starter cards; workshop skills practice</td>
-          <td>Follow-up survey 2 weeks after Workshop 3: "Have you used the kit or had a mental health conversation with your child?"</td>
-          <td><span class="status-badge s-outcome">Outcome</span></td>
-          <td>May follow-up</td>
-        </tr>
-
-        <!-- STUDENTS -->
-        <tr class="grp-row"><td colspan="6">Students Approach KPIs</td></tr>
-        <tr class="students-row">
-          <td><strong>Students reached (in-school)</strong></td>
-          <td><span class="kpi-num">500+</span><span class="kpi-sub">students</span></td>
-          <td>45-min facilitated session at each of 3+ partner schools</td>
-          <td>School attendance records for session; sign-in sheet</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>Mid-Apr</td>
-        </tr>
-        <tr class="students-row">
-          <td><strong>In-school sessions delivered</strong></td>
-          <td><span class="kpi-num">3</span><span class="kpi-sub">sessions</span></td>
-          <td>One session per partner school; facilitated by Trí + C.Thy</td>
-          <td>Session completion log with date, school name, facilitator, and attendance count</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>Apr</td>
-        </tr>
-        <tr class="students-row">
-          <td><strong>Social media reach</strong></td>
-          <td><span class="kpi-num">10k+</span><span class="kpi-sub">impressions</span></td>
-          <td>TikTok/Reels content series (2+ posts/week); stigma-breaking format</td>
-          <td>Platform analytics (impressions, reach, shares) — screenshot and log weekly</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>Weekly</td>
-        </tr>
-        <tr class="students-row">
-          <td><strong>Social media engagement rate</strong></td>
-          <td><span class="kpi-num">≥8%</span><span class="kpi-sub">engagement</span></td>
-          <td>Peer-voice content; relatable scenarios; myth-busting format</td>
-          <td>(Likes + comments + shares) ÷ impressions × 100; tracked per post</td>
-          <td><span class="status-badge s-outcome">Outcome</span></td>
-          <td>Weekly</td>
-        </tr>
-        <tr class="students-row">
-          <td><strong>Student awareness score improvement</strong></td>
-          <td><span class="kpi-num">↑20%</span><span class="kpi-sub">vs baseline</span></td>
-          <td>In-school session + posters + Connection Card; pre/post anonymous survey</td>
-          <td>Anonymous 5-question awareness survey before and after the in-school session per school</td>
-          <td><span class="status-badge s-outcome">Outcome</span></td>
-          <td>At each session</td>
-        </tr>
-        <tr class="students-row">
-          <td><strong>Students who know where to seek help</strong></td>
-          <td><span class="kpi-num">80%</span><span class="kpi-sub">of attendees</span></td>
-          <td>Connection Card; in-school session resource signposting</td>
-          <td>Post-session survey: "Do you now know of at least one place or person you could go to for mental health support?"</td>
-          <td><span class="status-badge s-impact">Impact</span></td>
-          <td>At each session</td>
-        </tr>
-
-        <!-- OVERALL -->
-        <tr class="grp-row"><td colspan="6">Overall Project KPIs</td></tr>
-        <tr>
-          <td><strong>Pitch funding secured</strong></td>
-          <td><span class="kpi-num">✓</span><span class="kpi-sub">funding won</span></td>
-          <td>All strategies combined; evidence presented in pitch deck on 27 Apr</td>
-          <td>Funder decision on pitch day</td>
-          <td><span class="status-badge s-impact">Impact</span></td>
-          <td>27 Apr</td>
-        </tr>
-        <tr>
-          <td><strong>Before/after data collected</strong></td>
-          <td><span class="kpi-num">100%</span><span class="kpi-sub">of activities</span></td>
-          <td>Surveys embedded into every activity (workshops, sessions, social)</td>
-          <td>Survey completion rates tracked by Phượng; reported in KPI dashboard</td>
-          <td><span class="status-badge s-output">Output</span></td>
-          <td>Ongoing</td>
-        </tr>
-
-      </tbody>
-    </table>
+  <!-- ── RESOURCES ── -->
+  <div class="eyebrow">Resources Needed</div>
+  <h2>What the Programme Requires</h2>
+  <div class="res-row">
+    <div class="res-card"><div class="ri">🏫</div><div class="rt">School Partnerships & Contacts</div></div>
+    <div class="res-card"><div class="ri">🧠</div><div class="rt">Mental Health Professionals / Advisors</div></div>
+    <div class="res-card"><div class="ri">📋</div><div class="rt">Survey Platform (Google Forms etc.)</div></div>
+    <div class="res-card"><div class="ri">💻</div><div class="rt">Online Meeting Platform (Zoom / Meet)</div></div>
+    <div class="res-card"><div class="ri">🎨</div><div class="rt">Design Tools (Canva / Adobe)</div></div>
+    <div class="res-card"><div class="ri">📲</div><div class="rt">Social Media Channels & School Groups</div></div>
+    <div class="res-card"><div class="ri">📊</div><div class="rt">Feedback Forms & Evaluation Tools</div></div>
+    <div class="res-card"><div class="ri">💰</div><div class="rt">Funding (materials, events, platform costs)</div></div>
+    <div class="res-card"><div class="ri">👥</div><div class="rt">8-Member Volunteer Team</div></div>
   </div>
 
-  <!-- MEASUREMENT FRAMEWORK -->
-  <div class="sec-tag">How We Measure</div>
-  <h2>Measurement Framework</h2>
-  <p class="lead" style="margin-bottom:22px;">Six measurement tools ensure that every KPI has a collection method — not just a target. Data collection is built into delivery, not added afterwards.</p>
-
-  <div class="measure-grid">
-    <div class="m-card t1">
-      <div class="mc-tag">Tool 01</div>
-      <div class="mc-title">Pre/Post Survey (Parents)</div>
-      <div class="mc-desc">Sent before Workshop 1 and after Workshop 3. Measures confidence change, awareness shift, and self-reported behaviour change. Owner: Phượng.</div>
-    </div>
-    <div class="m-card t2">
-      <div class="mc-tag">Tool 02</div>
-      <div class="mc-title">Pre/Post Survey (Students)</div>
-      <div class="mc-desc">Anonymous 5-question survey administered at each in-school session — before and after. Measures stigma reduction and awareness improvement. Owner: Trí.</div>
-    </div>
-    <div class="m-card t3">
-      <div class="mc-tag">Tool 03</div>
-      <div class="mc-title">Social Media Analytics</div>
-      <div class="mc-desc">Weekly screenshot log of impressions, reach, and engagement rate per post. Compiled into a running tracker. Owner: Hà.</div>
-    </div>
-    <div class="m-card t4">
-      <div class="mc-tag">Tool 04</div>
-      <div class="mc-title">Workshop Attendance Log</div>
-      <div class="mc-desc">Registration form (Google Form) for all 3 workshops. Cross-referenced with kit distribution. Owner: Linh.</div>
-    </div>
-    <div class="m-card t5">
-      <div class="mc-tag">Tool 05</div>
-      <div class="mc-title">Partnership Confirmation Record</div>
-      <div class="mc-desc">Folder of signed MOUs, confirmation emails, and pro-bono agreements. Presented as an appendix in the pitch deck. Owner: Tiên.</div>
-    </div>
-    <div class="m-card t6">
-      <div class="mc-tag">Tool 06</div>
-      <div class="mc-title">KPI Dashboard (Running)</div>
-      <div class="mc-desc">A single shared tracking sheet updated weekly. Red/amber/green status for each KPI. Reviewed at every team check-in. Owner: Phượng.</div>
-    </div>
+  <!-- ── GOAL BOX ── -->
+  <div style="background:var(--teal-lt);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:28px 32px;">
+    <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:10px;">🎯 Definite Project Goal</div>
+    <p style="font-size:15px;line-height:1.75;color:var(--night);">Within 6 months (May–November 2026), <strong>equip 200+ parents</strong> across 3+ partner schools with practical communication tools to identify and respond to early mental health distress in their children — achieving a <strong>≥30% confidence improvement</strong> and <strong>30%+ self-reported behaviour change</strong> within the home environment.</p>
   </div>
 
-</div>
-</div>
-
-<!-- VOLUNTEER STRATEGY SECTION -->
-<div style="background: #f0f4f0; border-top: 4px solid #2a7f7f; padding: 56px 0 0;">
-<div class="page" style="padding-top: 0;">
-
-  <div class="section-label">Volunteer Strategy</div>
-  <h2>How Volunteers Power This Project</h2>
-  <p style="max-width:680px; margin-bottom:32px; color:#444;">Bridging the Silence is itself a volunteer-led initiative. The six team members are not just organisers — they <em>are</em> the volunteers. This section applies the DSC 3-Step framework and NCVO standards to define how volunteering is structured, supported, and made meaningful within the project.</p>
-
-  <!-- 3-STEP FRAMEWORK -->
-  <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px; margin-bottom:40px;">
-    <div style="background:white; border-radius:12px; padding:28px 24px; border-top:4px solid var(--teal);">
-      <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:10px;">Step 1</div>
-      <h3 style="font-size:17px; margin-bottom:10px;">Mission Alignment</h3>
-      <p style="font-size:13px; color:#444; line-height:1.65;">How do volunteers support the mission, vision & goals?</p>
-      <p style="font-size:13px; color:#333; margin-top:10px; line-height:1.65;">Volunteers directly deliver the project's two approaches. Parents team (Linh, C.Thy, Phượng) drives family engagement; Students team (Trí, Hà, Tiên) drives school-level change. Every volunteer hour maps to a measurable outcome.</p>
-    </div>
-    <div style="background:white; border-radius:12px; padding:28px 24px; border-top:4px solid var(--amber);">
-      <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--amber); margin-bottom:10px;">Step 2</div>
-      <h3 style="font-size:17px; margin-bottom:10px;">Supporting Volunteers</h3>
-      <p style="font-size:13px; color:#444; line-height:1.65;">How will the organisation support volunteers to achieve this?</p>
-      <p style="font-size:13px; color:#333; margin-top:10px; line-height:1.65;">Weekly check-ins led by team leader Tien. Clear task ownership with deadlines. Mentor sessions on 7 & 21 April provide external guidance. Feedback culture built into every team meeting.</p>
-    </div>
-    <div style="background:white; border-radius:12px; padding:28px 24px; border-top:4px solid var(--sage);">
-      <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sage); margin-bottom:10px;">Step 3</div>
-      <h3 style="font-size:17px; margin-bottom:10px;">Promoting Volunteering</h3>
-      <p style="font-size:13px; color:#444; line-height:1.65;">How will volunteering be promoted internally & externally?</p>
-      <p style="font-size:13px; color:#333; margin-top:10px; line-height:1.65;">Team members model the project's values publicly. Social media content features their voices. The pitch itself showcases volunteering as the engine of the project — demonstrating impact to funders and future recruits.</p>
-    </div>
-  </div>
-
-  <hr class="divider"/>
-
-  <!-- VOLUNTEER ROLES -->
-  <div class="section-label">Volunteer Roles & Responsibilities</div>
-  <h2>Who Does What</h2>
-  <p style="margin-bottom:28px; color:#444;">Roles are split across the two approaches, with each team member owning a defined workstream. This follows the NCVO principle of clear role descriptions with expected outcomes.</p>
-
-  <div style="overflow-x:auto; margin-bottom:40px;">
-    <table style="width:100%; border-collapse:collapse; font-size:13.5px;">
-      <thead>
-        <tr style="background:var(--ink); color:var(--warm);">
-          <th style="padding:14px 16px; text-align:left; font-weight:600; border-radius:0;">Volunteer</th>
-          <th style="padding:14px 16px; text-align:left; font-weight:600;">Approach</th>
-          <th style="padding:14px 16px; text-align:left; font-weight:600;">Primary Role</th>
-          <th style="padding:14px 16px; text-align:left; font-weight:600;">Key Deliverable</th>
-          <th style="padding:14px 16px; text-align:left; font-weight:600; border-radius:0;">Skills Used</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="background:var(--amber-light); border-bottom:1px solid #f0d9b5;">
-          <td style="padding:13px 16px; font-weight:600;">Linh</td>
-          <td style="padding:13px 16px;"><span style="background:var(--amber); color:white; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:500;">Parents</span></td>
-          <td style="padding:13px 16px;">Project Overview Lead + School Liaison</td>
-          <td style="padding:13px 16px;">Secure 3+ school partnerships; oversee Connection Kit distribution</td>
-          <td style="padding:13px 16px;">Communication, Sales & Pitching</td>
-        </tr>
-        <tr style="background:var(--amber-light); border-bottom:1px solid #f0d9b5; opacity:0.92;">
-          <td style="padding:13px 16px; font-weight:600;">C. Thy</td>
-          <td style="padding:13px 16px;"><span style="background:var(--amber); color:white; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:500;">Parents</span></td>
-          <td style="padding:13px 16px;">Theory of Change + Workshop Facilitator</td>
-          <td style="padding:13px 16px;">Design & co-deliver 3 parent workshops</td>
-          <td style="padding:13px 16px;">Facilitation, Teamwork</td>
-        </tr>
-        <tr style="background:var(--amber-light); border-bottom:1px solid #f0d9b5; opacity:0.85;">
-          <td style="padding:13px 16px; font-weight:600;">Phượng</td>
-          <td style="padding:13px 16px;"><span style="background:var(--amber); color:white; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:500;">Parents</span></td>
-          <td style="padding:13px 16px;">Strategy & KPI Lead</td>
-          <td style="padding:13px 16px;">Own the measurement framework; track parent engagement metrics</td>
-          <td style="padding:13px 16px;">Self-appraisal, Analysis</td>
-        </tr>
-        <tr style="background:var(--sage-light); border-bottom:1px solid #c3dac9;">
-          <td style="padding:13px 16px; font-weight:600;">Trí</td>
-          <td style="padding:13px 16px;"><span style="background:var(--sage); color:white; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:500;">Students</span></td>
-          <td style="padding:13px 16px;">Theory of Change + Student Session Facilitator</td>
-          <td style="padding:13px 16px;">Co-deliver in-school sessions; lead student survey design</td>
-          <td style="padding:13px 16px;">Communication, Facilitation</td>
-        </tr>
-        <tr style="background:var(--sage-light); border-bottom:1px solid #c3dac9; opacity:0.92;">
-          <td style="padding:13px 16px; font-weight:600;">Hà</td>
-          <td style="padding:13px 16px;"><span style="background:var(--sage); color:white; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:500;">Students</span></td>
-          <td style="padding:13px 16px;">Risk Lead + Content Creator</td>
-          <td style="padding:13px 16px;">Manage risk register; produce poster & social media content</td>
-          <td style="padding:13px 16px;">Teamwork, Self-appraisal</td>
-        </tr>
-        <tr style="background:var(--sage-light); opacity:0.85;">
-          <td style="padding:13px 16px; font-weight:600;">Tiên (Team Leader)</td>
-          <td style="padding:13px 16px;"><span style="background:var(--teal); color:white; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:500;">Both</span></td>
-          <td style="padding:13px 16px;">Overall Coordination + Pitch Lead</td>
-          <td style="padding:13px 16px;">Final pitch deck & speech; mentor liaison; volunteer welfare check-ins</td>
-          <td style="padding:13px 16px;">Leadership, Sales & Pitching</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <hr class="divider"/>
-
-  <!-- VOLUNTEER CULTURE -->
-  <div class="section-label">Volunteering Culture</div>
-  <h2>Building a Pro-Volunteering Culture</h2>
-  <p style="margin-bottom:28px; color:#444; max-width:680px;">The DSC framework warns that <em>"culture eats strategy for breakfast."</em> For Bridging the Silence, the team is small and tight-knit — which is an advantage. But culture still needs to be intentional.</p>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:40px;">
-    <div style="background:white; border-radius:12px; padding:24px 22px; border-left:3px solid var(--teal);">
-      <div style="font-weight:700; margin-bottom:10px; font-size:15px;">✅ What makes this team's culture strong</div>
-      <ul style="list-style:none; font-size:13.5px; color:#444; line-height:2;">
-        <li>· Clear mission everyone believes in</li>
-        <li>· Divided ownership — no role overlap or ambiguity</li>
-        <li>· Senior support via mentor sessions</li>
-        <li>· Short, fixed timeline reduces burnout risk</li>
-        <li>· Each member develops real, named skills</li>
-      </ul>
-    </div>
-    <div style="background:white; border-radius:12px; padding:24px 22px; border-left:3px solid #e57373;">
-      <div style="font-weight:700; margin-bottom:10px; font-size:15px;">⚠️ Culture risks to manage</div>
-      <ul style="list-style:none; font-size:13.5px; color:#444; line-height:2;">
-        <li>· Unequal workload across the 6 members</li>
-        <li>· Communication gaps between the two approach teams</li>
-        <li>· No formal recognition system for effort</li>
-        <li>· Volunteers may feel undervalued without feedback</li>
-        <li>· Tight deadline = stress without check-in structure</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- NCVO CHECKLIST -->
-  <hr class="divider"/>
-  <div class="section-label">NCVO Readiness Check</div>
-  <h2>Funder-Readiness: 15-Question Test</h2>
-  <p style="margin-bottom:24px; color:#444;">Based on NCVO's volunteering strategy checklist — the questions any serious funder will implicitly ask.</p>
-
-  <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:40px;">
-    <!-- answered yes -->
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">✅</span>
-      <span style="font-size:13.5px;">What is the organisation's aim and how will volunteers help meet it?</span>
-      <span style="font-size:11px; background:#d1fae5; color:#065f46; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Covered</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">✅</span>
-      <span style="font-size:13.5px;">How will the organisation set tasks and activities for volunteers?</span>
-      <span style="font-size:11px; background:#d1fae5; color:#065f46; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Covered</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">✅</span>
-      <span style="font-size:13.5px;">What skills or attributes will volunteers need?</span>
-      <span style="font-size:11px; background:#d1fae5; color:#065f46; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Covered</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">✅</span>
-      <span style="font-size:13.5px;">How will the organisation recruit, train and support volunteers?</span>
-      <span style="font-size:11px; background:#d1fae5; color:#065f46; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Covered</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">✅</span>
-      <span style="font-size:13.5px;">How will the organisation show the impact of its volunteering?</span>
-      <span style="font-size:11px; background:#d1fae5; color:#065f46; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Covered</span>
-    </div>
-    <!-- needs work -->
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">⚠️</span>
-      <span style="font-size:13.5px;">How will equity, diversity and inclusion be embedded into volunteering?</span>
-      <span style="font-size:11px; background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Add this</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">⚠️</span>
-      <span style="font-size:13.5px;">How will the organisation value and develop volunteers?</span>
-      <span style="font-size:11px; background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Add this</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">⚠️</span>
-      <span style="font-size:13.5px;">What processes and policies will the organisation need to support volunteering?</span>
-      <span style="font-size:11px; background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Add this</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">⚠️</span>
-      <span style="font-size:13.5px;">How will the organisation seek feedback and use volunteers' experiences to improve things?</span>
-      <span style="font-size:11px; background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Add this</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">❌</span>
-      <span style="font-size:13.5px;">What other resources or systems will the organisation need to make volunteering successful?</span>
-      <span style="font-size:11px; background:#fee2e2; color:#991b1b; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Missing</span>
-    </div>
-    <div style="display:grid; grid-template-columns:36px 1fr 80px; align-items:center; gap:12px; background:white; border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
-      <span style="font-size:18px;">❌</span>
-      <span style="font-size:13.5px;">Is volunteering part of the organisation's financial planning?</span>
-      <span style="font-size:11px; background:#fee2e2; color:#991b1b; padding:3px 10px; border-radius:10px; text-align:center; font-weight:500;">Missing</span>
-    </div>
-  </div>
-
-  <!-- VOLUNTEER WELLBEING & RECOGNITION -->
-  <hr class="divider"/>
-  <div class="section-label">Recognition & Wellbeing</div>
-  <h2>Keeping Volunteers Motivated</h2>
-  <p style="margin-bottom:24px; color:#444; max-width:680px;">Volunteero and NCVO both emphasise that recognition is not optional — it is what separates a project that retains its people from one that burns them out. For a 6-week sprint, simple and consistent beats elaborate.</p>
-
-  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:40px;">
-    <div style="background:white; border-radius:10px; padding:22px 18px; text-align:center; border:1px solid var(--border);">
-      <div style="font-size:28px; margin-bottom:10px;">📣</div>
-      <div style="font-weight:600; font-size:14px; margin-bottom:6px;">Public Recognition</div>
-      <p style="font-size:12.5px; color:#555; line-height:1.6;">Name each team member in the final pitch deck and all project materials. Their contributions are visible to funders.</p>
-    </div>
-    <div style="background:white; border-radius:10px; padding:22px 18px; text-align:center; border:1px solid var(--border);">
-      <div style="font-size:28px; margin-bottom:10px;">🔁</div>
-      <div style="font-weight:600; font-size:14px; margin-bottom:6px;">Feedback Loop</div>
-      <p style="font-size:12.5px; color:#555; line-height:1.6;">End each team meeting with a 5-minute reflection: what went well, what was hard. Log it. Use it in the final self-appraisal.</p>
-    </div>
-    <div style="background:white; border-radius:10px; padding:22px 18px; text-align:center; border:1px solid var(--border);">
-      <div style="font-size:28px; margin-bottom:10px;">🎓</div>
-      <div style="font-weight:600; font-size:14px; margin-bottom:6px;">Skills Certificate</div>
-      <p style="font-size:12.5px; color:#555; line-height:1.6;">Issue each team member a record of the 4 skills developed: communication, teamwork, self-appraisal, sales & pitching.</p>
-    </div>
-  </div>
-
-  <!-- VOLUNTEER BUDGET NOTE -->
-  <div class="goal-box" style="border-left-color: var(--sage); background: var(--sage-light);">
-    <h3 style="color:var(--sage);">💰 Volunteer Resourcing Note (for the pitch)</h3>
-    <p>NCVO requires that volunteering is reflected in financial planning. For the pitch, state explicitly: the 6-member team contributes an estimated <strong>X hours each</strong> across the project period — representing a combined volunteer contribution of approximately <strong>[total hours] hours of unpaid skilled work</strong>. Quantifying this as an in-kind contribution strengthens the funding case by showing the project's true cost and the team's commitment.</p>
-  </div>
-
-</div>
-</div>
+</div><!-- /wrap -->
 
 <footer>
-  <strong>Bridging the Silence</strong> · Team Strategy Document · March 2026 · For Funding Pitch Use
+  <span><strong>Bridging the Silence</strong> — Project Overview Document</span>
+  <span>Updated March 2026 · For Funding Pitch Use · Team Lead: Tien Bui</span>
 </footer>
 
 </body>
