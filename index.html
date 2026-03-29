@@ -360,7 +360,7 @@ section{padding:96px 5%}
 .problem .section-body{color:rgba(255,255,255,.6);max-width:600px}
 
 .problem-stats{
-  display:grid;grid-template-columns:repeat(3,1fr) 1.15fr;gap:24px;margin-top:56px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;
 }
 .prob-card{
   background:rgba(255,255,255,.05);
@@ -400,85 +400,137 @@ section{padding:96px 5%}
   font-size:13px;font-style:normal;color:var(--teal-lt);font-weight:500;
 }
 
-/* ── FUNDRAISING CARD ─────────────────────────── */
-.fund-card{
-  background:linear-gradient(160deg,rgba(200,169,110,.18) 0%,rgba(200,169,110,.06) 100%);
-  border:1px solid rgba(200,169,110,.35);
-  border-radius:12px;padding:32px 28px;
+/* ── FUNDRAISING SECTION ──────────────────────── */
+.fundraise{
+  background:var(--ink);
+  padding:72px 5%;
   position:relative;overflow:hidden;
-  display:flex;flex-direction:column;
-  transition:all .3s;
 }
-.fund-card:hover{transform:translateY(-4px);border-color:rgba(200,169,110,.6)}
+.fundraise::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 90% at 100% 50%, rgba(200,169,110,.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 60% at 0% 50%, rgba(15,110,86,.2) 0%, transparent 55%);
+}
+.fundraise::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  background-size:256px;pointer-events:none;
+}
+.fundraise-inner{
+  position:relative;z-index:2;
+  display:flex;justify-content:center;
+}
+.fundraise-left .eyebrow{color:var(--teal-lt)}
+.fundraise-left .section-title{color:var(--white)}
+.fundraise-left .section-rule{background:var(--gold)}
+.fundraise-left .section-body{color:rgba(255,255,255,.55);max-width:460px}
+.fundraise-impact{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px;
+}
+.impact-item{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:20px 18px;
+}
+.impact-num{
+  font-family:'Playfair Display',serif;
+  font-size:28px;font-weight:900;color:var(--gold);
+  line-height:1;margin-bottom:6px;
+}
+.impact-label{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5}
+
+/* right: fund card */
+.fund-card{
+  background:linear-gradient(160deg,rgba(247,243,238,.06) 0%,rgba(247,243,238,.02) 100%);
+  border:1px solid rgba(200,169,110,.3);
+  border-radius:16px;padding:36px 32px;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:0;
+  box-shadow:0 24px 64px rgba(0,0,0,.3);
+}
 .fund-card::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 80% at 50% 120%,rgba(200,169,110,.15),transparent);
-  opacity:0;transition:opacity .3s;
+  background:radial-gradient(ellipse 100% 60% at 50% 110%,rgba(200,169,110,.1),transparent);
+  pointer-events:none;
 }
-.fund-card:hover::before{opacity:1}
 .fund-eyebrow{
-  font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:8px;
 }
-.fund-eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);opacity:.6}
 .fund-raised{
   font-family:'Playfair Display',serif;
-  font-size:38px;font-weight:900;color:var(--gold);
+  font-size:52px;font-weight:900;color:var(--gold);
   line-height:1;margin-bottom:4px;
 }
-.fund-goal{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px}
+.fund-goal-txt{font-size:13px;color:rgba(255,255,255,.38);margin-bottom:24px}
+.fund-goal-txt strong{color:rgba(255,255,255,.6)}
 .fund-bar{
-  height:8px;background:rgba(255,255,255,.08);
-  border-radius:4px;overflow:hidden;margin-bottom:6px;
+  height:10px;background:rgba(255,255,255,.07);
+  border-radius:5px;overflow:hidden;margin-bottom:8px;
 }
 .fund-fill{
-  height:100%;background:linear-gradient(90deg,var(--gold),#e8c07a);
-  border-radius:4px;width:0;
-  transition:width 2s cubic-bezier(.16,1,.3,1) 1.4s;
+  height:100%;
+  background:linear-gradient(90deg, #C8A96E, #e8c07a);
+  border-radius:5px;width:0;
+  transition:width 2.2s cubic-bezier(.16,1,.3,1) 1.2s;
 }
 .fund-pct{
   display:flex;justify-content:space-between;
-  font-size:11px;color:rgba(255,255,255,.4);margin-bottom:18px;
+  font-size:12px;color:rgba(255,255,255,.38);margin-bottom:28px;
 }
 .fund-pct strong{color:var(--gold);font-weight:600}
 .fund-tiers{
-  display:flex;flex-direction:column;gap:7px;
-  margin-bottom:16px;flex:1;
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  margin-bottom:20px;
 }
 .fund-tier{
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
   background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:6px;padding:8px 12px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;padding:12px 8px;
   font-size:12px;cursor:pointer;
-  transition:all .2s;
+  transition:all .2s;text-align:center;gap:4px;
 }
 .fund-tier:hover,.fund-tier.active{
-  background:rgba(200,169,110,.15);
-  border-color:rgba(200,169,110,.4);
+  background:rgba(200,169,110,.14);
+  border-color:rgba(200,169,110,.5);
+  transform:translateY(-1px);
 }
-.fund-tier-label{color:rgba(255,255,255,.7);font-weight:500}
-.fund-tier-amt{color:var(--gold);font-weight:700;font-family:'Playfair Display',serif;font-size:14px}
+.fund-tier-label{color:rgba(255,255,255,.6);font-size:11px}
+.fund-tier-amt{color:var(--gold);font-weight:700;font-family:'Playfair Display',serif;font-size:18px}
 .fund-btn{
   display:block;text-align:center;width:100%;
   background:var(--gold);color:var(--ink);
-  padding:12px;border-radius:6px;
-  font-size:13px;font-weight:700;text-decoration:none;
+  padding:14px;border-radius:8px;
+  font-size:14px;font-weight:700;text-decoration:none;
   font-family:'Be Vietnam Pro',sans-serif;
-  border:none;cursor:pointer;letter-spacing:.02em;
-  transition:all .2s;
+  border:none;cursor:pointer;letter-spacing:.03em;
+  transition:all .22s;
 }
-.fund-btn:hover{background:#d4b578;transform:translateY(-1px);box-shadow:0 8px 20px rgba(200,169,110,.3)}
+.fund-btn:hover{background:#d4b578;transform:translateY(-2px);box-shadow:0 12px 28px rgba(200,169,110,.35)}
 .fund-supporters{
-  text-align:center;margin-top:10px;
-  font-size:11px;color:rgba(255,255,255,.3);
+  text-align:center;margin-top:14px;
+  font-size:12px;color:rgba(255,255,255,.28);
+  display:flex;align-items:center;justify-content:center;gap:6px;
 }
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 .live-dot{
-  display:inline-block;width:6px;height:6px;border-radius:50%;
-  background:var(--teal-lt);margin-right:4px;vertical-align:middle;
+  display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:var(--teal-lt);flex-shrink:0;
   animation:pulse-dot 1.8s ease-in-out infinite;
 }
+.fund-divider{
+  height:1px;background:rgba(255,255,255,.06);
+  margin:20px 0;
+}
+
+@media(max-width:900px){
+  .fundraise-inner{grid-template-columns:1fr}
+  .fund-card{margin-top:0}
+  .fundraise-impact{grid-template-columns:1fr 1fr}
+}
+
 
 /* ── PROGRAMME ────────────────────────────────── */
 .programme{background:var(--white)}
@@ -748,6 +800,58 @@ footer{
   </div>
 </div>
 
+<!-- ── FUNDRAISING ──────────────────────────────── -->
+<section class="fundraise" id="donate">
+  <div class="fundraise-inner">
+
+    <!-- Live fundraising card -->
+    <div class="fund-card" id="fundCard" style="width:100%;max-width:520px">
+      <div class="fund-eyebrow">
+        <span class="live-dot"></span>
+        Live fundraising goal
+      </div>
+
+      <div class="fund-raised" id="fundRaised">£0</div>
+      <div class="fund-goal-txt">raised of <strong>£5,000</strong> goal · <span id="fundDays">32 days left</span></div>
+
+      <div class="fund-bar"><div class="fund-fill" id="fundFill"></div></div>
+      <div class="fund-pct">
+        <strong id="fundPct">0%</strong>
+        <span id="backerCount">14 backers</span>
+      </div>
+
+      <div class="fund-divider"></div>
+
+      <div class="fund-tiers">
+        <div class="fund-tier" onclick="selectTier(this,10,'Supporter')">
+          <span class="fund-tier-amt">£10</span>
+          <span class="fund-tier-label">💙 Supporter</span>
+        </div>
+        <div class="fund-tier active" onclick="selectTier(this,25,'Advocate')">
+          <span class="fund-tier-amt">£25</span>
+          <span class="fund-tier-label">⭐ Advocate</span>
+        </div>
+        <div class="fund-tier" onclick="selectTier(this,50,'Champion')">
+          <span class="fund-tier-amt">£50</span>
+          <span class="fund-tier-label">🌟 Champion</span>
+        </div>
+        <div class="fund-tier" onclick="selectTier(this,0,'Custom')">
+          <span class="fund-tier-amt" id="customAmt">Other</span>
+          <span class="fund-tier-label">✏️ Custom</span>
+        </div>
+      </div>
+
+      <button class="fund-btn" id="donateBtn" onclick="handleDonate()">Donate £25 →</button>
+
+      <div class="fund-supporters">
+        <span class="live-dot" style="background:var(--gold);animation-delay:.4s"></span>
+        <span id="supporterCount">14</span>&nbsp;people have donated today
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── ABOUT ────────────────────────────────────── -->
 <section class="about" id="about">
   <div class="about-inner">
@@ -827,40 +931,7 @@ footer{
         <div class="prob-num">6–16<sup>%</sup></div>
         <p class="prob-text">of young adults report <strong>suicidal ideation</strong> — most without any professional support or family intervention</p>
       </div>
-      <!-- Fundraising card -->
-      <div class="fund-card" id="fundCard">
-        <div class="fund-eyebrow"><span class="live-dot"></span>Fundraising Goal</div>
-        <div class="fund-raised" id="fundRaised">£0</div>
-        <div class="fund-goal">raised of <strong style="color:rgba(255,255,255,.6)">£5,000</strong> goal</div>
-        <div class="fund-bar"><div class="fund-fill" id="fundFill"></div></div>
-        <div class="fund-pct">
-          <strong id="fundPct">0%</strong>
-          <span id="fundDays">32 days left</span>
-        </div>
-        <div class="fund-tiers">
-          <div class="fund-tier" onclick="selectTier(this,'£10','Supporter')">
-            <span class="fund-tier-label">💙 Supporter</span>
-            <span class="fund-tier-amt">£10</span>
-          </div>
-          <div class="fund-tier active" onclick="selectTier(this,'£25','Advocate')">
-            <span class="fund-tier-label">⭐ Advocate</span>
-            <span class="fund-tier-amt">£25</span>
-          </div>
-          <div class="fund-tier" onclick="selectTier(this,'£50','Champion')">
-            <span class="fund-tier-label">🌟 Champion</span>
-            <span class="fund-tier-amt">£50</span>
-          </div>
-          <div class="fund-tier" onclick="selectTier(this,'Custom','Custom')">
-            <span class="fund-tier-label">✏️ Custom amount</span>
-            <span class="fund-tier-amt" id="customAmt">—</span>
-          </div>
-        </div>
-        <button class="fund-btn" id="donateBtn" onclick="handleDonate()">Donate £25 →</button>
-        <div class="fund-supporters" id="fundSupporters">
-          <span class="live-dot" style="background:var(--gold)"></span>
-          <span id="supporterCount">14</span> people have donated today
-        </div>
-      </div>
+      <!-- Fundraising card removed — now lives below stats strip -->
     </div>
 
     <div class="problem-callout">
@@ -1108,25 +1179,26 @@ function updateFundUI(){
 function selectTier(el, amt, label){
   document.querySelectorAll('.fund-tier').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  if(amt === 'Custom'){
+  if(label === 'Custom'){
     const custom = prompt('Enter your donation amount (£):');
     if(custom && !isNaN(custom) && Number(custom) > 0){
       selectedAmt = Number(custom);
       document.getElementById('customAmt').textContent = '£' + selectedAmt;
     } else { return; }
-    selectedLabel = 'Custom';
   } else {
-    selectedAmt = parseInt(amt.replace('£',''));
-    selectedLabel = label;
-    document.getElementById('customAmt').textContent = '—';
+    selectedAmt = amt;
+    document.getElementById('customAmt').textContent = 'Other';
   }
   document.getElementById('donateBtn').textContent = 'Donate ' + formatGBP(selectedAmt) + ' →';
 }
 
 function handleDonate(){
   raised += selectedAmt;
-  const count = parseInt(document.getElementById('supporterCount').textContent) + 1;
-  document.getElementById('supporterCount').textContent = count;
+  const sc = document.getElementById('supporterCount');
+  const bc = document.getElementById('backerCount');
+  const newCount = parseInt(sc.textContent) + 1;
+  sc.textContent = newCount;
+  if(bc) bc.textContent = newCount + ' backers';
   updateFundUI();
   const btn = document.getElementById('donateBtn');
   btn.textContent = 'Thank you! 💙';
