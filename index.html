@@ -4,921 +4,660 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bridging the Silence — Start the Conversation. Change a Life.</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth}
 
 :root{
-  --teal:#0F6E56;
-  --teal-mid:#1D9E75;
-  --teal-lt:#9FE1CB;
-  --teal-pale:#E1F5EE;
-  --teal-dark:#083d2e;
-  --ink:#0D1F1A;
-  --cream:#F7F3EE;
-  --warm:#EDE8E1;
-  --gold:#C8A96E;
-  --gold-lt:#F0E0C0;
-  --muted:#5A6E67;
+  --nectarine:#D7897F;
+  --nectarine-dk:#b8685e;
+  --nectarine-lt:#F5D5D1;
+  --peach:#F9B95C;
+  --peach-lt:#FEF0D6;
+  --mint:#96C7B3;
+  --mint-dk:#6aaa94;
+  --mint-lt:#DFF2EC;
+  --lagune:#6398A9;
+  --lagune-dk:#4a7a8a;
+  --lagune-lt:#D4E8EF;
+  --ink:#1C2B30;
+  --cream:#FBF7F4;
+  --warm:#F5EFE9;
   --white:#ffffff;
+  --muted:#5C6E74;
+  --border:#E2D8D2;
 }
 
-body{font-family:'Be Vietnam Pro',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
 
-/* ── ANIMATIONS ──────────────────────────────── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+/* ── VOLKHORN via system serif fallback styled to match ── */
+.vk{font-family:'Georgia','Times New Roman',serif;font-weight:700;letter-spacing:-.01em}
+
+/* ── ANIMATIONS ───────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-@keyframes slideRight{from{width:0}to{width:var(--w)}}
-@keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes fillBar{from{width:0}to{width:var(--w)}}
 
-.fade-up{opacity:0;animation:fadeUp .8s ease forwards}
-.fade-up.d1{animation-delay:.1s}
-.fade-up.d2{animation-delay:.25s}
-.fade-up.d3{animation-delay:.4s}
-.fade-up.d4{animation-delay:.55s}
-.fade-up.d5{animation-delay:.7s}
+.fu{opacity:0;animation:fadeUp .7s ease forwards}
+.fu.d1{animation-delay:.1s}.fu.d2{animation-delay:.22s}
+.fu.d3{animation-delay:.35s}.fu.d4{animation-delay:.48s}
 
 /* ── NAV ─────────────────────────────────────── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;height:72px;
-  background:rgba(13,31,26,.92);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(159,225,203,.1);
-  transition:all .3s;
+  padding:0 5%;height:68px;
+  background:var(--lagune-dk);
+  border-bottom:2px solid var(--mint);
+  transition:height .3s;
 }
-
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-logo-mark{
-  width:36px;height:36px;border-radius:50%;
-  background:var(--teal);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
+  width:34px;height:34px;border-radius:50%;
+  background:var(--nectarine);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.nav-logo-mark svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
-.nav-logo-text{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--white);line-height:1.1}
-.nav-logo-text span{display:block;font-size:10px;font-weight:400;color:var(--teal-lt);letter-spacing:.1em;font-family:'Be Vietnam Pro',sans-serif}
-
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{
-  font-size:13.5px;font-weight:500;color:rgba(255,255,255,.75);
-  text-decoration:none;letter-spacing:.02em;
-  transition:color .2s;position:relative;padding-bottom:4px;
-}
-.nav-links a::after{
-  content:'';position:absolute;bottom:0;left:0;width:0;height:1px;
-  background:var(--teal-lt);transition:width .25s;
-}
-.nav-links a:hover{color:var(--white)}
-.nav-links a:hover::after{width:100%}
-
-.nav-actions{display:flex;align-items:center;gap:12px}
-.lang-toggle{
-  font-size:12px;font-weight:500;color:rgba(255,255,255,.5);
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+.nav-logo-mark svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round}
+.nav-logo-name{font-size:15px;font-weight:700;color:#fff;font-family:'Georgia',serif;line-height:1.1}
+.nav-logo-tag{font-size:9.5px;font-weight:400;color:var(--mint);letter-spacing:.1em;display:block}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;transition:color .2s;letter-spacing:.02em}
+.nav-links a:hover{color:var(--peach)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang-btn{
+  font-size:11.5px;font-weight:500;color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
   border-radius:20px;padding:5px 12px;cursor:pointer;
-  font-family:'Be Vietnam Pro',sans-serif;transition:all .2s;
+  font-family:'Poppins',sans-serif;transition:all .2s;
 }
-.lang-toggle:hover{background:rgba(255,255,255,.15);color:#fff}
+.lang-btn:hover{background:rgba(255,255,255,.2);color:#fff}
 .nav-cta{
-  background:var(--teal);color:var(--white);
-  border:none;border-radius:4px;padding:10px 20px;
-  font-size:13px;font-weight:600;cursor:pointer;
-  font-family:'Be Vietnam Pro',sans-serif;
-  transition:background .2s,transform .15s;
-  text-decoration:none;display:inline-block;
+  background:var(--peach);color:var(--ink);
+  padding:9px 20px;border-radius:4px;
+  font-size:13px;font-weight:700;text-decoration:none;
+  transition:all .2s;letter-spacing:.02em;
 }
-.nav-cta:hover{background:var(--teal-mid);transform:translateY(-1px)}
+.nav-cta:hover{background:var(--nectarine);color:#fff;transform:translateY(-1px)}
 
 /* ── HERO ────────────────────────────────────── */
 .hero{
-  min-height:100vh;position:relative;
-  display:flex;align-items:center;
+  min-height:100vh;display:flex;align-items:center;
   padding:120px 5% 80px;
-  overflow:hidden;
+  position:relative;overflow:hidden;
+  background:var(--lagune-dk);
+}
+.hero-bg-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.shape{position:absolute;border-radius:50%;opacity:.12}
+.s1{width:600px;height:600px;background:var(--mint);right:-150px;top:-100px}
+.s2{width:350px;height:350px;background:var(--peach);left:-80px;bottom:-80px}
+.s3{width:200px;height:200px;background:var(--nectarine);right:200px;bottom:100px}
+
+/* diagonal colour slice */
+.hero-slice{
+  position:absolute;bottom:0;left:0;right:0;
+  height:120px;background:var(--cream);
+  clip-path:polygon(0 100%,100% 0,100% 100%);
 }
 
-.hero-bg{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(160deg, var(--teal-dark) 0%, #0a2e22 40%, #061a14 100%);
-  z-index:0;
+.hero-grid{
+  display:grid;grid-template-columns:1fr 360px;
+  gap:60px;align-items:center;
+  position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%;
 }
-.hero-bg::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 70% 60% at 100% 100%, rgba(29,158,117,.35) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 70% at 0% 0%, rgba(8,61,46,.8) 0%, transparent 55%);
-}
-/* Grain texture */
-.hero-bg::after{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
-  background-size:256px;opacity:.5;
-}
-
-/* Decorative circles */
-.hero-ring{
-  position:absolute;right:-80px;top:50%;transform:translateY(-50%);
-  width:600px;height:600px;border-radius:50%;
-  border:1px solid rgba(159,225,203,.08);z-index:1;pointer-events:none;
-}
-.hero-ring2{
-  position:absolute;right:40px;top:50%;transform:translateY(-50%);
-  width:400px;height:400px;border-radius:50%;
-  border:1px solid rgba(159,225,203,.06);z-index:1;pointer-events:none;
-}
-.hero-dot-grid{
-  position:absolute;right:5%;top:30%;z-index:1;
-  opacity:.12;pointer-events:none;
-  display:grid;grid-template-columns:repeat(8,18px);gap:10px;
-}
-.hero-dot-grid span{
-  width:3px;height:3px;border-radius:50%;background:var(--teal-lt);display:block;
-}
-
-.hero-content{position:relative;z-index:2;max-width:620px}
-
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--teal-lt);margin-bottom:28px;
+  font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mint);margin-bottom:24px;
 }
-.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
-
-.hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(44px,5.5vw,72px);
-  line-height:1.05;
-  font-weight:900;
-  color:var(--white);
-  margin-bottom:10px;
+.hero-eyebrow::before{content:'';width:20px;height:2px;background:var(--peach)}
+.hero-h1{
+  font-size:clamp(40px,5vw,66px);line-height:1.07;
+  font-weight:700;color:#fff;margin-bottom:8px;
 }
-.hero-title em{
-  font-style:italic;color:var(--teal-lt);display:block;
-}
-
-.hero-rule{
-  width:56px;height:2px;
-  background:linear-gradient(90deg,var(--gold),transparent);
-  margin:28px 0;
-}
-
+.hero-h1 em{font-style:italic;color:var(--peach);font-family:'Georgia',serif}
+.hero-rule{width:52px;height:3px;background:var(--nectarine);margin:24px 0}
 .hero-sub{
-  font-size:16.5px;font-weight:300;
-  color:rgba(255,255,255,.68);
-  line-height:1.7;max-width:480px;margin-bottom:40px;
+  font-size:16px;font-weight:300;color:rgba(255,255,255,.7);
+  line-height:1.75;max-width:500px;margin-bottom:40px;
 }
-.hero-sub strong{color:rgba(255,255,255,.9);font-weight:500}
-
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-.btn-primary{
+.hero-sub strong{color:rgba(255,255,255,.92);font-weight:600}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-peach{
   display:inline-flex;align-items:center;gap:8px;
-  background:var(--teal);color:var(--white);
-  padding:14px 28px;border-radius:4px;
+  background:var(--peach);color:var(--ink);
+  padding:14px 28px;border-radius:6px;
+  font-size:14px;font-weight:700;text-decoration:none;
+  border:none;cursor:pointer;font-family:'Poppins',sans-serif;
+  transition:all .22s;letter-spacing:.02em;
+}
+.btn-peach:hover{background:var(--nectarine);color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(215,137,127,.4)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--mint);
+  padding:14px 28px;border-radius:6px;
   font-size:14px;font-weight:600;text-decoration:none;
-  border:none;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;
+  border:2px solid var(--mint);cursor:pointer;font-family:'Poppins',sans-serif;
   transition:all .22s;
 }
-.btn-primary:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,110,86,.4)}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:transparent;color:var(--gold);
-  padding:14px 28px;border-radius:4px;
-  font-size:14px;font-weight:600;text-decoration:none;
-  border:1.5px solid var(--gold);cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;
-  transition:all .22s;
-}
-.btn-secondary:hover{background:rgba(200,169,110,.1);transform:translateY(-2px)}
+.btn-outline:hover{background:var(--mint);color:var(--ink);transform:translateY(-2px)}
 
-/* Hero floating card */
+/* hero survey card */
 .hero-card{
-  position:absolute;right:5%;top:50%;transform:translateY(-50%);
-  z-index:3;width:300px;
-  background:rgba(247,243,238,.96);
-  backdrop-filter:blur(8px);
-  border-radius:12px;
-  padding:28px;
-  box-shadow:0 24px 64px rgba(0,0,0,.3);
-  animation:float 6s ease-in-out infinite;
+  background:var(--white);border-radius:16px;
+  padding:28px;box-shadow:0 24px 56px rgba(0,0,0,.25);
+  position:relative;
+  animation:floatY 5s ease-in-out infinite;
 }
 .hero-card-badge{
-  display:inline-block;background:var(--teal);color:var(--white);
-  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--mint-lt);color:var(--mint-dk);
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   padding:4px 12px;border-radius:20px;margin-bottom:14px;
 }
-.hero-card-title{
-  font-family:'Playfair Display',serif;
-  font-size:18px;font-weight:700;color:var(--ink);
-  line-height:1.3;margin-bottom:12px;
-}
-.hero-card-body{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:20px}
-.hero-card-stat{
-  display:flex;justify-content:space-between;
-  font-size:11.5px;color:var(--muted);margin-bottom:6px;
-}
-.hero-card-stat strong{color:var(--teal);font-weight:600}
-.progress-bar{
-  height:6px;background:var(--warm);border-radius:3px;overflow:hidden;margin-bottom:16px;
-}
-.progress-fill{
-  height:100%;background:var(--teal-mid);border-radius:3px;
-  width:0;transition:width 1.5s ease .8s;
-}
-.hero-card-cta{
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+.pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--mint-dk);display:inline-block;animation:pulse-dot 1.8s ease-in-out infinite}
+.hero-card h3{font-size:16px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:8px}
+.hero-card p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:18px}
+.card-stat-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+.card-stat-row strong{color:var(--lagune);font-weight:700}
+.prog-bar{height:7px;background:var(--lagune-lt);border-radius:4px;overflow:hidden;margin-bottom:18px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--mint),var(--lagune));border-radius:4px;width:0;transition:width 2s ease 1s}
+.card-cta{
   display:block;text-align:center;
-  background:var(--teal);color:#fff;
-  padding:10px;border-radius:6px;
-  font-size:13px;font-weight:600;text-decoration:none;
-  font-family:'Be Vietnam Pro',sans-serif;
-  transition:background .2s;
+  background:var(--lagune);color:#fff;
+  padding:11px;border-radius:8px;
+  font-size:13px;font-weight:700;text-decoration:none;
+  font-family:'Poppins',sans-serif;transition:background .2s;
 }
-.hero-card-cta:hover{background:var(--teal-mid)}
+.card-cta:hover{background:var(--lagune-dk)}
 
-/* ── STATS STRIP ──────────────────────────────── */
+/* ── STATS STRIP ─────────────────────────────── */
 .stats-strip{
+  display:grid;grid-template-columns:repeat(3,1fr) 260px;
   background:var(--white);
-  display:grid;grid-template-columns:repeat(3,1fr) 280px;
-  border-bottom:3px solid var(--teal-pale);
-  position:relative;z-index:10;
-  box-shadow:0 4px 24px rgba(0,0,0,.06);
+  border-bottom:3px solid var(--peach-lt);
+  box-shadow:0 4px 20px rgba(0,0,0,.07);
 }
-.stat-item{
-  padding:36px 32px;
-  border-right:1px solid var(--warm);
-  text-align:center;
+.stat-cell{
+  padding:32px 28px;border-right:1px solid var(--border);text-align:center;
 }
 .stat-num{
-  font-family:'Playfair Display',serif;
-  font-size:42px;font-weight:900;color:var(--teal);
-  line-height:1;margin-bottom:6px;
+  font-size:40px;font-weight:700;color:var(--lagune);line-height:1;
+  margin-bottom:6px;font-family:'Georgia',serif;
 }
-.stat-label{
-  font-size:13px;color:var(--muted);font-weight:400;letter-spacing:.02em;
-}
-.stat-cta-panel{
-  background:var(--teal);padding:36px 28px;
+.stat-label{font-size:12.5px;color:var(--muted);font-weight:400}
+.stat-cta-cell{
+  background:var(--nectarine);padding:32px 24px;
   display:flex;flex-direction:column;justify-content:center;
 }
-.stat-cta-panel p{
-  font-size:15px;font-weight:600;color:var(--white);line-height:1.4;margin-bottom:14px;
-}
+.stat-cta-cell p{font-size:14px;font-weight:600;color:#fff;line-height:1.4;margin-bottom:12px}
 .stat-cta-link{
   display:inline-flex;align-items:center;gap:6px;
-  font-size:13px;font-weight:600;color:var(--gold);text-decoration:none;
+  font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;
   transition:gap .2s;
 }
 .stat-cta-link:hover{gap:10px}
 
-/* ── SECTION COMMONS ─────────────────────────── */
-section{padding:96px 5%}
-.eyebrow{
-  font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:14px;display:block;
-}
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(32px,3.5vw,48px);font-weight:900;
-  color:var(--ink);line-height:1.15;margin-bottom:16px;
-}
-.section-title em{font-style:italic;color:var(--teal)}
-.section-rule{width:48px;height:2px;background:var(--gold);margin:20px 0 32px}
-.section-body{font-size:16px;line-height:1.75;color:var(--muted);max-width:520px}
-
-/* ── ABOUT ────────────────────────────────────── */
-.about{background:var(--cream)}
-.about-inner{
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
-}
-.about-photos{position:relative;height:500px}
-.photo-main{
-  position:absolute;top:0;left:0;width:75%;height:80%;
-  border-radius:12px;overflow:hidden;background:#1a3a2e;
-  box-shadow:0 20px 48px rgba(0,0,0,.18);
-}
-.photo-main img,.photo-accent img{width:100%;height:100%;object-fit:cover}
-.photo-accent{
-  position:absolute;bottom:0;right:0;width:55%;height:55%;
-  border-radius:12px;overflow:hidden;
-  border:4px solid var(--cream);
-  background:#0f2e24;
-  box-shadow:0 12px 32px rgba(0,0,0,.18);
-}
-/* Photo placeholders with teal shapes when no image */
-.photo-placeholder{
-  width:100%;height:100%;
-  background:linear-gradient(135deg,var(--teal-dark) 0%,var(--teal) 100%);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:14px;color:rgba(255,255,255,.4);text-align:center;padding:20px;
-}
-.about-icon-badge{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:56px;height:56px;border-radius:50%;
-  background:var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 24px rgba(200,169,110,.4);z-index:5;
-  animation:float 5s ease-in-out infinite;
-}
-.about-icon-badge svg{width:24px;height:24px;fill:none;stroke:var(--ink);stroke-width:2}
-
-.about-checks{list-style:none;margin:24px 0 32px;display:flex;flex-direction:column;gap:10px}
-.about-checks li{
-  display:flex;align-items:flex-start;gap:12px;
-  font-size:14.5px;color:var(--ink);line-height:1.5;
-}
-.check-icon{
-  width:20px;height:20px;border-radius:50%;background:var(--teal-pale);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
-}
-.check-icon svg{width:10px;height:10px;stroke:var(--teal);stroke-width:2.5;fill:none}
-
-/* ── PROBLEM ──────────────────────────────────── */
-.problem{
-  background:var(--ink);
+/* ── FUNDRAISING STRIP ───────────────────────── */
+.fund-strip{
+  background:var(--lagune);padding:56px 5%;
   position:relative;overflow:hidden;
 }
-.problem::before{
+.fund-strip::before{
   content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 60% 80% at 100% 0%, rgba(15,110,86,.3) 0%,transparent 55%),
-    radial-gradient(ellipse 40% 60% at 0% 100%, rgba(8,61,46,.5) 0%,transparent 55%);
-}
-.problem::after{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-  background-size:256px;
-}
-.problem-inner{position:relative;z-index:2}
-.problem .eyebrow{color:var(--teal-lt)}
-.problem .section-title{color:var(--white)}
-.problem .section-rule{background:var(--gold)}
-.problem .section-body{color:rgba(255,255,255,.6);max-width:600px}
-
-.problem-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;
-}
-.prob-card{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(159,225,203,.12);
-  border-radius:12px;padding:32px 28px;
-  transition:all .3s;
-  position:relative;overflow:hidden;
-}
-.prob-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 80% at 50% 120%,rgba(15,110,86,.2),transparent);
-  opacity:0;transition:opacity .3s;
-}
-.prob-card:hover{border-color:rgba(159,225,203,.3);transform:translateY(-4px)}
-.prob-card:hover::before{opacity:1}
-.prob-num{
-  font-family:'Playfair Display',serif;
-  font-size:48px;font-weight:900;color:var(--teal-lt);
-  line-height:1;margin-bottom:12px;
-}
-.prob-num sup{font-size:24px}
-.prob-text{font-size:14px;color:rgba(255,255,255,.6);line-height:1.65}
-.prob-text strong{color:rgba(255,255,255,.85);font-weight:500}
-
-.problem-callout{
-  margin-top:56px;padding:32px 40px;
-  background:rgba(255,255,255,.04);
-  border-left:3px solid var(--gold);
-  border-radius:0 8px 8px 0;
-}
-.problem-callout p{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:20px;color:rgba(255,255,255,.85);line-height:1.55;
-}
-.problem-callout span{
-  display:block;margin-top:12px;font-family:'Be Vietnam Pro',sans-serif;
-  font-size:13px;font-style:normal;color:var(--teal-lt);font-weight:500;
-}
-
-/* ── FUNDRAISING SECTION ──────────────────────── */
-.fundraise{
-  background:var(--ink);
-  padding:72px 5%;
-  position:relative;overflow:hidden;
-}
-.fundraise::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 55% 90% at 100% 50%, rgba(200,169,110,.12) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 60% at 0% 50%, rgba(15,110,86,.2) 0%, transparent 55%);
-}
-.fundraise::after{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-  background-size:256px;pointer-events:none;
-}
-.fundraise-inner{
-  position:relative;z-index:2;
-  display:flex;justify-content:center;
-}
-.fundraise-left .eyebrow{color:var(--teal-lt)}
-.fundraise-left .section-title{color:var(--white)}
-.fundraise-left .section-rule{background:var(--gold)}
-.fundraise-left .section-body{color:rgba(255,255,255,.55);max-width:460px}
-.fundraise-impact{
-  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px;
-}
-.impact-item{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:10px;padding:20px 18px;
-}
-.impact-num{
-  font-family:'Playfair Display',serif;
-  font-size:28px;font-weight:900;color:var(--gold);
-  line-height:1;margin-bottom:6px;
-}
-.impact-label{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5}
-
-/* right: fund card */
-.fund-card{
-  background:linear-gradient(160deg,rgba(247,243,238,.06) 0%,rgba(247,243,238,.02) 100%);
-  border:1px solid rgba(200,169,110,.3);
-  border-radius:16px;padding:36px 32px;
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;gap:0;
-  box-shadow:0 24px 64px rgba(0,0,0,.3);
-}
-.fund-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 100% 60% at 50% 110%,rgba(200,169,110,.1),transparent);
+  background:radial-gradient(ellipse 70% 90% at 100% 50%,rgba(249,185,92,.12),transparent);
   pointer-events:none;
+}
+.fund-inner{
+  max-width:680px;margin:0 auto;position:relative;z-index:2;
 }
 .fund-eyebrow{
   font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:8px;
+  color:var(--mint);margin-bottom:16px;display:flex;align-items:center;gap:8px;
 }
+.fund-eyebrow::before{content:'';width:16px;height:2px;background:var(--peach)}
 .fund-raised{
-  font-family:'Playfair Display',serif;
-  font-size:52px;font-weight:900;color:var(--gold);
-  line-height:1;margin-bottom:4px;
+  font-size:52px;font-weight:700;color:var(--peach);
+  font-family:'Georgia',serif;line-height:1;margin-bottom:4px;
 }
-.fund-goal-txt{font-size:13px;color:rgba(255,255,255,.38);margin-bottom:24px}
-.fund-goal-txt strong{color:rgba(255,255,255,.6)}
-.fund-bar{
-  height:10px;background:rgba(255,255,255,.07);
-  border-radius:5px;overflow:hidden;margin-bottom:8px;
-}
-.fund-fill{
-  height:100%;
-  background:linear-gradient(90deg, #C8A96E, #e8c07a);
-  border-radius:5px;width:0;
-  transition:width 2.2s cubic-bezier(.16,1,.3,1) 1.2s;
-}
-.fund-pct{
-  display:flex;justify-content:space-between;
-  font-size:12px;color:rgba(255,255,255,.38);margin-bottom:28px;
-}
-.fund-pct strong{color:var(--gold);font-weight:600}
-.fund-tiers{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;
-  margin-bottom:20px;
-}
+.fund-goal-txt{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:22px}
+.fund-goal-txt strong{color:rgba(255,255,255,.8)}
+.fund-bar{height:10px;background:rgba(255,255,255,.1);border-radius:5px;overflow:hidden;margin-bottom:8px}
+.fund-fill{height:100%;background:linear-gradient(90deg,var(--peach),#f9d08a);border-radius:5px;width:0;transition:width 2.2s cubic-bezier(.16,1,.3,1) 1.2s}
+.fund-pct{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:28px}
+.fund-pct strong{color:var(--peach);font-weight:700}
+.fund-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
 .fund-tier{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:8px;padding:12px 8px;
-  font-size:12px;cursor:pointer;
-  transition:all .2s;text-align:center;gap:4px;
+  display:flex;flex-direction:column;align-items:center;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:14px 8px;cursor:pointer;gap:4px;
+  transition:all .2s;text-align:center;
 }
-.fund-tier:hover,.fund-tier.active{
-  background:rgba(200,169,110,.14);
-  border-color:rgba(200,169,110,.5);
-  transform:translateY(-1px);
+.fund-tier:hover,.fund-tier.active{background:rgba(249,185,92,.15);border-color:rgba(249,185,92,.5)}
+.tier-amt{font-size:18px;font-weight:700;color:var(--peach);font-family:'Georgia',serif}
+.tier-label{font-size:11px;color:rgba(255,255,255,.6)}
+.fund-donate-btn{
+  display:block;width:100%;text-align:center;
+  background:var(--peach);color:var(--ink);
+  padding:15px;border-radius:8px;border:none;cursor:pointer;
+  font-size:15px;font-weight:700;font-family:'Poppins',sans-serif;
+  letter-spacing:.03em;transition:all .22s;
 }
-.fund-tier-label{color:rgba(255,255,255,.6);font-size:11px}
-.fund-tier-amt{color:var(--gold);font-weight:700;font-family:'Playfair Display',serif;font-size:18px}
-.fund-btn{
-  display:block;text-align:center;width:100%;
-  background:var(--gold);color:var(--ink);
-  padding:14px;border-radius:8px;
-  font-size:14px;font-weight:700;text-decoration:none;
-  font-family:'Be Vietnam Pro',sans-serif;
-  border:none;cursor:pointer;letter-spacing:.03em;
-  transition:all .22s;
-}
-.fund-btn:hover{background:#d4b578;transform:translateY(-2px);box-shadow:0 12px 28px rgba(200,169,110,.35)}
+.fund-donate-btn:hover{background:#f5a83a;transform:translateY(-2px);box-shadow:0 12px 28px rgba(249,185,92,.3)}
 .fund-supporters{
   text-align:center;margin-top:14px;
-  font-size:12px;color:rgba(255,255,255,.28);
+  font-size:12px;color:rgba(255,255,255,.3);
   display:flex;align-items:center;justify-content:center;gap:6px;
 }
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-.live-dot{
-  display:inline-block;width:7px;height:7px;border-radius:50%;
-  background:var(--teal-lt);flex-shrink:0;
-  animation:pulse-dot 1.8s ease-in-out infinite;
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--mint);flex-shrink:0;animation:pulse-dot 1.8s ease-in-out infinite}
+
+/* ── ABOUT ───────────────────────────────────── */
+.about{background:var(--cream);padding:96px 5%}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.about-photos{position:relative;height:480px}
+.photo-main{
+  position:absolute;top:0;left:0;width:75%;height:80%;
+  border-radius:16px;overflow:hidden;
+  background:linear-gradient(135deg,var(--lagune-dk),var(--lagune));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 20px 48px rgba(99,152,169,.25);
 }
-.fund-divider{
-  height:1px;background:rgba(255,255,255,.06);
-  margin:20px 0;
-}
-
-@media(max-width:900px){
-  .fundraise-inner{grid-template-columns:1fr}
-  .fund-card{margin-top:0}
-  .fundraise-impact{grid-template-columns:1fr 1fr}
-}
-
-
-/* ── PROGRAMME ────────────────────────────────── */
-.programme{background:var(--white)}
-.programme-header{text-align:center;margin-bottom:64px}
-.programme-header .section-body{margin:0 auto;text-align:center}
-.programme-header .section-rule{margin:20px auto 32px}
-
-.prog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.prog-card{
+.photo-accent{
+  position:absolute;bottom:0;right:0;width:52%;height:52%;
   border-radius:12px;overflow:hidden;
-  border:1px solid var(--warm);
-  transition:all .3s;
-  background:var(--cream);
-  display:flex;flex-direction:column;
+  background:linear-gradient(135deg,var(--nectarine-dk),var(--nectarine));
+  border:4px solid var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 32px rgba(215,137,127,.25);
 }
-.prog-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(15,110,86,.1);border-color:var(--teal-lt)}
-.prog-card-img{
-  height:200px;position:relative;overflow:hidden;
-  background:linear-gradient(135deg,var(--teal-dark),var(--teal));
+.photo-ph{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:rgba(255,255,255,.45);
+  font-style:italic;padding:20px;text-align:center;
+  font-family:'Georgia',serif;
+}
+.about-icon{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:52px;height:52px;border-radius:50%;
+  background:var(--peach);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(249,185,92,.4);z-index:5;
+  animation:floatY 5s ease-in-out infinite;
+}
+.about-icon svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:2}
+.eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--nectarine);display:block;margin-bottom:12px}
+.section-h2{
+  font-size:clamp(28px,3vw,42px);font-weight:700;
+  color:var(--ink);line-height:1.15;margin-bottom:14px;
+  font-family:'Georgia',serif;
+}
+.section-h2 em{font-style:italic;color:var(--lagune)}
+.gold-rule{width:44px;height:3px;background:var(--peach);margin:18px 0 28px}
+.body-text{font-size:15.5px;line-height:1.8;color:var(--muted);max-width:500px}
+.check-list{list-style:none;margin:24px 0 32px;display:flex;flex-direction:column;gap:10px}
+.check-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:14.5px;color:var(--ink);line-height:1.5;font-weight:400;
+}
+.check-mark{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--mint-lt);flex-shrink:0;margin-top:1px;
   display:flex;align-items:center;justify-content:center;
 }
-.prog-card-img svg{width:64px;height:64px;fill:none;stroke:rgba(255,255,255,.3);stroke-width:1.5}
-.prog-card-badge{
-  position:absolute;top:16px;left:16px;
-  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+.check-mark svg{width:11px;height:11px;stroke:var(--mint-dk);stroke-width:2.5;fill:none}
+
+/* ── PROBLEM ─────────────────────────────────── */
+.problem{background:var(--ink);padding:96px 5%;position:relative;overflow:hidden}
+.problem::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 70% at 100% 0%,rgba(150,199,179,.15),transparent),
+    radial-gradient(ellipse 40% 60% at 0% 100%,rgba(99,152,169,.2),transparent);
+}
+.problem-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto}
+.problem .eyebrow{color:var(--mint)}
+.problem .section-h2{color:#fff}
+.problem .gold-rule{background:var(--peach)}
+.problem .body-text{color:rgba(255,255,255,.58)}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.prob-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(150,199,179,.15);
+  border-radius:14px;padding:32px 26px;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.prob-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 110%,rgba(150,199,179,.12),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.prob-card:hover{border-color:rgba(150,199,179,.35);transform:translateY(-4px)}
+.prob-card:hover::before{opacity:1}
+.prob-num{
+  font-size:50px;font-weight:700;color:var(--mint);
+  font-family:'Georgia',serif;line-height:1;margin-bottom:12px;
+}
+.prob-num sup{font-size:24px}
+.prob-text{font-size:14px;color:rgba(255,255,255,.55);line-height:1.7}
+.prob-text strong{color:rgba(255,255,255,.85);font-weight:600}
+.problem-quote{
+  margin-top:52px;padding:28px 36px;
+  border-left:3px solid var(--peach);
+  background:rgba(255,255,255,.03);
+  border-radius:0 10px 10px 0;
+}
+.problem-quote p{font-size:18px;font-style:italic;font-family:'Georgia',serif;color:rgba(255,255,255,.82);line-height:1.6}
+.problem-quote cite{display:block;margin-top:10px;font-size:12.5px;color:var(--mint);font-style:normal;font-weight:500}
+
+/* ── PROGRAMME ───────────────────────────────── */
+.programme{background:var(--warm);padding:96px 5%}
+.programme-hd{text-align:center;margin-bottom:60px}
+.programme-hd .section-h2{margin:0 auto 12px}
+.programme-hd .body-text{margin:0 auto;text-align:center}
+.programme-hd .gold-rule{margin:18px auto 28px}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto}
+.prog-card{
+  background:var(--white);border-radius:14px;
+  overflow:hidden;border:1px solid var(--border);
+  display:flex;flex-direction:column;
+  transition:all .3s;
+}
+.prog-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(99,152,169,.14);border-color:var(--mint)}
+.prog-top{
+  height:190px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.prog-top svg{width:60px;height:60px;fill:none;stroke:rgba(255,255,255,.35);stroke-width:1.5}
+.prog-badge{
+  position:absolute;top:14px;left:14px;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   padding:4px 12px;border-radius:20px;
 }
-.badge-active{background:var(--teal);color:#fff}
-.badge-upcoming{background:var(--gold);color:var(--ink)}
-.prog-card-body{padding:28px 24px;flex:1;display:flex;flex-direction:column}
-.prog-card-num{
-  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:8px;
-}
-.prog-card-title{
-  font-family:'Playfair Display',serif;
-  font-size:20px;font-weight:700;color:var(--ink);
-  line-height:1.3;margin-bottom:10px;
-}
-.prog-card-text{font-size:13.5px;color:var(--muted);line-height:1.65;flex:1;margin-bottom:24px}
-.prog-progress-label{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:6px}
-.prog-bar{height:5px;background:var(--warm);border-radius:3px;overflow:hidden;margin-bottom:20px}
-.prog-fill{height:100%;background:var(--teal-mid);border-radius:3px;transition:width 1.5s ease 1s}
+.badge-mint{background:var(--mint);color:var(--ink)}
+.badge-peach{background:var(--peach);color:var(--ink)}
+.badge-nectar{background:var(--nectarine-lt);color:var(--nectarine-dk)}
+.prog-body{padding:26px 22px;flex:1;display:flex;flex-direction:column}
+.prog-step{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lagune);margin-bottom:8px}
+.prog-title{font-size:19px;font-weight:700;color:var(--ink);font-family:'Georgia',serif;line-height:1.3;margin-bottom:10px}
+.prog-text{font-size:13.5px;color:var(--muted);line-height:1.65;flex:1;margin-bottom:22px}
+.prog-pbar-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:6px}
+.prog-pbar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:18px}
+.prog-pfill{height:100%;border-radius:3px;transition:width 1.5s ease 1.2s}
+.pfill-mint{background:var(--mint)}
+.pfill-lagune{background:var(--lagune)}
+.pfill-peach{background:var(--peach)}
 .prog-link{
   display:inline-flex;align-items:center;gap:6px;
-  font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;
-  border-top:1px solid var(--warm);padding-top:18px;
+  font-size:13px;font-weight:700;color:var(--lagune);text-decoration:none;
+  border-top:1px solid var(--border);padding-top:16px;
   transition:gap .2s;
 }
-.prog-link:hover{gap:10px;color:var(--teal-mid)}
+.prog-link:hover{gap:10px;color:var(--mint-dk)}
 
-/* ── QUOTES ───────────────────────────────────── */
-.quotes{
-  background:var(--teal-pale);
-  text-align:center;padding:80px 5%;
-}
-.quotes-eyebrow{
-  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:48px;display:block;
-}
-.quotes-track{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+/* ── QUOTES ──────────────────────────────────── */
+.quotes{background:var(--mint-lt);padding:72px 5%;text-align:center}
+.quotes-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mint-dk);display:block;margin-bottom:44px}
+.quotes-grid{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;max-width:1000px;margin:0 auto}
 .quote-card{
-  background:var(--white);border-radius:12px;padding:32px 28px;
-  max-width:300px;text-align:left;
-  box-shadow:0 4px 16px rgba(15,110,86,.08);
-  border:1px solid rgba(15,110,86,.08);
+  background:var(--white);border-radius:14px;padding:28px 24px;
+  max-width:292px;text-align:left;
+  box-shadow:0 4px 16px rgba(106,170,148,.1);
+  border:1px solid rgba(106,170,148,.15);
   transition:transform .3s;
 }
 .quote-card:hover{transform:translateY(-4px)}
-.quote-mark{
-  font-family:'Playfair Display',serif;font-size:48px;font-weight:900;
-  color:var(--teal-lt);line-height:.8;margin-bottom:8px;
-}
-.quote-text{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:16px;color:var(--ink);line-height:1.6;margin-bottom:16px;
-}
-.quote-attr{font-size:12px;color:var(--muted);font-weight:500}
+.q-mark{font-size:44px;font-weight:700;color:var(--mint);line-height:.8;margin-bottom:10px;font-family:'Georgia',serif}
+.q-text{font-size:15.5px;font-style:italic;color:var(--ink);line-height:1.65;margin-bottom:14px;font-family:'Georgia',serif}
+.q-attr{font-size:11.5px;color:var(--muted);font-weight:500}
 
-/* ── NEWSLETTER ───────────────────────────────── */
+/* ── NEWSLETTER ──────────────────────────────── */
 .newsletter{
-  background:var(--ink);
-  padding:80px 5%;text-align:center;
+  background:var(--nectarine);padding:72px 5%;text-align:center;
   position:relative;overflow:hidden;
 }
 .newsletter::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 80% at 50% 100%,rgba(15,110,86,.2),transparent);
+  background:radial-gradient(ellipse 60% 80% at 50% 110%,rgba(255,255,255,.1),transparent);
 }
-.newsletter-inner{position:relative;z-index:2;max-width:520px;margin:0 auto}
-.newsletter-title{
-  font-family:'Playfair Display',serif;
-  font-size:36px;font-weight:900;color:var(--white);
-  margin-bottom:12px;
-}
-.newsletter-sub{font-size:15px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:36px}
-.newsletter-form{display:flex;gap:0;max-width:420px;margin:0 auto;border-radius:6px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)}
-.newsletter-input{
+.newsletter-inner{position:relative;z-index:2;max-width:500px;margin:0 auto}
+.newsletter h2{font-size:34px;font-weight:700;color:#fff;margin-bottom:10px;font-family:'Georgia',serif}
+.newsletter p{font-size:15px;color:rgba(255,255,255,.75);line-height:1.65;margin-bottom:32px}
+.nl-form{display:flex;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.15)}
+.nl-input{
   flex:1;padding:14px 18px;font-size:14px;
-  font-family:'Be Vietnam Pro',sans-serif;
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.15);border-right:none;
-  color:var(--white);outline:none;border-radius:0;
+  font-family:'Poppins',sans-serif;
+  background:rgba(255,255,255,.2);
+  border:none;color:#fff;outline:none;
 }
-.newsletter-input::placeholder{color:rgba(255,255,255,.35)}
-.newsletter-btn{
-  background:var(--teal);color:#fff;border:none;
-  padding:14px 22px;font-size:13.5px;font-weight:600;
-  cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;
+.nl-input::placeholder{color:rgba(255,255,255,.5)}
+.nl-btn{
+  background:var(--ink);color:#fff;border:none;
+  padding:14px 22px;font-size:13.5px;font-weight:700;
+  cursor:pointer;font-family:'Poppins',sans-serif;
   transition:background .2s;white-space:nowrap;
 }
-.newsletter-btn:hover{background:var(--teal-mid)}
+.nl-btn:hover{background:var(--lagune-dk)}
 
-/* ── PARTNERS ─────────────────────────────────── */
-.partners{background:var(--cream);padding:56px 5%;text-align:center}
-.partners-label{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:32px;display:block}
-.partner-logos{
-  display:flex;gap:40px;justify-content:center;align-items:center;flex-wrap:wrap;
-}
-.partner-logo{
-  padding:12px 24px;border:1px solid var(--warm);border-radius:6px;
-  font-size:13px;font-weight:600;color:var(--muted);
-  background:var(--white);transition:all .2s;
+/* ── PARTNERS ────────────────────────────────── */
+.partners{background:var(--cream);padding:52px 5%;text-align:center}
+.partners-lbl{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:28px}
+.partner-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.partner-pill{
+  padding:10px 22px;border:1px solid var(--border);border-radius:30px;
+  font-size:13px;font-weight:500;color:var(--muted);
+  background:var(--white);transition:all .2s;cursor:pointer;
   display:flex;align-items:center;gap:8px;
 }
-.partner-logo:hover{border-color:var(--teal-lt);color:var(--teal);transform:translateY(-2px)}
-.partner-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);opacity:.4}
+.partner-pill:hover{border-color:var(--mint);color:var(--mint-dk);transform:translateY(-2px)}
+.pill-dot{width:7px;height:7px;border-radius:50%;background:var(--mint)}
+.partner-join{border-style:dashed;color:var(--nectarine);border-color:var(--nectarine-lt)}
+.partner-join:hover{border-color:var(--nectarine);background:var(--nectarine-lt)}
 
-/* ── FOOTER ───────────────────────────────────── */
-footer{
-  background:var(--teal-dark);padding:64px 5% 32px;
-  color:rgba(255,255,255,.6);
-}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-brand{}
-.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px;text-decoration:none}
-.footer-logo-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--white)}
-.footer-brand-text{font-size:13.5px;line-height:1.7;max-width:280px;margin-bottom:20px}
+/* ── FOOTER ──────────────────────────────────── */
+footer{background:var(--lagune-dk);padding:64px 5% 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px}
+.footer-brand-name{font-size:17px;font-weight:700;color:#fff;font-family:'Georgia',serif;margin-bottom:12px}
+.footer-brand-text{font-size:13px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:20px;max-width:270px}
+.footer-brand-sub{font-size:11.5px;color:rgba(255,255,255,.3);margin-bottom:18px}
 .footer-social{display:flex;gap:10px}
-.social-btn{
-  width:34px;height:34px;border-radius:50%;
+.soc{
+  width:32px;height:32px;border-radius:50%;
   background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
   display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,.6);font-size:12px;cursor:pointer;
-  transition:all .2s;text-decoration:none;
+  font-size:11px;color:rgba(255,255,255,.55);cursor:pointer;
+  transition:all .2s;text-decoration:none;font-weight:700;
 }
-.social-btn:hover{background:var(--teal);border-color:var(--teal);color:#fff}
-.footer-col h4{font-size:13px;font-weight:600;color:var(--white);letter-spacing:.06em;margin-bottom:16px}
+.soc:hover{background:var(--nectarine);border-color:var(--nectarine);color:#fff}
+.footer-col h4{font-size:12px;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-col ul a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
-.footer-col ul a:hover{color:var(--teal-lt)}
+.footer-col ul a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-col ul a:hover{color:var(--mint)}
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,.08);padding-top:24px;
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:12px;color:rgba(255,255,255,.3);
+  display:flex;justify-content:space-between;
+  font-size:12px;color:rgba(255,255,255,.28);flex-wrap:wrap;gap:10px;
 }
-.footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none}
-.footer-bottom a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom a{color:rgba(255,255,255,.35);text-decoration:none}
+.footer-bottom a:hover{color:var(--peach)}
 
-/* ── RESPONSIVE ───────────────────────────────── */
+/* ── RESPONSIVE ──────────────────────────────── */
 @media(max-width:900px){
-  nav{padding:0 4%}
   .nav-links{display:none}
-  .hero{padding:100px 4% 60px}
+  .hero-grid{grid-template-columns:1fr}
   .hero-card{display:none}
-  .stats-strip{grid-template-columns:repeat(2,1fr)}
-  .stat-cta-panel{grid-column:span 2}
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .stat-cta-cell{grid-column:span 2}
   .about-inner{grid-template-columns:1fr}
-  .about-photos{height:300px;margin-bottom:0}
-  .problem-stats{grid-template-columns:1fr;}
-  .prog-cards{grid-template-columns:1fr}
+  .about-photos{height:280px}
+  .prob-grid{grid-template-columns:1fr}
+  .prog-grid{grid-template-columns:1fr}
+  .fund-tiers{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr 1fr}
-  .footer-brand{grid-column:span 2}
 }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ────────────────────────────────────── -->
-<nav>
+<!-- ── NAV ──────────────────────────────────── -->
+<nav id="nav">
   <a class="nav-logo" href="#">
     <div class="nav-logo-mark">
-      <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9"/><path d="M8 12s1.5 2.5 4 2.5 4-2.5 4-2.5"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><path d="M20 3l-4 4"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9"/><path d="M8 12s1.5 2.5 4 2.5 4-2.5 4-2.5"/></svg>
     </div>
-    <div class="nav-logo-text">
-      Bridging the Silence
-      <span>#BridgingTheSilence</span>
+    <div>
+      <div class="nav-logo-name">Bridging the Silence</div>
+      <span class="nav-logo-tag">#ConnectDontStaySilent</span>
     </div>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#problem">The Crisis</a></li>
     <li><a href="#programme">Programme</a></li>
+    <li><a href="#donate">Donate</a></li>
     <li><a href="#partners">Partners</a></li>
-    <li><a href="#">Contact</a></li>
   </ul>
-  <div class="nav-actions">
-    <button class="lang-toggle" onclick="toggleLang(this)">VI 🇻🇳</button>
-    <a href="#survey" class="nav-cta">Take the Survey →</a>
+  <div class="nav-right">
+    <button class="lang-btn">VI 🇻🇳</button>
+    <a href="#programme" class="nav-cta">Take the Survey →</a>
   </div>
 </nav>
 
-<!-- ── HERO ────────────────────────────────────── -->
+<!-- ── HERO ──────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-ring"></div>
-  <div class="hero-ring2"></div>
-  <div class="hero-dot-grid" id="dotGrid"></div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow fade-up d1">Campaign 2026 · ASEAN Youth Mental Health</div>
-    <h1 class="hero-title fade-up d2">
-      The crisis is<br>happening
-      <em>in silence.</em>
-    </h1>
-    <div class="hero-rule fade-up d3"></div>
-    <p class="hero-sub fade-up d3">
-      <strong>1 in 7 young people</strong> across our region is struggling. Youth suicide continues to rise.
-      The warning signs appear at home every day — and are almost always missed.
-      We're here to change that.
-    </p>
-    <div class="hero-actions fade-up d4">
-      <a href="#survey" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        Take the Survey
-      </a>
-      <a href="#programme" class="btn-secondary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Join a Workshop
-      </a>
-    </div>
+  <div class="hero-bg-shapes">
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="shape s3"></div>
   </div>
+  <div class="hero-slice"></div>
 
-  <!-- Floating info card -->
-  <div class="hero-card fade-up d5" id="heroCard">
-    <div class="hero-card-badge">Parent Survey — Active Now</div>
-    <div class="hero-card-title">Help shape the workshops your family needs</div>
-    <div class="hero-card-body">Your responses directly determine the topics of our expert-led sessions. 3 minutes. Real impact.</div>
-    <div class="hero-card-stat">
-      <span>Responses so far</span>
-      <strong id="surveyCount">—</strong>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow fu d1">Campaign 2026 · ASEAN Youth Mental Health</div>
+      <h1 class="hero-h1 fu d2">
+        The crisis is<br>happening
+        <em> in silence.</em>
+      </h1>
+      <div class="hero-rule fu d3"></div>
+      <p class="hero-sub fu d3">
+        <strong>1 in 7 young people</strong> across our region is struggling. Youth suicide continues to rise.
+        The warning signs appear at home every day — and are almost always missed.
+        We're here to change that.
+      </p>
+      <div class="hero-btns fu d4">
+        <a href="#programme" class="btn-peach">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          Take the Survey
+        </a>
+        <a href="#programme" class="btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Join a Workshop
+        </a>
+      </div>
     </div>
-    <div class="progress-bar"><div class="progress-fill" id="heroProgress" style="--w:62%"></div></div>
-    <a href="#survey" class="hero-card-cta">Take the Survey →</a>
+
+    <div class="hero-card fu d4">
+      <div class="hero-card-badge"><div class="pulse-dot"></div>Parent Survey — Active Now</div>
+      <h3>Help shape the workshops your family needs</h3>
+      <p>Your responses directly determine the topics of our expert-led sessions. 3 minutes. Real impact.</p>
+      <div class="card-stat-row">
+        <span>Responses so far</span>
+        <strong id="surveyCount">87</strong>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" id="heroFill" style="width:0"></div></div>
+      <a href="#" class="card-cta">Take the Survey →</a>
+    </div>
   </div>
 </section>
 
-<!-- ── STATS STRIP ──────────────────────────────── -->
+<!-- ── STATS STRIP ────────────────────────────── -->
 <div class="stats-strip">
-  <div class="stat-item">
+  <div class="stat-cell">
     <div class="stat-num">200+</div>
     <div class="stat-label">Parents to equip</div>
   </div>
-  <div class="stat-item">
+  <div class="stat-cell">
     <div class="stat-num">2</div>
     <div class="stat-label">Expert-led workshops</div>
   </div>
-  <div class="stat-item">
+  <div class="stat-cell">
     <div class="stat-num">6</div>
     <div class="stat-label">Week programme</div>
   </div>
-  <div class="stat-cta-panel">
+  <div class="stat-cta-cell">
     <p>Our goal is to reach every family who needs this</p>
-    <a href="#partners" class="stat-cta-link">
-      Become a Partner →
-    </a>
+    <a href="#partners" class="stat-cta-link">Become a Partner →</a>
   </div>
 </div>
 
-<!-- ── FUNDRAISING ──────────────────────────────── -->
-<section class="fundraise" id="donate">
-  <div class="fundraise-inner">
-
-    <!-- Live fundraising card -->
-    <div class="fund-card" id="fundCard" style="width:100%;max-width:520px">
-      <div class="fund-eyebrow">
-        <span class="live-dot"></span>
-        Live fundraising goal
+<!-- ── FUNDRAISING ────────────────────────────── -->
+<section class="fund-strip" id="donate">
+  <div class="fund-inner">
+    <div class="fund-eyebrow">Live fundraising goal</div>
+    <div class="fund-raised" id="fundRaised">£0</div>
+    <div class="fund-goal-txt">raised of <strong>£5,000</strong> goal · <span id="fundDays">32 days left</span></div>
+    <div class="fund-bar"><div class="fund-fill" id="fundFill"></div></div>
+    <div class="fund-pct"><strong id="fundPct">0%</strong><span id="backerCount">14 backers</span></div>
+    <div class="fund-tiers">
+      <div class="fund-tier" onclick="selectTier(this,10)">
+        <div class="tier-amt">£10</div><div class="tier-label">💙 Supporter</div>
       </div>
-
-      <div class="fund-raised" id="fundRaised">£0</div>
-      <div class="fund-goal-txt">raised of <strong>£5,000</strong> goal · <span id="fundDays">32 days left</span></div>
-
-      <div class="fund-bar"><div class="fund-fill" id="fundFill"></div></div>
-      <div class="fund-pct">
-        <strong id="fundPct">0%</strong>
-        <span id="backerCount">14 backers</span>
+      <div class="fund-tier active" onclick="selectTier(this,25)">
+        <div class="tier-amt">£25</div><div class="tier-label">⭐ Advocate</div>
       </div>
-
-      <div class="fund-divider"></div>
-
-      <div class="fund-tiers">
-        <div class="fund-tier" onclick="selectTier(this,10,'Supporter')">
-          <span class="fund-tier-amt">£10</span>
-          <span class="fund-tier-label">💙 Supporter</span>
-        </div>
-        <div class="fund-tier active" onclick="selectTier(this,25,'Advocate')">
-          <span class="fund-tier-amt">£25</span>
-          <span class="fund-tier-label">⭐ Advocate</span>
-        </div>
-        <div class="fund-tier" onclick="selectTier(this,50,'Champion')">
-          <span class="fund-tier-amt">£50</span>
-          <span class="fund-tier-label">🌟 Champion</span>
-        </div>
-        <div class="fund-tier" onclick="selectTier(this,0,'Custom')">
-          <span class="fund-tier-amt" id="customAmt">Other</span>
-          <span class="fund-tier-label">✏️ Custom</span>
-        </div>
+      <div class="fund-tier" onclick="selectTier(this,50)">
+        <div class="tier-amt">£50</div><div class="tier-label">🌟 Champion</div>
       </div>
-
-      <button class="fund-btn" id="donateBtn" onclick="handleDonate()">Donate £25 →</button>
-
-      <div class="fund-supporters">
-        <span class="live-dot" style="background:var(--gold);animation-delay:.4s"></span>
-        <span id="supporterCount">14</span>&nbsp;people have donated today
+      <div class="fund-tier" onclick="selectTier(this,0)">
+        <div class="tier-amt" id="customAmt">Other</div><div class="tier-label">✏️ Custom</div>
       </div>
     </div>
-
+    <button class="fund-donate-btn" id="donateBtn" onclick="handleDonate()">Donate £25 →</button>
+    <div class="fund-supporters">
+      <div class="live-dot"></div>
+      <span id="supporterCount">14</span>&nbsp;people have donated today
+    </div>
   </div>
 </section>
 
-<!-- ── ABOUT ────────────────────────────────────── -->
+<!-- ── ABOUT ──────────────────────────────────── -->
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-photos">
-      <div class="photo-main">
-        <div class="photo-placeholder">
-          <div>
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" style="display:block;margin:0 auto 12px"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-            Add your team photo here
-          </div>
-        </div>
-      </div>
-      <div class="photo-accent">
-        <div class="photo-placeholder" style="font-size:12px">
-          <div>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" style="display:block;margin:0 auto 10px"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-            Workshop moment
-          </div>
-        </div>
-      </div>
-      <div class="about-icon-badge">
+      <div class="photo-main"><div class="photo-ph">Add your team photo here</div></div>
+      <div class="photo-accent"><div class="photo-ph" style="font-size:12px">Workshop moment</div></div>
+      <div class="about-icon">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
-
-    <div class="about-text">
+    <div>
       <span class="eyebrow">Who we are</span>
-      <h2 class="section-title">A youth-led mission built on one belief:</h2>
-      <h2 class="section-title"><em>one conversation changes everything.</em></h2>
-      <div class="section-rule"></div>
-      <p class="section-body">
-        We are a team of young people who've seen firsthand what happens when teens feel too scared to speak up — and too ashamed to ask for help. Bridging the Silence is our answer: a 6-week programme equipping parents across ASEAN with the practical tools to recognise distress and start the conversations that matter most.
-      </p>
-      <ul class="about-checks">
-        <li>
-          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-          Equipping parents with practical communication tools
-        </li>
-        <li>
-          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-          Connecting families to expert mental health guidance
-        </li>
-        <li>
-          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-          Reaching teens through the adults closest to them
-        </li>
-        <li>
-          <div class="check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-          Building an ASEAN-wide community of support
-        </li>
+      <h2 class="section-h2">A youth-led mission built on one belief:</h2>
+      <h2 class="section-h2"><em>one conversation changes everything.</em></h2>
+      <div class="gold-rule"></div>
+      <p class="body-text">We are a team of young people who've seen firsthand what happens when teens feel too scared to speak up — and too ashamed to ask for help. Bridging the Silence is our answer: a 6-week programme equipping parents across ASEAN with the practical tools to recognise distress and start the conversations that matter most.</p>
+      <ul class="check-list">
+        <li><div class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Equipping parents with practical communication tools</li>
+        <li><div class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Connecting families to expert mental health guidance</li>
+        <li><div class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Reaching teens through the adults closest to them</li>
+        <li><div class="check-mark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Building an ASEAN-wide community of support</li>
       </ul>
-      <a href="#" class="btn-primary" style="display:inline-flex">Our Story →</a>
+      <a href="#" class="btn-peach" style="display:inline-flex">Our Story →</a>
     </div>
   </div>
 </section>
 
-<!-- ── PROBLEM ──────────────────────────────────── -->
+<!-- ── PROBLEM ────────────────────────────────── -->
 <section class="problem" id="problem">
   <div class="problem-inner">
     <span class="eyebrow">Why this matters</span>
-    <h2 class="section-title">Youth suicide in ASEAN is rising.<br>The warning signs are being missed — at home.</h2>
-    <div class="section-rule"></div>
-    <p class="section-body">
-      While overall suicide rates declined in the WHO South-East Asia region, youth rates continue to climb. The critical intervention window is ages 13–18. Parents are the first responders — but most haven't been equipped to act.
-    </p>
-
-    <div class="problem-stats">
+    <h2 class="section-h2">Youth suicide in ASEAN is rising.<br>The warning signs are being missed — at home.</h2>
+    <div class="gold-rule"></div>
+    <p class="body-text">While overall suicide rates declined in the WHO South-East Asia region, youth rates continue to climb. The critical intervention window is ages 13–18. Parents are the first responders — but most haven't been equipped to act.</p>
+    <div class="prob-grid">
       <div class="prob-card">
         <div class="prob-num">73<sup>%</sup></div>
         <p class="prob-text">of youth mental health deaths occur in <strong>low- and middle-income countries</strong> — where resources are most scarce</p>
@@ -931,147 +670,125 @@ footer{
         <div class="prob-num">6–16<sup>%</sup></div>
         <p class="prob-text">of young adults report <strong>suicidal ideation</strong> — most without any professional support or family intervention</p>
       </div>
-      <!-- Fundraising card removed — now lives below stats strip -->
     </div>
-
-    <div class="problem-callout">
+    <div class="problem-quote">
       <p>"Parents are not failing. They simply haven't been given the tools. Without early action, risks escalate quickly and become much harder to reverse."</p>
-      <span>— Bridging the Silence Problem Statement, 2026</span>
+      <cite>— Bridging the Silence Problem Statement, 2026</cite>
     </div>
   </div>
 </section>
 
-<!-- ── PROGRAMME ────────────────────────────────── -->
+<!-- ── PROGRAMME ──────────────────────────────── -->
 <section class="programme" id="programme">
-  <div class="programme-header">
+  <div class="programme-hd">
     <span class="eyebrow">The Programme</span>
-    <h2 class="section-title">Three steps. Six weeks.<br><em>Real change for real families.</em></h2>
-    <div class="section-rule"></div>
-    <p class="section-body">A demand-driven, community-first approach — built around what parents actually say they need, not what we assume they do.</p>
+    <h2 class="section-h2">Three steps. Six weeks.<br><em>Real change for real families.</em></h2>
+    <div class="gold-rule"></div>
+    <p class="body-text">A demand-driven, community-first approach — built around what parents actually say they need, not what we assume they do.</p>
   </div>
-
-  <div class="prog-cards">
-    <!-- Card 1 -->
+  <div class="prog-grid">
     <div class="prog-card">
-      <div class="prog-card-img">
-        <div class="prog-card-badge badge-active">Active Now</div>
+      <div class="prog-top" style="background:linear-gradient(135deg,var(--lagune-dk),var(--lagune))">
+        <div class="prog-badge badge-mint">Active Now</div>
         <svg viewBox="0 0 64 64"><rect x="12" y="8" width="40" height="48" rx="4"/><line x1="22" y1="24" x2="42" y2="24"/><line x1="22" y1="32" x2="42" y2="32"/><line x1="22" y1="40" x2="34" y2="40"/><circle cx="48" cy="48" r="10"/><polyline points="44,48 47,51 53,45"/></svg>
       </div>
-      <div class="prog-card-body">
-        <div class="prog-card-num">Step 01 · Survey</div>
-        <div class="prog-card-title">Tell us what your family needs</div>
-        <p class="prog-card-text">A 3-minute parent survey to identify the topics that matter most. Your responses directly shape the workshop content — this is how we get it right.</p>
-        <div class="prog-progress-label">
-          <span>Responses</span>
-          <span>Goal: 200</span>
-        </div>
-        <div class="prog-bar"><div class="prog-fill" style="width:62%"></div></div>
-        <a href="#survey" class="prog-link">Take the Survey →</a>
+      <div class="prog-body">
+        <div class="prog-step">Step 01 · Survey</div>
+        <div class="prog-title">Tell us what your family needs</div>
+        <p class="prog-text">A 3-minute parent survey to identify the topics that matter most. Your responses directly shape the workshop content — this is how we get it right.</p>
+        <div class="prog-pbar-lbl"><span>Responses</span><span>Goal: 200</span></div>
+        <div class="prog-pbar"><div class="prog-pfill pfill-lagune" style="width:62%"></div></div>
+        <a href="#" class="prog-link">Take the Survey →</a>
       </div>
     </div>
-
-    <!-- Card 2 -->
     <div class="prog-card">
-      <div class="prog-card-img" style="background:linear-gradient(135deg,#0a2e22,#185FA5)">
-        <div class="prog-card-badge badge-upcoming">April 2026</div>
-        <svg viewBox="0 0 64 64"><path d="M32 8c-13 0-24 8-24 18 0 6 3.5 11.5 9 15L14 52l12-6c2 .6 4 1 6 1 13 0 24-8 24-18S45 8 32 8z"/><circle cx="24" cy="26" r="2.5" fill="rgba(255,255,255,.4)" stroke="none"/><circle cx="32" cy="26" r="2.5" fill="rgba(255,255,255,.4)" stroke="none"/><circle cx="40" cy="26" r="2.5" fill="rgba(255,255,255,.4)" stroke="none"/></svg>
+      <div class="prog-top" style="background:linear-gradient(135deg,var(--nectarine-dk),var(--nectarine))">
+        <div class="prog-badge badge-peach">April 2026</div>
+        <svg viewBox="0 0 64 64"><path d="M32 8c-13 0-24 8-24 18 0 6 3.5 11.5 9 15L14 52l12-6c2 .6 4 1 6 1 13 0 24-8 24-18S45 8 32 8z"/><circle cx="24" cy="26" r="2.5" fill="rgba(255,255,255,.5)" stroke="none"/><circle cx="32" cy="26" r="2.5" fill="rgba(255,255,255,.5)" stroke="none"/><circle cx="40" cy="26" r="2.5" fill="rgba(255,255,255,.5)" stroke="none"/></svg>
       </div>
-      <div class="prog-card-body">
-        <div class="prog-card-num">Step 02 · Workshops</div>
-        <div class="prog-card-title">Two expert-led sessions — completely free</div>
-        <p class="prog-card-text">Live workshops with qualified psychologists. Practical tools for recognising warning signs, starting conversations, and knowing when to seek help. Free for all parents.</p>
-        <div class="prog-progress-label">
-          <span>Registered</span>
-          <span>Goal: 200+</span>
-        </div>
-        <div class="prog-bar"><div class="prog-fill" style="width:28%"></div></div>
+      <div class="prog-body">
+        <div class="prog-step">Step 02 · Workshops</div>
+        <div class="prog-title">Two expert-led sessions — completely free</div>
+        <p class="prog-text">Live workshops with qualified psychologists. Practical tools for recognising warning signs, starting conversations, and knowing when to seek help.</p>
+        <div class="prog-pbar-lbl"><span>Registered</span><span>Goal: 200+</span></div>
+        <div class="prog-pbar"><div class="prog-pfill pfill-mint" style="width:28%"></div></div>
         <a href="#" class="prog-link">Register Now →</a>
       </div>
     </div>
-
-    <!-- Card 3 -->
     <div class="prog-card">
-      <div class="prog-card-img" style="background:linear-gradient(135deg,#0f2e24,#C8A96E)">
-        <div class="prog-card-badge" style="background:var(--cream);color:var(--ink)">Free Kit</div>
-        <svg viewBox="0 0 64 64"><rect x="12" y="28" width="40" height="28" rx="3"/><path d="M20 28v-8a12 12 0 0124 0v8"/><line x1="32" y1="38" x2="32" y2="46"/><circle cx="32" cy="36" r="2" fill="rgba(255,255,255,.4)" stroke="none"/></svg>
+      <div class="prog-top" style="background:linear-gradient(135deg,var(--mint-dk),var(--mint))">
+        <div class="prog-badge badge-nectar">Free Kit</div>
+        <svg viewBox="0 0 64 64"><rect x="12" y="28" width="40" height="28" rx="3"/><path d="M20 28v-8a12 12 0 0124 0v8"/><line x1="32" y1="38" x2="32" y2="46"/><circle cx="32" cy="36" r="2" fill="rgba(255,255,255,.5)" stroke="none"/></svg>
       </div>
-      <div class="prog-card-body">
-        <div class="prog-card-num">Step 03 · Connection Kit</div>
-        <div class="prog-card-title">A take-home toolkit for every family</div>
-        <p class="prog-card-text">Every attending parent receives the Connection Kit — conversation prompts, myth-busting guides, local resource cards, and more. Practical. Free. Yours to keep.</p>
-        <div class="prog-progress-label">
-          <span>Kits prepared</span>
-          <span>Goal: 200</span>
-        </div>
-        <div class="prog-bar"><div class="prog-fill" style="width:15%"></div></div>
+      <div class="prog-body">
+        <div class="prog-step">Step 03 · Connection Kit</div>
+        <div class="prog-title">A take-home toolkit for every family</div>
+        <p class="prog-text">Every attending parent receives the Connection Kit — conversation prompts, myth-busting guides, local resource cards, and more. Practical. Free. Yours to keep.</p>
+        <div class="prog-pbar-lbl"><span>Kits prepared</span><span>Goal: 200</span></div>
+        <div class="prog-pbar"><div class="prog-pfill pfill-peach" style="width:15%"></div></div>
         <a href="#" class="prog-link">Learn What's Inside →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── QUOTES ───────────────────────────────────── -->
-<section class="quotes" id="voices">
-  <span class="quotes-eyebrow">Voices from the community</span>
-  <div class="quotes-track">
+<!-- ── QUOTES ─────────────────────────────────── -->
+<section class="quotes">
+  <span class="quotes-label">Voices from the community</span>
+  <div class="quotes-grid">
     <div class="quote-card">
-      <div class="quote-mark">"</div>
-      <p class="quote-text">I wish my parents knew I wasn't okay — but I didn't know how to tell them either.</p>
-      <div class="quote-attr">— Teen, anonymous survey response</div>
+      <div class="q-mark">"</div>
+      <p class="q-text">I wish my parents knew I wasn't okay — but I didn't know how to tell them either.</p>
+      <div class="q-attr">— Teen, anonymous survey response</div>
     </div>
     <div class="quote-card">
-      <div class="quote-mark">"</div>
-      <p class="quote-text">I thought my child would come to me if something was wrong. I had no idea how much they were carrying alone.</p>
-      <div class="quote-attr">— Parent, anonymous survey response</div>
+      <div class="q-mark">"</div>
+      <p class="q-text">I thought my child would come to me if something was wrong. I had no idea how much they were carrying alone.</p>
+      <div class="q-attr">— Parent, anonymous survey response</div>
     </div>
     <div class="quote-card">
-      <div class="quote-mark">"</div>
-      <p class="quote-text">The pressure feels impossible sometimes. But I don't want to be a burden. So I just stay quiet.</p>
-      <div class="quote-attr">— Teen, anonymous survey response</div>
+      <div class="q-mark">"</div>
+      <p class="q-text">The pressure feels impossible sometimes. But I don't want to be a burden. So I just stay quiet.</p>
+      <div class="q-attr">— Teen, anonymous survey response</div>
     </div>
   </div>
 </section>
 
-<!-- ── PARTNERS ─────────────────────────────────── -->
+<!-- ── PARTNERS ───────────────────────────────── -->
 <section class="partners" id="partners">
-  <span class="partners-label">Our partners &amp; supporters</span>
-  <div class="partner-logos">
-    <div class="partner-logo"><div class="partner-logo-dot"></div>School Partner</div>
-    <div class="partner-logo"><div class="partner-logo-dot"></div>Community Funder</div>
-    <div class="partner-logo"><div class="partner-logo-dot"></div>NGO Network</div>
-    <div class="partner-logo"><div class="partner-logo-dot"></div>Youth Organisation</div>
-    <div class="partner-logo" style="border-style:dashed;cursor:pointer" onclick="alert('Contact us to become a partner!')">+ Become a Partner</div>
+  <span class="partners-lbl">Our partners & supporters</span>
+  <div class="partner-row">
+    <div class="partner-pill"><div class="pill-dot"></div>School Partner</div>
+    <div class="partner-pill"><div class="pill-dot"></div>Community Funder</div>
+    <div class="partner-pill"><div class="pill-dot"></div>NGO Network</div>
+    <div class="partner-pill"><div class="pill-dot"></div>Youth Organisation</div>
+    <div class="partner-pill partner-join">+ Become a Partner</div>
   </div>
 </section>
 
-<!-- ── NEWSLETTER ───────────────────────────────── -->
-<section class="newsletter" id="survey">
+<!-- ── NEWSLETTER ─────────────────────────────── -->
+<section class="newsletter">
   <div class="newsletter-inner">
-    <h2 class="newsletter-title">Don't miss a thing.</h2>
-    <p class="newsletter-sub">Follow the campaign. Get updates on workshops, survey results, and the impact we're creating together across ASEAN.</p>
-    <div class="newsletter-form">
-      <input class="newsletter-input" type="email" placeholder="Your email address">
-      <button class="newsletter-btn">Stay Connected →</button>
+    <h2>Don't miss a thing.</h2>
+    <p>Follow the campaign. Get updates on workshops, survey results, and the impact we're creating together across ASEAN.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="Your email address">
+      <button class="nl-btn">Stay Connected →</button>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ───────────────────────────────────── -->
+<!-- ── FOOTER ──────────────────────────────────── -->
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <a class="footer-logo" href="#">
-        <div class="nav-logo-mark" style="width:32px;height:32px">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9"/><path d="M8 12s1.5 2.5 4 2.5 4-2.5 4-2.5"/></svg>
-        </div>
-        <span class="footer-logo-text">Bridging the Silence</span>
-      </a>
+    <div>
+      <div class="footer-brand-name">Bridging the Silence</div>
       <p class="footer-brand-text">A youth-led mental health initiative equipping parents of high school students across ASEAN with the tools to start the conversations that matter most.</p>
-      <p style="font-size:12px;margin-bottom:16px;color:rgba(255,255,255,.35)">March – May 2026 · Facebook · Zalo · Instagram</p>
+      <p class="footer-brand-sub">March – May 2026 · Facebook · Zalo · Instagram</p>
       <div class="footer-social">
-        <a class="social-btn" href="#" title="Facebook">f</a>
-        <a class="social-btn" href="#" title="Instagram">ig</a>
-        <a class="social-btn" href="#" title="Zalo">Z</a>
+        <a class="soc" href="#">f</a>
+        <a class="soc" href="#">ig</a>
+        <a class="soc" href="#">Z</a>
       </div>
     </div>
     <div class="footer-col">
@@ -1107,154 +824,70 @@ footer{
     <div style="display:flex;gap:20px">
       <a href="#">Privacy</a>
       <a href="#">Terms</a>
-      <a href="#">#BridgingTheSilence</a>
+      <a href="#" style="color:var(--peach)">#BridgingTheSilence</a>
     </div>
   </div>
 </footer>
 
 <script>
-// Dot grid
-const grid = document.getElementById('dotGrid');
-for(let i=0;i<64;i++){const s=document.createElement('span');grid.appendChild(s)}
-
-// Progress bars trigger
-const fills = document.querySelectorAll('.progress-fill, .prog-fill');
-setTimeout(()=>{
-  fills.forEach(f=>{
-    const w = f.style.width || f.style.getPropertyValue('--w');
-    if(f.style.getPropertyValue('--w')) f.style.width = f.style.getPropertyValue('--w');
-  });
-},400);
-
-// Fake survey counter animate
-let count = 87;
-const counter = document.getElementById('surveyCount');
-if(counter){
-  counter.textContent = count;
-  setInterval(()=>{
-    if(Math.random() > 0.7){count++; counter.textContent = count;}
-  }, 4000);
-}
-
 // Hero progress fill
-setTimeout(()=>{
-  const hp = document.getElementById('heroProgress');
-  if(hp) hp.style.width = '62%';
-},800);
+setTimeout(()=>{document.getElementById('heroFill').style.width='44%'},600);
 
-// Scroll-triggered fade for stats
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.style.animation='countUp .6s ease forwards';
-    }
-  });
-},{threshold:.3});
-document.querySelectorAll('.stat-num,.prob-num').forEach(el=>observer.observe(el));
+// Survey counter tick
+let sCount=87;
+const sc=document.getElementById('surveyCount');
+setInterval(()=>{if(Math.random()>.72){sCount++;sc.textContent=sCount}},4200);
 
-// Lang toggle
-function toggleLang(btn){
-  const isVI = btn.textContent.includes('VI');
-  btn.textContent = isVI ? 'EN 🇬🇧' : 'VI 🇻🇳';
-  // In production: swap content or redirect
+// Fundraising
+const GOAL=5000;let raised=1840,selAmt=25;
+function fmt(n){return'£'+n.toLocaleString('en-GB')}
+function updateFund(){
+  const pct=Math.min(100,Math.round(raised/GOAL*100));
+  document.getElementById('fundRaised').textContent=fmt(raised);
+  document.getElementById('fundPct').textContent=pct+'%';
+  document.getElementById('fundFill').style.width=pct+'%';
 }
-
-// Fundraising counter
-const GOAL = 5000;
-let raised = 1840;
-let selectedAmt = 25;
-let selectedLabel = 'Advocate';
-
-function formatGBP(n){
-  return '£' + n.toLocaleString('en-GB');
-}
-
-function updateFundUI(){
-  const pct = Math.min(100, Math.round((raised/GOAL)*100));
-  document.getElementById('fundRaised').textContent = formatGBP(raised);
-  document.getElementById('fundPct').textContent = pct + '%';
-  document.getElementById('fundFill').style.width = pct + '%';
-}
-
-function selectTier(el, amt, label){
+function selectTier(el,amt){
   document.querySelectorAll('.fund-tier').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  if(label === 'Custom'){
-    const custom = prompt('Enter your donation amount (£):');
-    if(custom && !isNaN(custom) && Number(custom) > 0){
-      selectedAmt = Number(custom);
-      document.getElementById('customAmt').textContent = '£' + selectedAmt;
-    } else { return; }
-  } else {
-    selectedAmt = amt;
-    document.getElementById('customAmt').textContent = 'Other';
-  }
-  document.getElementById('donateBtn').textContent = 'Donate ' + formatGBP(selectedAmt) + ' →';
+  if(amt===0){
+    const c=prompt('Enter your donation amount (£):');
+    if(c&&!isNaN(c)&&Number(c)>0){selAmt=Number(c);document.getElementById('customAmt').textContent='£'+selAmt}
+    else return;
+  } else {selAmt=amt;document.getElementById('customAmt').textContent='Other'}
+  document.getElementById('donateBtn').textContent='Donate '+fmt(selAmt)+' →';
 }
-
 function handleDonate(){
-  raised += selectedAmt;
-  const sc = document.getElementById('supporterCount');
-  const bc = document.getElementById('backerCount');
-  const newCount = parseInt(sc.textContent) + 1;
-  sc.textContent = newCount;
-  if(bc) bc.textContent = newCount + ' backers';
-  updateFundUI();
-  const btn = document.getElementById('donateBtn');
-  btn.textContent = 'Thank you! 💙';
-  btn.style.background = 'var(--teal)';
-  btn.style.color = '#fff';
-  setTimeout(()=>{
-    btn.textContent = 'Donate ' + formatGBP(selectedAmt) + ' →';
-    btn.style.background = '';
-    btn.style.color = '';
-  }, 2500);
+  raised+=selAmt;
+  const btn=document.getElementById('donateBtn');
+  const cnt=parseInt(document.getElementById('supporterCount').textContent)+1;
+  const bc=parseInt(document.getElementById('backerCount').textContent)+1;
+  document.getElementById('supporterCount').textContent=cnt;
+  document.getElementById('backerCount').textContent=bc+' backers';
+  updateFund();
+  btn.textContent='Thank you! 💙';btn.style.background='var(--mint)';btn.style.color='var(--ink)';
+  setTimeout(()=>{btn.textContent='Donate '+fmt(selAmt)+' →';btn.style.background='';btn.style.color=''},2500);
 }
-
-// Animate raised on scroll
-const fundObserver = new IntersectionObserver((entries)=>{
+// Animate on scroll into view
+const fObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      // Animate number count up
-      let start = 0;
-      const end = raised;
-      const duration = 1800;
-      const step = end / (duration / 16);
-      const timer = setInterval(()=>{
-        start = Math.min(start + step, end);
-        document.getElementById('fundRaised').textContent = formatGBP(Math.round(start));
-        if(start >= end){
-          clearInterval(timer);
-          document.getElementById('fundFill').style.width = Math.round((raised/GOAL)*100) + '%';
-          document.getElementById('fundPct').textContent = Math.round((raised/GOAL)*100) + '%';
-        }
-      }, 16);
-      fundObserver.disconnect();
+      let s=0;const dur=1800,step=raised/(dur/16);
+      const t=setInterval(()=>{
+        s=Math.min(s+step,raised);
+        document.getElementById('fundRaised').textContent=fmt(Math.round(s));
+        if(s>=raised){clearInterval(t);updateFund()}
+      },16);
+      fObs.disconnect();
     }
   });
 },{threshold:.4});
+fObs.observe(document.getElementById('donate'));
+setInterval(()=>{if(Math.random()>.6){raised+=[5,10,15,25][Math.floor(Math.random()*4)];updateFund()}},7000);
 
-const fc = document.getElementById('fundCard');
-if(fc) fundObserver.observe(fc);
-
-// Simulate occasional new donation
-setInterval(()=>{
-  if(Math.random() > 0.6){
-    const micro = [5,10,15,25][Math.floor(Math.random()*4)];
-    raised += micro;
-    const cnt = parseInt(document.getElementById('supporterCount').textContent)+1;
-    document.getElementById('supporterCount').textContent = cnt;
-    updateFundUI();
-  }
-},7000);
+// Nav shrink on scroll
 window.addEventListener('scroll',()=>{
-  const nav = document.querySelector('nav');
-  if(window.scrollY > 60){
-    nav.style.height='60px';
-    nav.style.borderBottomColor='rgba(159,225,203,.15)';
-  } else {
-    nav.style.height='72px';
-  }
+  document.getElementById('nav').style.height=window.scrollY>60?'58px':'68px';
 });
 </script>
 </body>
